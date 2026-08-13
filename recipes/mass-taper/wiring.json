@@ -1,0 +1,81 @@
+{
+  "description": "多截面渐变锥形体量：底部大圆与顶部小圆 Loft 生成锥形建筑体量，底半径/顶半径/总高度可调",
+  "nodes": [
+    {
+      "id": "n1",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "BottomRadius",
+      "position": { "x": 0, "y": 0 },
+      "preset": { "value": 15000, "min": 3000, "max": 50000 }
+    },
+    {
+      "id": "n2",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "TopRadius",
+      "position": { "x": 0, "y": 150 },
+      "preset": { "value": 5000, "min": 1000, "max": 30000 }
+    },
+    {
+      "id": "n3",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "Height",
+      "position": { "x": 0, "y": 300 },
+      "preset": { "value": 60000, "min": 10000, "max": 200000 }
+    },
+    {
+      "id": "n4",
+      "guid": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+      "name": "Unit Z",
+      "nickname": "Normal",
+      "position": { "x": 250, "y": 75 }
+    },
+    {
+      "id": "n0",
+      "guid": "3581f42a-9592-4549-bd6b-1c0fc39d067b",
+      "name": "Construct Point",
+      "nickname": "BottomCenter",
+      "position": { "x": 250, "y": 225 }
+    },
+    {
+      "id": "n5",
+      "guid": "3581f42a-9592-4549-bd6b-1c0fc39d067b",
+      "name": "Construct Point",
+      "nickname": "TopCenter",
+      "position": { "x": 250, "y": 375 }
+    },
+    {
+      "id": "n6",
+      "guid": "d114323a-e6ee-4164-946b-e4ca0ce15efa",
+      "name": "Circle CNR",
+      "nickname": "BottomCircle",
+      "position": { "x": 500, "y": 75 }
+    },
+    {
+      "id": "n7",
+      "guid": "d114323a-e6ee-4164-946b-e4ca0ce15efa",
+      "name": "Circle CNR",
+      "nickname": "TopCircle",
+      "position": { "x": 500, "y": 300 }
+    },
+    {
+      "id": "n8",
+      "guid": "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850",
+      "name": "Loft",
+      "position": { "x": 750, "y": 187 }
+    }
+  ],
+  "connections": [
+    { "from": { "node": "n1", "port": "Value"       }, "to": { "node": "n6", "port": "Radius"       } },
+    { "from": { "node": "n2", "port": "Value"       }, "to": { "node": "n7", "port": "Radius"       } },
+    { "from": { "node": "n3", "port": "Value"       }, "to": { "node": "n5", "port": "Z coordinate" } },
+    { "from": { "node": "n4", "port": "Unit vector" }, "to": { "node": "n6", "port": "Normal"       } },
+    { "from": { "node": "n4", "port": "Unit vector" }, "to": { "node": "n7", "port": "Normal"       } },
+    { "from": { "node": "n0", "port": "Point"       }, "to": { "node": "n6", "port": "Center"       } },
+    { "from": { "node": "n5", "port": "Point"       }, "to": { "node": "n7", "port": "Center"       } },
+    { "from": { "node": "n6", "port": "Circle"      }, "to": { "node": "n8", "port": "Curves"       } },
+    { "from": { "node": "n7", "port": "Circle"      }, "to": { "node": "n8", "port": "Curves"       } }
+  ]
+}

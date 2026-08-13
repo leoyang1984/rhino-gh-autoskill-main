@@ -1,0 +1,57 @@
+{
+  "description": "用一个滑杆控制半径，画一个圆，再把圆挤出成圆柱体",
+  "nodes": [
+    {
+      "id": "n1",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "Radius",
+      "position": { "x": 0, "y": 0 },
+      "preset": { "value": 10, "min": 0, "max": 100 }
+    },
+    {
+      "id": "n2",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "Height",
+      "position": { "x": 0, "y": 150 },
+      "preset": { "value": 20, "min": 0, "max": 200 }
+    },
+    {
+      "id": "n3",
+      "guid": "807b86e3-be8d-4970-92b5-f8cdcb45b06b",
+      "name": "Circle",
+      "position": { "x": 250, "y": 0 }
+    },
+    {
+      "id": "n4",
+      "guid": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+      "name": "Unit Z",
+      "position": { "x": 250, "y": 150 }
+    },
+    {
+      "id": "n5",
+      "guid": "962034e9-cc27-4394-afc4-5c16e3447cf9",
+      "name": "Extrude",
+      "position": { "x": 500, "y": 75 }
+    }
+  ],
+  "connections": [
+    {
+      "from": { "node": "n1", "port": "Value" },
+      "to":   { "node": "n3", "port": "Radius" }
+    },
+    {
+      "from": { "node": "n3", "port": "Circle" },
+      "to":   { "node": "n5", "port": "Base" }
+    },
+    {
+      "from": { "node": "n2", "port": "Value" },
+      "to":   { "node": "n4", "port": "Factor" }
+    },
+    {
+      "from": { "node": "n4", "port": "Unit vector" },
+      "to":   { "node": "n5", "port": "Direction" }
+    }
+  ]
+}

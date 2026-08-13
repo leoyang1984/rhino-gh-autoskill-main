@@ -1,0 +1,81 @@
+{
+  "$schema": "../../schemas/recipe-v2.schema.json",
+  "schema_version": 2,
+  "id": "facade-louver",
+  "name": "竖向百叶幕墙",
+  "description": "竖向百叶幕墙：等间距竖向百叶翅片，可控数量、翻转角度、翅片深度，沿 X 轴展开，绕 Z 轴翻转",
+  "tags": [
+    "louver",
+    "facade",
+    "vertical",
+    "fin",
+    "rotate",
+    "curtain-wall",
+    "百叶",
+    "幕墙",
+    "竖向",
+    "翅片",
+    "翻转",
+    "表皮"
+  ],
+  "interface": {
+    "parameters": {
+      "width": {
+        "type": "number",
+        "unit": "mm",
+        "default": 20000,
+        "node": "n1",
+        "field": "value",
+        "description": "幕墙总宽度"
+      },
+      "height": {
+        "type": "number",
+        "unit": "mm",
+        "default": 40000,
+        "node": "n2",
+        "field": "value",
+        "description": "幕墙总高度"
+      },
+      "louver_count": {
+        "type": "integer",
+        "unit": null,
+        "default": 20,
+        "node": "n3",
+        "field": "value",
+        "description": "百叶片数"
+      },
+      "louver_angle": {
+        "type": "number",
+        "unit": "degrees",
+        "default": 30,
+        "node": "n4",
+        "field": "value",
+        "description": "百叶翻转角度（0=正对，90=侧面）"
+      },
+      "louver_depth": {
+        "type": "number",
+        "unit": "mm",
+        "default": 300,
+        "node": "n5",
+        "field": "value",
+        "description": "百叶翅片深度"
+      }
+    },
+    "inputs": {},
+    "outputs": {
+      "louver_fins": {
+        "node": "n15",
+        "port": "Geometry",
+        "type": "IGH_GeometricGoo",
+        "access": "list",
+        "cardinality": null,
+        "description": "翻转后的百叶翅片列表。"
+      }
+    }
+  },
+  "composable_with": [],
+  "composition_rules": [],
+  "verified": true,
+  "verified_date": "2026-04-16",
+  "test_case": ""
+}

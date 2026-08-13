@@ -1,0 +1,96 @@
+{
+  "$schema": "../../schemas/recipe-v2.schema.json",
+  "schema_version": 2,
+  "id": "kangaroo-cloth",
+  "name": "布料重力模拟",
+  "description": "Kangaroo 2 布料模拟：矩形网格四角吊点固定，重力作用下布料下垂，边弹簧约束保持布料形态。物理迭代求解，需按 Reset/On 时序运行（见 knowledge/kangaroo-physics-patterns.md）。",
+  "tags": [
+    "kangaroo",
+    "cloth",
+    "gravity",
+    "physics",
+    "simulation",
+    "fabric",
+    "hang",
+    "布料",
+    "重力",
+    "物理",
+    "悬挂"
+  ],
+  "interface": {
+    "parameters": {
+      "width": {
+        "type": "number",
+        "unit": "mm",
+        "default": 50,
+        "node": "sW",
+        "field": "value",
+        "description": "布料宽度"
+      },
+      "depth": {
+        "type": "number",
+        "unit": "mm",
+        "default": 50,
+        "node": "sD",
+        "field": "value",
+        "description": "布料深度"
+      },
+      "mesh_u": {
+        "type": "integer",
+        "unit": null,
+        "default": 20,
+        "node": "sU",
+        "field": "value",
+        "description": "网格 U 向细分数"
+      },
+      "mesh_v": {
+        "type": "integer",
+        "unit": null,
+        "default": 20,
+        "node": "sV",
+        "field": "value",
+        "description": "网格 V 向细分数"
+      },
+      "gravity": {
+        "type": "number",
+        "unit": null,
+        "default": -0.1,
+        "node": "sG",
+        "field": "value",
+        "description": "重力系数（负值向下），与 spring_strength 平衡控制下垂量"
+      },
+      "spring_length": {
+        "type": "number",
+        "unit": "mm",
+        "default": 2.5,
+        "node": "sL",
+        "field": "value",
+        "description": "弹簧目标长度，应为网格边长 width/mesh_u"
+      },
+      "spring_strength": {
+        "type": "number",
+        "unit": null,
+        "default": 5.0,
+        "node": "sS",
+        "field": "value",
+        "description": "弹簧刚度，越大布料越硬"
+      }
+    },
+    "inputs": {},
+    "outputs": {
+      "cloth_mesh": {
+        "node": "construct",
+        "port": "Mesh",
+        "type": "GH_Mesh",
+        "access": "item",
+        "cardinality": 1,
+        "description": "求解后的布料网格（四角钉住，中部下垂）"
+      }
+    }
+  },
+  "composable_with": [],
+  "composition_rules": [],
+  "verified": true,
+  "verified_date": "2026-08-13",
+  "test_case": "logs/2026-08-13-kangaroo-cloth-mcp.md"
+}

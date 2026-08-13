@@ -1,0 +1,138 @@
+{
+  "$schema": "../../schemas/recipe-v2.schema.json",
+  "schema_version": 2,
+  "id": "mass-setback",
+  "name": "退台体量",
+  "description": "退台体量：矩形平面逐层收进，生成阶梯状建筑体量",
+  "tags": [
+    "setback",
+    "step",
+    "tier",
+    "mass",
+    "building",
+    "extrude",
+    "退台",
+    "阶梯",
+    "体量",
+    "收进",
+    "建筑"
+  ],
+  "interface": {
+    "parameters": {
+      "base_width": {
+        "type": "number",
+        "unit": null,
+        "default": 30,
+        "node": "n1",
+        "field": "value",
+        "description": "底层宽度"
+      },
+      "base_depth": {
+        "type": "number",
+        "unit": null,
+        "default": 20,
+        "node": "n2",
+        "field": "value",
+        "description": "底层深度"
+      },
+      "floor_height": {
+        "type": "number",
+        "unit": null,
+        "default": 4,
+        "node": "n3",
+        "field": "value",
+        "description": "层高"
+      },
+      "floors_per_tier": {
+        "type": "number",
+        "unit": null,
+        "default": 4,
+        "node": "n4",
+        "field": "value",
+        "description": "每级层数"
+      },
+      "tiers": {
+        "type": "number",
+        "unit": null,
+        "default": 3,
+        "node": "n5",
+        "field": "value",
+        "description": "退台级数"
+      },
+      "setback_per_tier": {
+        "type": "number",
+        "unit": null,
+        "default": 4,
+        "node": "n6",
+        "field": "value",
+        "description": "每级总收进量（两侧合计）"
+      }
+    },
+    "inputs": {},
+    "outputs": {
+      "tier_breps": {
+        "node": "n18",
+        "port": "Extrusion",
+        "type": "GH_Brep",
+        "access": "list",
+        "cardinality": null,
+        "description": "各退台段的挤出 Brep 列表。"
+      }
+    }
+  },
+  "composable_with": [],
+  "composition_rules": [
+    {
+      "id": "tier_to_facade_grid",
+      "target_recipe": "facade-grid",
+      "description": "先选退台段，再拆 Brep 并选择立面，驱动 UV 分格。",
+      "bindings": [
+        {
+          "from_output": "tier_breps",
+          "to": {
+            "input": "surface"
+          },
+          "adapters": [
+            {
+              "selector": "59daf374-bc21-4a5e-8282-5504fb7ae9ae",
+              "input_port": "List",
+              "output_port": "Item",
+              "parameters": {
+                "Index": {
+                  "kind": "slider",
+                  "name": "TierIndex",
+                  "value": 0,
+                  "min": 0,
+                  "max": 20
+                }
+              }
+            },
+            {
+              "selector": "8d372bdc-9800-45e9-8a26-6e33c5253e21",
+              "input_port": "Brep",
+              "output_port": "Faces",
+              "parameters": {}
+            },
+            {
+              "selector": "59daf374-bc21-4a5e-8282-5504fb7ae9ae",
+              "input_port": "List",
+              "output_port": "Item",
+              "parameters": {
+                "Index": {
+                  "kind": "slider",
+                  "name": "FaceIndex",
+                  "value": 2,
+                  "min": 0,
+                  "max": 5
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "verified": true,
+  "verified_date": "2026-04-16",
+  "test_case": ""
+}

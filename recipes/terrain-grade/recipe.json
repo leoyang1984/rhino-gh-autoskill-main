@@ -1,0 +1,62 @@
+{
+  "$schema": "../../schemas/recipe-v2.schema.json",
+  "schema_version": 2,
+  "id": "terrain-grade",
+  "name": "场地平整",
+  "description": "场地平整：输入闭合整坡边界曲线，按目标标高整体抬升后生成整平场地面",
+  "tags": [
+    "terrain",
+    "grade",
+    "pad",
+    "site",
+    "boundary",
+    "landscape",
+    "地形",
+    "整坡",
+    "场地平整",
+    "平台",
+    "景观"
+  ],
+  "interface": {
+    "parameters": {
+      "target_elevation": {
+        "type": "number",
+        "unit": null,
+        "default": 5,
+        "node": "n2",
+        "field": "value",
+        "description": "目标标高"
+      }
+    },
+    "inputs": {
+      "boundary": {
+        "type": "GH_Curve",
+        "access": "item",
+        "cardinality": 1,
+        "description": "闭合的整坡边界曲线。",
+        "bindings": [
+          {
+            "node": "n4",
+            "port": "Geometry",
+            "mode": "replace"
+          }
+        ]
+      }
+    },
+    "outputs": {
+      "grade_surface": {
+        "node": "n5",
+        "port": "Surfaces",
+        "type": "GH_Surface",
+        "access": "item",
+        "cardinality": 1,
+        "description": "抬升至目标标高的整平场地面。"
+      }
+    }
+  },
+  "composable_with": [],
+  "composition_rules": [],
+  "verified": true,
+  "verified_date": "2026-04-17",
+  "test_case": ""
+}

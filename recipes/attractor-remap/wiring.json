@@ -1,0 +1,121 @@
+{
+  "description": "吸引子距离映射：点阵中每点到吸引子的距离 Remap 到目标数值区间，可驱动任意参数",
+  "nodes": [
+    {
+      "id": "n1",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "GridCount",
+      "position": { "x": 0, "y": 0 },
+      "preset": { "value": 10, "min": 4, "max": 30 }
+    },
+    {
+      "id": "n2",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "GridSize",
+      "position": { "x": 0, "y": 150 },
+      "preset": { "value": 20000, "min": 2000, "max": 100000 }
+    },
+    {
+      "id": "n3",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "AttrX",
+      "position": { "x": 0, "y": 300 },
+      "preset": { "value": 5000, "min": -50000, "max": 50000 }
+    },
+    {
+      "id": "n4",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "AttrY",
+      "position": { "x": 0, "y": 450 },
+      "preset": { "value": 5000, "min": -50000, "max": 50000 }
+    },
+    {
+      "id": "n5",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "RemapMin",
+      "position": { "x": 0, "y": 600 },
+      "preset": { "value": 100, "min": 0, "max": 10000 }
+    },
+    {
+      "id": "n6",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "RemapMax",
+      "position": { "x": 0, "y": 750 },
+      "preset": { "value": 3000, "min": 100, "max": 20000 }
+    },
+    {
+      "id": "n7",
+      "guid": "d93100b6-d50b-40b2-831a-814659dc38e3",
+      "name": "Rectangle",
+      "position": { "x": 250, "y": 150 }
+    },
+    {
+      "id": "n8",
+      "guid": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+      "name": "Boundary Surfaces",
+      "position": { "x": 500, "y": 150 }
+    },
+    {
+      "id": "n9",
+      "guid": "5106bafc-d5d4-4983-83e7-7be3ed07f502",
+      "name": "Divide Surface",
+      "position": { "x": 750, "y": 150 }
+    },
+    {
+      "id": "n10",
+      "guid": "3581f42a-9592-4549-bd6b-1c0fc39d067b",
+      "name": "Construct Point",
+      "nickname": "Attractor",
+      "position": { "x": 250, "y": 525 }
+    },
+    {
+      "id": "n11",
+      "guid": "93b8e93d-f932-402c-b435-84be04d87666",
+      "name": "Distance",
+      "position": { "x": 1000, "y": 300 }
+    },
+    {
+      "id": "n12",
+      "guid": "f44b92b0-3b5b-493a-86f4-fd7408c3daf3",
+      "name": "Bounds",
+      "position": { "x": 1250, "y": 225 }
+    },
+    {
+      "id": "n13",
+      "guid": "d1a28e95-cf96-4936-bf34-8bf142d731bf",
+      "name": "Construct Domain",
+      "nickname": "TargetDomain",
+      "position": { "x": 1250, "y": 525 }
+    },
+    {
+      "id": "n14",
+      "guid": "2fcc2743-8339-4cdf-a046-a1f17439191d",
+      "name": "Remap Numbers",
+      "position": { "x": 1500, "y": 375 }
+    }
+  ],
+  "connections": [
+    { "from": { "node": "n2",  "port": "Value"      }, "to": { "node": "n7",  "port": "X Size"       } },
+    { "from": { "node": "n2",  "port": "Value"      }, "to": { "node": "n7",  "port": "Y Size"       } },
+    { "from": { "node": "n7",  "port": "Rectangle"  }, "to": { "node": "n8",  "port": "Edges"        } },
+    { "from": { "node": "n8",  "port": "Surfaces"   }, "to": { "node": "n9",  "port": "Surface"      } },
+    { "from": { "node": "n1",  "port": "Value"      }, "to": { "node": "n9",  "port": "U Count"      } },
+    { "from": { "node": "n1",  "port": "Value"      }, "to": { "node": "n9",  "port": "V Count"      } },
+    { "from": { "node": "n3",  "port": "Value"      }, "to": { "node": "n10", "port": "X coordinate" } },
+    { "from": { "node": "n4",  "port": "Value"      }, "to": { "node": "n10", "port": "Y coordinate" } },
+    { "from": { "node": "n9",  "port": "Points"     }, "to": { "node": "n11", "port": "Point A"      } },
+    { "from": { "node": "n10", "port": "Point"      }, "to": { "node": "n11", "port": "Point B"      } },
+    { "from": { "node": "n11", "port": "Distance"   }, "to": { "node": "n12", "port": "Numbers"      } },
+    { "from": { "node": "n11", "port": "Distance"   }, "to": { "node": "n14", "port": "Value"        } },
+    { "from": { "node": "n12", "port": "Domain"     }, "to": { "node": "n14", "port": "Source"       } },
+    { "from": { "node": "n5",  "port": "Value"      }, "to": { "node": "n13", "port": "Domain start" } },
+    { "from": { "node": "n6",  "port": "Value"      }, "to": { "node": "n13", "port": "Domain end"   } },
+    { "from": { "node": "n13", "port": "Domain"     }, "to": { "node": "n14", "port": "Target"       } }
+  ]
+}

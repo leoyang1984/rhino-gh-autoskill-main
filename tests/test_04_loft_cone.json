@@ -1,0 +1,91 @@
+{
+  "description": "用两个滑杆分别控制底圆和顶圆的半径，再用一个滑杆控制高度，Loft 成锥形曲面",
+  "nodes": [
+    {
+      "id": "n1",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "R_bottom",
+      "position": { "x": 0, "y": 0 },
+      "preset": { "value": 20, "min": 1, "max": 50 }
+    },
+    {
+      "id": "n2",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "R_top",
+      "position": { "x": 0, "y": 150 },
+      "preset": { "value": 5, "min": 0, "max": 50 }
+    },
+    {
+      "id": "n3",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "Height",
+      "position": { "x": 0, "y": 300 },
+      "preset": { "value": 30, "min": 1, "max": 100 }
+    },
+    {
+      "id": "n4",
+      "guid": "807b86e3-be8d-4970-92b5-f8cdcb45b06b",
+      "name": "Circle",
+      "nickname": "Circle_bottom",
+      "position": { "x": 250, "y": 0 }
+    },
+    {
+      "id": "n5",
+      "guid": "807b86e3-be8d-4970-92b5-f8cdcb45b06b",
+      "name": "Circle",
+      "nickname": "Circle_top",
+      "position": { "x": 250, "y": 150 }
+    },
+    {
+      "id": "n6",
+      "guid": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+      "name": "Unit Z",
+      "position": { "x": 250, "y": 300 }
+    },
+    {
+      "id": "n7",
+      "guid": "e9eb1dcf-92f6-4d4d-84ae-96222d60f56b",
+      "name": "Move",
+      "position": { "x": 500, "y": 225 }
+    },
+    {
+      "id": "n8",
+      "guid": "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850",
+      "name": "Loft",
+      "position": { "x": 750, "y": 112 }
+    }
+  ],
+  "connections": [
+    {
+      "from": { "node": "n1", "port": "Value" },
+      "to":   { "node": "n4", "port": "Radius" }
+    },
+    {
+      "from": { "node": "n2", "port": "Value" },
+      "to":   { "node": "n5", "port": "Radius" }
+    },
+    {
+      "from": { "node": "n3", "port": "Value" },
+      "to":   { "node": "n6", "port": "Factor" }
+    },
+    {
+      "from": { "node": "n5", "port": "Circle" },
+      "to":   { "node": "n7", "port": "Geometry" }
+    },
+    {
+      "from": { "node": "n6", "port": "Unit vector" },
+      "to":   { "node": "n7", "port": "Motion" }
+    },
+    {
+      "from": { "node": "n4", "port": "Circle" },
+      "to":   { "node": "n8", "port": "Curves" }
+    },
+    {
+      "from": { "node": "n7", "port": "Geometry" },
+      "to":   { "node": "n8", "port": "Curves" }
+    }
+  ]
+}

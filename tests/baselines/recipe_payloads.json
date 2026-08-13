@@ -1,0 +1,3190 @@
+{
+  "format_version": 1,
+  "purpose": "Legacy compile_recipe.py characterization baseline",
+  "recipes": {
+    "mass-rotate": {
+      "default_parameters": {
+        "floors": 20,
+        "floor_height": 5000,
+        "rot_step_deg": 5,
+        "radius_long": 10500,
+        "radius_short": 3500
+      },
+      "counts": {
+        "sliders": 5,
+        "components": 11,
+        "wires": 18
+      },
+      "payload": {
+        "components": [
+          {
+            "Key": "n6",
+            "Selector": "e64c5fb1-845c-4ab1-8911-5f338516ba67",
+            "X": 300.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n10",
+            "Selector": "17b7152b-d30d-4d50-b9ef-c9fe25576fc2",
+            "X": 300.0,
+            "Y": 525.0
+          },
+          {
+            "Key": "n7",
+            "Selector": "ce46b74e-00c9-43c4-805a-193b69ea4a11",
+            "X": 600.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n8",
+            "Selector": "ce46b74e-00c9-43c4-805a-193b69ea4a11",
+            "X": 600.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n11",
+            "Selector": "46b5564d-d3eb-4bf1-ae16-15ed132cfd88",
+            "X": 600.0,
+            "Y": 450.0
+          },
+          {
+            "Key": "n13",
+            "Selector": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+            "X": 900.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n9",
+            "Selector": "a4cd2751-414d-42ec-8916-476ebf62d7fe",
+            "X": 900.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n12",
+            "Selector": "b7798b74-037e-4f0c-8ac7-dc1043d093e0",
+            "X": 900.0,
+            "Y": 375.0
+          },
+          {
+            "Key": "n15",
+            "Selector": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+            "X": 1150.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n14",
+            "Selector": "e9eb1dcf-92f6-4d4d-84ae-96222d60f56b",
+            "X": 1150.0,
+            "Y": 375.0
+          },
+          {
+            "Key": "n16",
+            "Selector": "962034e9-cc27-4394-afc4-5c16e3447cf9",
+            "X": 1400.0,
+            "Y": 300.0
+          }
+        ],
+        "sliders": [
+          {
+            "Key": "n1",
+            "Min": 1,
+            "Value": 20,
+            "Max": 50,
+            "Type": "int",
+            "Name": "Floors",
+            "X": 0.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n2",
+            "Min": 1000,
+            "Value": 5000,
+            "Max": 10000,
+            "Type": "float",
+            "Name": "FloorHeight",
+            "X": 0.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n3",
+            "Min": 0,
+            "Value": 5,
+            "Max": 30,
+            "Type": "float",
+            "Name": "RotStep_deg",
+            "X": 0.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n4",
+            "Min": 1000,
+            "Value": 10500,
+            "Max": 30000,
+            "Type": "float",
+            "Name": "RadiusLong",
+            "X": 0.0,
+            "Y": 450.0
+          },
+          {
+            "Key": "n5",
+            "Min": 500,
+            "Value": 3500,
+            "Max": 15000,
+            "Type": "float",
+            "Name": "RadiusShort",
+            "X": 0.0,
+            "Y": 600.0
+          }
+        ],
+        "wires": [
+          {
+            "SrcKey": "n1",
+            "Src": "",
+            "DstKey": "n6",
+            "Dst": "Count"
+          },
+          {
+            "SrcKey": "n6",
+            "Src": "Series",
+            "DstKey": "n7",
+            "Dst": "A"
+          },
+          {
+            "SrcKey": "n2",
+            "Src": "",
+            "DstKey": "n7",
+            "Dst": "B"
+          },
+          {
+            "SrcKey": "n6",
+            "Src": "Series",
+            "DstKey": "n8",
+            "Dst": "A"
+          },
+          {
+            "SrcKey": "n3",
+            "Src": "",
+            "DstKey": "n8",
+            "Dst": "B"
+          },
+          {
+            "SrcKey": "n8",
+            "Src": "Result",
+            "DstKey": "n9",
+            "Dst": "Degrees"
+          },
+          {
+            "SrcKey": "n10",
+            "Src": "Plane",
+            "DstKey": "n11",
+            "Dst": "Plane"
+          },
+          {
+            "SrcKey": "n4",
+            "Src": "",
+            "DstKey": "n11",
+            "Dst": "Radius 1"
+          },
+          {
+            "SrcKey": "n5",
+            "Src": "",
+            "DstKey": "n11",
+            "Dst": "Radius 2"
+          },
+          {
+            "SrcKey": "n11",
+            "Src": "Ellipse",
+            "DstKey": "n12",
+            "Dst": "Geometry"
+          },
+          {
+            "SrcKey": "n9",
+            "Src": "Radians",
+            "DstKey": "n12",
+            "Dst": "Angle"
+          },
+          {
+            "SrcKey": "n10",
+            "Src": "Plane",
+            "DstKey": "n12",
+            "Dst": "Plane"
+          },
+          {
+            "SrcKey": "n7",
+            "Src": "Result",
+            "DstKey": "n13",
+            "Dst": "Factor"
+          },
+          {
+            "SrcKey": "n12",
+            "Src": "Geometry",
+            "DstKey": "n14",
+            "Dst": "Geometry"
+          },
+          {
+            "SrcKey": "n13",
+            "Src": "Unit vector",
+            "DstKey": "n14",
+            "Dst": "Motion"
+          },
+          {
+            "SrcKey": "n2",
+            "Src": "",
+            "DstKey": "n15",
+            "Dst": "Factor"
+          },
+          {
+            "SrcKey": "n14",
+            "Src": "Geometry",
+            "DstKey": "n16",
+            "Dst": "Base"
+          },
+          {
+            "SrcKey": "n15",
+            "Src": "Unit vector",
+            "DstKey": "n16",
+            "Dst": "Direction"
+          }
+        ],
+        "solve": true
+      }
+    },
+    "mass-extrude": {
+      "default_parameters": {
+        "width": 20000,
+        "depth": 15000,
+        "floor_height": 4000,
+        "floors": 10
+      },
+      "counts": {
+        "sliders": 4,
+        "components": 6,
+        "wires": 10
+      },
+      "payload": {
+        "components": [
+          {
+            "Key": "n5",
+            "Selector": "d93100b6-d50b-40b2-831a-814659dc38e3",
+            "X": 250.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n6",
+            "Selector": "e64c5fb1-845c-4ab1-8911-5f338516ba67",
+            "X": 250.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n7",
+            "Selector": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+            "X": 500.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n8",
+            "Selector": "e9eb1dcf-92f6-4d4d-84ae-96222d60f56b",
+            "X": 750.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n9",
+            "Selector": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+            "X": 750.0,
+            "Y": 375.0
+          },
+          {
+            "Key": "n10",
+            "Selector": "962034e9-cc27-4394-afc4-5c16e3447cf9",
+            "X": 1000.0,
+            "Y": 225.0
+          }
+        ],
+        "sliders": [
+          {
+            "Key": "n1",
+            "Min": 5000,
+            "Value": 20000,
+            "Max": 60000,
+            "Type": "float",
+            "Name": "Width",
+            "X": 0.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n2",
+            "Min": 5000,
+            "Value": 15000,
+            "Max": 40000,
+            "Type": "float",
+            "Name": "Depth",
+            "X": 0.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n3",
+            "Min": 2000,
+            "Value": 4000,
+            "Max": 6000,
+            "Type": "float",
+            "Name": "FloorHeight",
+            "X": 0.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n4",
+            "Min": 1,
+            "Value": 10,
+            "Max": 50,
+            "Type": "int",
+            "Name": "Floors",
+            "X": 0.0,
+            "Y": 450.0
+          }
+        ],
+        "wires": [
+          {
+            "SrcKey": "n1",
+            "Src": "",
+            "DstKey": "n5",
+            "Dst": "X Size"
+          },
+          {
+            "SrcKey": "n2",
+            "Src": "",
+            "DstKey": "n5",
+            "Dst": "Y Size"
+          },
+          {
+            "SrcKey": "n3",
+            "Src": "",
+            "DstKey": "n6",
+            "Dst": "Step"
+          },
+          {
+            "SrcKey": "n4",
+            "Src": "",
+            "DstKey": "n6",
+            "Dst": "Count"
+          },
+          {
+            "SrcKey": "n6",
+            "Src": "Series",
+            "DstKey": "n7",
+            "Dst": "Factor"
+          },
+          {
+            "SrcKey": "n5",
+            "Src": "Rectangle",
+            "DstKey": "n8",
+            "Dst": "Geometry"
+          },
+          {
+            "SrcKey": "n7",
+            "Src": "Unit vector",
+            "DstKey": "n8",
+            "Dst": "Motion"
+          },
+          {
+            "SrcKey": "n3",
+            "Src": "",
+            "DstKey": "n9",
+            "Dst": "Factor"
+          },
+          {
+            "SrcKey": "n8",
+            "Src": "Geometry",
+            "DstKey": "n10",
+            "Dst": "Base"
+          },
+          {
+            "SrcKey": "n9",
+            "Src": "Unit vector",
+            "DstKey": "n10",
+            "Dst": "Direction"
+          }
+        ],
+        "solve": true
+      }
+    },
+    "mass-taper": {
+      "default_parameters": {
+        "bottom_radius": 15000,
+        "top_radius": 5000,
+        "height": 60000
+      },
+      "counts": {
+        "sliders": 3,
+        "components": 6,
+        "wires": 9
+      },
+      "payload": {
+        "components": [
+          {
+            "Key": "n4",
+            "Selector": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+            "X": 250.0,
+            "Y": 75.0
+          },
+          {
+            "Key": "n0",
+            "Selector": "3581f42a-9592-4549-bd6b-1c0fc39d067b",
+            "X": 250.0,
+            "Y": 225.0
+          },
+          {
+            "Key": "n5",
+            "Selector": "3581f42a-9592-4549-bd6b-1c0fc39d067b",
+            "X": 250.0,
+            "Y": 375.0
+          },
+          {
+            "Key": "n6",
+            "Selector": "d114323a-e6ee-4164-946b-e4ca0ce15efa",
+            "X": 500.0,
+            "Y": 75.0
+          },
+          {
+            "Key": "n7",
+            "Selector": "d114323a-e6ee-4164-946b-e4ca0ce15efa",
+            "X": 500.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n8",
+            "Selector": "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850",
+            "X": 750.0,
+            "Y": 187.0
+          }
+        ],
+        "sliders": [
+          {
+            "Key": "n1",
+            "Min": 3000,
+            "Value": 15000,
+            "Max": 50000,
+            "Type": "float",
+            "Name": "BottomRadius",
+            "X": 0.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n2",
+            "Min": 1000,
+            "Value": 5000,
+            "Max": 30000,
+            "Type": "float",
+            "Name": "TopRadius",
+            "X": 0.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n3",
+            "Min": 10000,
+            "Value": 60000,
+            "Max": 200000,
+            "Type": "float",
+            "Name": "Height",
+            "X": 0.0,
+            "Y": 300.0
+          }
+        ],
+        "wires": [
+          {
+            "SrcKey": "n1",
+            "Src": "",
+            "DstKey": "n6",
+            "Dst": "Radius"
+          },
+          {
+            "SrcKey": "n2",
+            "Src": "",
+            "DstKey": "n7",
+            "Dst": "Radius"
+          },
+          {
+            "SrcKey": "n3",
+            "Src": "",
+            "DstKey": "n5",
+            "Dst": "Z coordinate"
+          },
+          {
+            "SrcKey": "n4",
+            "Src": "Unit vector",
+            "DstKey": "n6",
+            "Dst": "Normal"
+          },
+          {
+            "SrcKey": "n4",
+            "Src": "Unit vector",
+            "DstKey": "n7",
+            "Dst": "Normal"
+          },
+          {
+            "SrcKey": "n0",
+            "Src": "Point",
+            "DstKey": "n6",
+            "Dst": "Center"
+          },
+          {
+            "SrcKey": "n5",
+            "Src": "Point",
+            "DstKey": "n7",
+            "Dst": "Center"
+          },
+          {
+            "SrcKey": "n6",
+            "Src": "Circle",
+            "DstKey": "n8",
+            "Dst": "Curves"
+          },
+          {
+            "SrcKey": "n7",
+            "Src": "Circle",
+            "DstKey": "n8",
+            "Dst": "Curves"
+          }
+        ],
+        "solve": true
+      }
+    },
+    "floor-stack": {
+      "default_parameters": {
+        "width": 20000,
+        "depth": 15000,
+        "floor_height": 4000,
+        "floors": 10
+      },
+      "counts": {
+        "sliders": 4,
+        "components": 5,
+        "wires": 8
+      },
+      "payload": {
+        "components": [
+          {
+            "Key": "n5",
+            "Selector": "d93100b6-d50b-40b2-831a-814659dc38e3",
+            "X": 250.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n6",
+            "Selector": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+            "X": 500.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n7",
+            "Selector": "e64c5fb1-845c-4ab1-8911-5f338516ba67",
+            "X": 250.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n8",
+            "Selector": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+            "X": 500.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n9",
+            "Selector": "e9eb1dcf-92f6-4d4d-84ae-96222d60f56b",
+            "X": 750.0,
+            "Y": 150.0
+          }
+        ],
+        "sliders": [
+          {
+            "Key": "n1",
+            "Min": 5000,
+            "Value": 20000,
+            "Max": 60000,
+            "Type": "float",
+            "Name": "Width",
+            "X": 0.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n2",
+            "Min": 5000,
+            "Value": 15000,
+            "Max": 40000,
+            "Type": "float",
+            "Name": "Depth",
+            "X": 0.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n3",
+            "Min": 2000,
+            "Value": 4000,
+            "Max": 6000,
+            "Type": "float",
+            "Name": "FloorHeight",
+            "X": 0.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n4",
+            "Min": 1,
+            "Value": 10,
+            "Max": 50,
+            "Type": "int",
+            "Name": "Floors",
+            "X": 0.0,
+            "Y": 450.0
+          }
+        ],
+        "wires": [
+          {
+            "SrcKey": "n1",
+            "Src": "",
+            "DstKey": "n5",
+            "Dst": "X Size"
+          },
+          {
+            "SrcKey": "n2",
+            "Src": "",
+            "DstKey": "n5",
+            "Dst": "Y Size"
+          },
+          {
+            "SrcKey": "n5",
+            "Src": "Rectangle",
+            "DstKey": "n6",
+            "Dst": "Edges"
+          },
+          {
+            "SrcKey": "n3",
+            "Src": "",
+            "DstKey": "n7",
+            "Dst": "Step"
+          },
+          {
+            "SrcKey": "n4",
+            "Src": "",
+            "DstKey": "n7",
+            "Dst": "Count"
+          },
+          {
+            "SrcKey": "n7",
+            "Src": "Series",
+            "DstKey": "n8",
+            "Dst": "Factor"
+          },
+          {
+            "SrcKey": "n6",
+            "Src": "Surfaces",
+            "DstKey": "n9",
+            "Dst": "Geometry"
+          },
+          {
+            "SrcKey": "n8",
+            "Src": "Unit vector",
+            "DstKey": "n9",
+            "Dst": "Motion"
+          }
+        ],
+        "solve": true
+      }
+    },
+    "facade-grid": {
+      "default_parameters": {
+        "width": 20000,
+        "height": 40000,
+        "u_count": 10,
+        "v_count": 20
+      },
+      "counts": {
+        "sliders": 4,
+        "components": 4,
+        "wires": 8
+      },
+      "payload": {
+        "components": [
+          {
+            "Key": "n5",
+            "Selector": "d93100b6-d50b-40b2-831a-814659dc38e3",
+            "X": 250.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n6",
+            "Selector": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+            "X": 500.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n7",
+            "Selector": "75ac008b-1bc2-4edd-b967-667d628b9d24",
+            "X": 750.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n8",
+            "Selector": "6a9ccaab-1b03-484e-bbda-be9c81584a66",
+            "X": 1000.0,
+            "Y": 75.0
+          }
+        ],
+        "sliders": [
+          {
+            "Key": "n1",
+            "Min": 1000,
+            "Value": 20000,
+            "Max": 60000,
+            "Type": "float",
+            "Name": "Width",
+            "X": 0.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n2",
+            "Min": 1000,
+            "Value": 40000,
+            "Max": 200000,
+            "Type": "float",
+            "Name": "Height",
+            "X": 0.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n3",
+            "Min": 1,
+            "Value": 10,
+            "Max": 50,
+            "Type": "int",
+            "Name": "U_Count",
+            "X": 0.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n4",
+            "Min": 1,
+            "Value": 20,
+            "Max": 100,
+            "Type": "int",
+            "Name": "V_Count",
+            "X": 0.0,
+            "Y": 450.0
+          }
+        ],
+        "wires": [
+          {
+            "SrcKey": "n1",
+            "Src": "",
+            "DstKey": "n5",
+            "Dst": "X Size"
+          },
+          {
+            "SrcKey": "n2",
+            "Src": "",
+            "DstKey": "n5",
+            "Dst": "Y Size"
+          },
+          {
+            "SrcKey": "n5",
+            "Src": "Rectangle",
+            "DstKey": "n6",
+            "Dst": "Edges"
+          },
+          {
+            "SrcKey": "n6",
+            "Src": "Surfaces",
+            "DstKey": "n7",
+            "Dst": "Domain"
+          },
+          {
+            "SrcKey": "n3",
+            "Src": "",
+            "DstKey": "n7",
+            "Dst": "U Count"
+          },
+          {
+            "SrcKey": "n4",
+            "Src": "",
+            "DstKey": "n7",
+            "Dst": "V Count"
+          },
+          {
+            "SrcKey": "n6",
+            "Src": "Surfaces",
+            "DstKey": "n8",
+            "Dst": "Surface"
+          },
+          {
+            "SrcKey": "n7",
+            "Src": "Segments",
+            "DstKey": "n8",
+            "Dst": "Domain"
+          }
+        ],
+        "solve": true
+      }
+    },
+    "facade-panel-flat": {
+      "default_parameters": {
+        "width": 20000,
+        "height": 40000,
+        "u_count": 10,
+        "v_count": 20,
+        "scale_factor": 0.85
+      },
+      "counts": {
+        "sliders": 5,
+        "components": 6,
+        "wires": 12
+      },
+      "payload": {
+        "components": [
+          {
+            "Key": "n6",
+            "Selector": "d93100b6-d50b-40b2-831a-814659dc38e3",
+            "X": 250.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n7",
+            "Selector": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+            "X": 500.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n8",
+            "Selector": "75ac008b-1bc2-4edd-b967-667d628b9d24",
+            "X": 750.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n9",
+            "Selector": "6a9ccaab-1b03-484e-bbda-be9c81584a66",
+            "X": 1000.0,
+            "Y": 75.0
+          },
+          {
+            "Key": "n10",
+            "Selector": "86b28a7e-94d9-4791-8306-e13e10d5f8d5",
+            "X": 1250.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n11",
+            "Selector": "4d2a06bd-4b0f-4c65-9ee0-4220e4c01703",
+            "X": 1500.0,
+            "Y": 150.0
+          }
+        ],
+        "sliders": [
+          {
+            "Key": "n1",
+            "Min": 1000,
+            "Value": 20000,
+            "Max": 60000,
+            "Type": "float",
+            "Name": "Width",
+            "X": 0.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n2",
+            "Min": 1000,
+            "Value": 40000,
+            "Max": 200000,
+            "Type": "float",
+            "Name": "Height",
+            "X": 0.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n3",
+            "Min": 1,
+            "Value": 10,
+            "Max": 50,
+            "Type": "int",
+            "Name": "U_Count",
+            "X": 0.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n4",
+            "Min": 1,
+            "Value": 20,
+            "Max": 100,
+            "Type": "int",
+            "Name": "V_Count",
+            "X": 0.0,
+            "Y": 450.0
+          },
+          {
+            "Key": "n5",
+            "Min": 0.5,
+            "Value": 0.85,
+            "Max": 0.99,
+            "Type": "float",
+            "Name": "ScaleFactor",
+            "X": 0.0,
+            "Y": 600.0
+          }
+        ],
+        "wires": [
+          {
+            "SrcKey": "n1",
+            "Src": "",
+            "DstKey": "n6",
+            "Dst": "X Size"
+          },
+          {
+            "SrcKey": "n2",
+            "Src": "",
+            "DstKey": "n6",
+            "Dst": "Y Size"
+          },
+          {
+            "SrcKey": "n6",
+            "Src": "Rectangle",
+            "DstKey": "n7",
+            "Dst": "Edges"
+          },
+          {
+            "SrcKey": "n7",
+            "Src": "Surfaces",
+            "DstKey": "n8",
+            "Dst": "Domain"
+          },
+          {
+            "SrcKey": "n3",
+            "Src": "",
+            "DstKey": "n8",
+            "Dst": "U Count"
+          },
+          {
+            "SrcKey": "n4",
+            "Src": "",
+            "DstKey": "n8",
+            "Dst": "V Count"
+          },
+          {
+            "SrcKey": "n7",
+            "Src": "Surfaces",
+            "DstKey": "n9",
+            "Dst": "Surface"
+          },
+          {
+            "SrcKey": "n8",
+            "Src": "Segments",
+            "DstKey": "n9",
+            "Dst": "Domain"
+          },
+          {
+            "SrcKey": "n9",
+            "Src": "Surface",
+            "DstKey": "n10",
+            "Dst": "Geometry"
+          },
+          {
+            "SrcKey": "n9",
+            "Src": "Surface",
+            "DstKey": "n11",
+            "Dst": "Geometry"
+          },
+          {
+            "SrcKey": "n10",
+            "Src": "Centroid",
+            "DstKey": "n11",
+            "Dst": "Center"
+          },
+          {
+            "SrcKey": "n5",
+            "Src": "",
+            "DstKey": "n11",
+            "Dst": "Factor"
+          }
+        ],
+        "solve": true
+      }
+    },
+    "array-linear": {
+      "default_parameters": {
+        "count": 5,
+        "spacing": 6000,
+        "obj_width": 4000,
+        "obj_depth": 4000
+      },
+      "counts": {
+        "sliders": 4,
+        "components": 5,
+        "wires": 8
+      },
+      "payload": {
+        "components": [
+          {
+            "Key": "n5",
+            "Selector": "d93100b6-d50b-40b2-831a-814659dc38e3",
+            "X": 250.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n6",
+            "Selector": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+            "X": 500.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n7",
+            "Selector": "e64c5fb1-845c-4ab1-8911-5f338516ba67",
+            "X": 250.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n8",
+            "Selector": "79f9fbb3-8f1d-4d9a-88a9-f7961b1012cd",
+            "X": 500.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n9",
+            "Selector": "e9eb1dcf-92f6-4d4d-84ae-96222d60f56b",
+            "X": 750.0,
+            "Y": 150.0
+          }
+        ],
+        "sliders": [
+          {
+            "Key": "n1",
+            "Min": 1,
+            "Value": 5,
+            "Max": 20,
+            "Type": "int",
+            "Name": "Count",
+            "X": 0.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n2",
+            "Min": 1000,
+            "Value": 6000,
+            "Max": 30000,
+            "Type": "float",
+            "Name": "Spacing",
+            "X": 0.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n3",
+            "Min": 500,
+            "Value": 4000,
+            "Max": 20000,
+            "Type": "float",
+            "Name": "ObjWidth",
+            "X": 0.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n4",
+            "Min": 500,
+            "Value": 4000,
+            "Max": 20000,
+            "Type": "float",
+            "Name": "ObjDepth",
+            "X": 0.0,
+            "Y": 450.0
+          }
+        ],
+        "wires": [
+          {
+            "SrcKey": "n1",
+            "Src": "",
+            "DstKey": "n7",
+            "Dst": "Count"
+          },
+          {
+            "SrcKey": "n2",
+            "Src": "",
+            "DstKey": "n7",
+            "Dst": "Step"
+          },
+          {
+            "SrcKey": "n7",
+            "Src": "Series",
+            "DstKey": "n8",
+            "Dst": "Factor"
+          },
+          {
+            "SrcKey": "n3",
+            "Src": "",
+            "DstKey": "n5",
+            "Dst": "X Size"
+          },
+          {
+            "SrcKey": "n4",
+            "Src": "",
+            "DstKey": "n5",
+            "Dst": "Y Size"
+          },
+          {
+            "SrcKey": "n5",
+            "Src": "Rectangle",
+            "DstKey": "n6",
+            "Dst": "Edges"
+          },
+          {
+            "SrcKey": "n6",
+            "Src": "Surfaces",
+            "DstKey": "n9",
+            "Dst": "Geometry"
+          },
+          {
+            "SrcKey": "n8",
+            "Src": "Unit vector",
+            "DstKey": "n9",
+            "Dst": "Motion"
+          }
+        ],
+        "solve": true
+      }
+    },
+    "array-radial": {
+      "default_parameters": {
+        "count": 6,
+        "radius": 10000,
+        "obj_size": 3000
+      },
+      "counts": {
+        "sliders": 4,
+        "components": 9,
+        "wires": 14
+      },
+      "payload": {
+        "components": [
+          {
+            "Key": "n5",
+            "Selector": "d93100b6-d50b-40b2-831a-814659dc38e3",
+            "X": 250.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n6",
+            "Selector": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+            "X": 500.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n7",
+            "Selector": "9c85271f-89fa-4e9f-9f4a-d75802120ccc",
+            "X": 250.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n8",
+            "Selector": "e64c5fb1-845c-4ab1-8911-5f338516ba67",
+            "X": 500.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n9",
+            "Selector": "a4cd2751-414d-42ec-8916-476ebf62d7fe",
+            "X": 750.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n10",
+            "Selector": "79f9fbb3-8f1d-4d9a-88a9-f7961b1012cd",
+            "X": 750.0,
+            "Y": 225.0
+          },
+          {
+            "Key": "n11",
+            "Selector": "e9eb1dcf-92f6-4d4d-84ae-96222d60f56b",
+            "X": 1000.0,
+            "Y": 225.0
+          },
+          {
+            "Key": "n12",
+            "Selector": "17b7152b-d30d-4d50-b9ef-c9fe25576fc2",
+            "X": 1000.0,
+            "Y": 375.0
+          },
+          {
+            "Key": "n13",
+            "Selector": "b7798b74-037e-4f0c-8ac7-dc1043d093e0",
+            "X": 1250.0,
+            "Y": 150.0
+          }
+        ],
+        "sliders": [
+          {
+            "Key": "n1",
+            "Min": 3,
+            "Value": 6,
+            "Max": 24,
+            "Type": "int",
+            "Name": "Count",
+            "X": 0.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n2",
+            "Min": 1000,
+            "Value": 10000,
+            "Max": 50000,
+            "Type": "float",
+            "Name": "Radius",
+            "X": 0.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n3",
+            "Min": 500,
+            "Value": 3000,
+            "Max": 10000,
+            "Type": "float",
+            "Name": "ObjSize",
+            "X": 0.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n4",
+            "Min": 360,
+            "Value": 360,
+            "Max": 360,
+            "Type": "float",
+            "Name": "FullCircle",
+            "X": 0.0,
+            "Y": 450.0
+          }
+        ],
+        "wires": [
+          {
+            "SrcKey": "n4",
+            "Src": "",
+            "DstKey": "n7",
+            "Dst": "A"
+          },
+          {
+            "SrcKey": "n1",
+            "Src": "",
+            "DstKey": "n7",
+            "Dst": "B"
+          },
+          {
+            "SrcKey": "n7",
+            "Src": "Result",
+            "DstKey": "n8",
+            "Dst": "Step"
+          },
+          {
+            "SrcKey": "n1",
+            "Src": "",
+            "DstKey": "n8",
+            "Dst": "Count"
+          },
+          {
+            "SrcKey": "n8",
+            "Src": "Series",
+            "DstKey": "n9",
+            "Dst": "Degrees"
+          },
+          {
+            "SrcKey": "n3",
+            "Src": "",
+            "DstKey": "n5",
+            "Dst": "X Size"
+          },
+          {
+            "SrcKey": "n3",
+            "Src": "",
+            "DstKey": "n5",
+            "Dst": "Y Size"
+          },
+          {
+            "SrcKey": "n5",
+            "Src": "Rectangle",
+            "DstKey": "n6",
+            "Dst": "Edges"
+          },
+          {
+            "SrcKey": "n2",
+            "Src": "",
+            "DstKey": "n10",
+            "Dst": "Factor"
+          },
+          {
+            "SrcKey": "n6",
+            "Src": "Surfaces",
+            "DstKey": "n11",
+            "Dst": "Geometry"
+          },
+          {
+            "SrcKey": "n10",
+            "Src": "Unit vector",
+            "DstKey": "n11",
+            "Dst": "Motion"
+          },
+          {
+            "SrcKey": "n11",
+            "Src": "Geometry",
+            "DstKey": "n13",
+            "Dst": "Geometry"
+          },
+          {
+            "SrcKey": "n9",
+            "Src": "Radians",
+            "DstKey": "n13",
+            "Dst": "Angle"
+          },
+          {
+            "SrcKey": "n12",
+            "Src": "Plane",
+            "DstKey": "n13",
+            "Dst": "Plane"
+          }
+        ],
+        "solve": true
+      }
+    },
+    "mass-podium-tower": {
+      "default_parameters": {
+        "podium_width": 60000,
+        "podium_depth": 40000,
+        "podium_floors": 6,
+        "tower_width": 30000,
+        "tower_depth": 20000,
+        "tower_floors": 30,
+        "floor_height": 4000
+      },
+      "counts": {
+        "sliders": 7,
+        "components": 11,
+        "wires": 18
+      },
+      "payload": {
+        "components": [
+          {
+            "Key": "n8",
+            "Selector": "d93100b6-d50b-40b2-831a-814659dc38e3",
+            "X": 250.0,
+            "Y": 75.0
+          },
+          {
+            "Key": "n9",
+            "Selector": "d93100b6-d50b-40b2-831a-814659dc38e3",
+            "X": 250.0,
+            "Y": 525.0
+          },
+          {
+            "Key": "n10",
+            "Selector": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+            "X": 500.0,
+            "Y": 75.0
+          },
+          {
+            "Key": "n11",
+            "Selector": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+            "X": 500.0,
+            "Y": 525.0
+          },
+          {
+            "Key": "n12",
+            "Selector": "ce46b74e-00c9-43c4-805a-193b69ea4a11",
+            "X": 250.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n13",
+            "Selector": "ce46b74e-00c9-43c4-805a-193b69ea4a11",
+            "X": 250.0,
+            "Y": 750.0
+          },
+          {
+            "Key": "n14",
+            "Selector": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+            "X": 500.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n15",
+            "Selector": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+            "X": 500.0,
+            "Y": 750.0
+          },
+          {
+            "Key": "n16",
+            "Selector": "962034e9-cc27-4394-afc4-5c16e3447cf9",
+            "X": 750.0,
+            "Y": 75.0
+          },
+          {
+            "Key": "n17",
+            "Selector": "e9eb1dcf-92f6-4d4d-84ae-96222d60f56b",
+            "X": 750.0,
+            "Y": 525.0
+          },
+          {
+            "Key": "n18",
+            "Selector": "962034e9-cc27-4394-afc4-5c16e3447cf9",
+            "X": 1000.0,
+            "Y": 525.0
+          }
+        ],
+        "sliders": [
+          {
+            "Key": "n1",
+            "Min": 10000,
+            "Value": 60000,
+            "Max": 150000,
+            "Type": "float",
+            "Name": "PodiumWidth",
+            "X": 0.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n2",
+            "Min": 10000,
+            "Value": 40000,
+            "Max": 100000,
+            "Type": "float",
+            "Name": "PodiumDepth",
+            "X": 0.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n3",
+            "Min": 1,
+            "Value": 6,
+            "Max": 20,
+            "Type": "int",
+            "Name": "PodiumFloors",
+            "X": 0.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n4",
+            "Min": 5000,
+            "Value": 30000,
+            "Max": 80000,
+            "Type": "float",
+            "Name": "TowerWidth",
+            "X": 0.0,
+            "Y": 450.0
+          },
+          {
+            "Key": "n5",
+            "Min": 5000,
+            "Value": 20000,
+            "Max": 60000,
+            "Type": "float",
+            "Name": "TowerDepth",
+            "X": 0.0,
+            "Y": 600.0
+          },
+          {
+            "Key": "n6",
+            "Min": 5,
+            "Value": 30,
+            "Max": 80,
+            "Type": "int",
+            "Name": "TowerFloors",
+            "X": 0.0,
+            "Y": 750.0
+          },
+          {
+            "Key": "n7",
+            "Min": 2800,
+            "Value": 4000,
+            "Max": 6000,
+            "Type": "float",
+            "Name": "FloorHeight",
+            "X": 0.0,
+            "Y": 900.0
+          }
+        ],
+        "wires": [
+          {
+            "SrcKey": "n1",
+            "Src": "",
+            "DstKey": "n8",
+            "Dst": "X Size"
+          },
+          {
+            "SrcKey": "n2",
+            "Src": "",
+            "DstKey": "n8",
+            "Dst": "Y Size"
+          },
+          {
+            "SrcKey": "n4",
+            "Src": "",
+            "DstKey": "n9",
+            "Dst": "X Size"
+          },
+          {
+            "SrcKey": "n5",
+            "Src": "",
+            "DstKey": "n9",
+            "Dst": "Y Size"
+          },
+          {
+            "SrcKey": "n8",
+            "Src": "Rectangle",
+            "DstKey": "n10",
+            "Dst": "Edges"
+          },
+          {
+            "SrcKey": "n9",
+            "Src": "Rectangle",
+            "DstKey": "n11",
+            "Dst": "Edges"
+          },
+          {
+            "SrcKey": "n3",
+            "Src": "",
+            "DstKey": "n12",
+            "Dst": "A"
+          },
+          {
+            "SrcKey": "n7",
+            "Src": "",
+            "DstKey": "n12",
+            "Dst": "B"
+          },
+          {
+            "SrcKey": "n6",
+            "Src": "",
+            "DstKey": "n13",
+            "Dst": "A"
+          },
+          {
+            "SrcKey": "n7",
+            "Src": "",
+            "DstKey": "n13",
+            "Dst": "B"
+          },
+          {
+            "SrcKey": "n12",
+            "Src": "Result",
+            "DstKey": "n14",
+            "Dst": "Factor"
+          },
+          {
+            "SrcKey": "n13",
+            "Src": "Result",
+            "DstKey": "n15",
+            "Dst": "Factor"
+          },
+          {
+            "SrcKey": "n10",
+            "Src": "Surfaces",
+            "DstKey": "n16",
+            "Dst": "Base"
+          },
+          {
+            "SrcKey": "n14",
+            "Src": "Unit vector",
+            "DstKey": "n16",
+            "Dst": "Direction"
+          },
+          {
+            "SrcKey": "n11",
+            "Src": "Surfaces",
+            "DstKey": "n17",
+            "Dst": "Geometry"
+          },
+          {
+            "SrcKey": "n14",
+            "Src": "Unit vector",
+            "DstKey": "n17",
+            "Dst": "Motion"
+          },
+          {
+            "SrcKey": "n17",
+            "Src": "Geometry",
+            "DstKey": "n18",
+            "Dst": "Base"
+          },
+          {
+            "SrcKey": "n15",
+            "Src": "Unit vector",
+            "DstKey": "n18",
+            "Dst": "Direction"
+          }
+        ],
+        "solve": true
+      }
+    },
+    "facade-louver": {
+      "default_parameters": {
+        "width": 20000,
+        "height": 40000,
+        "louver_count": 20,
+        "louver_angle": 30,
+        "louver_depth": 300
+      },
+      "counts": {
+        "sliders": 5,
+        "components": 10,
+        "wires": 17
+      },
+      "payload": {
+        "components": [
+          {
+            "Key": "n6",
+            "Selector": "9c85271f-89fa-4e9f-9f4a-d75802120ccc",
+            "X": 250.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n7",
+            "Selector": "e64c5fb1-845c-4ab1-8911-5f338516ba67",
+            "X": 500.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n8",
+            "Selector": "3581f42a-9592-4549-bd6b-1c0fc39d067b",
+            "X": 750.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n9",
+            "Selector": "3581f42a-9592-4549-bd6b-1c0fc39d067b",
+            "X": 750.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n10",
+            "Selector": "4c4e56eb-2f04-43f9-95a3-cc46a14f495a",
+            "X": 1000.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n11",
+            "Selector": "d3d195ea-2d59-4ffa-90b1-8b7ff3369f69",
+            "X": 250.0,
+            "Y": 600.0
+          },
+          {
+            "Key": "n12",
+            "Selector": "962034e9-cc27-4394-afc4-5c16e3447cf9",
+            "X": 1250.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n13",
+            "Selector": "a4cd2751-414d-42ec-8916-476ebf62d7fe",
+            "X": 250.0,
+            "Y": 450.0
+          },
+          {
+            "Key": "n14",
+            "Selector": "17b7152b-d30d-4d50-b9ef-c9fe25576fc2",
+            "X": 1000.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n15",
+            "Selector": "b7798b74-037e-4f0c-8ac7-dc1043d093e0",
+            "X": 1500.0,
+            "Y": 150.0
+          }
+        ],
+        "sliders": [
+          {
+            "Key": "n1",
+            "Min": 1000,
+            "Value": 20000,
+            "Max": 60000,
+            "Type": "float",
+            "Name": "Width",
+            "X": 0.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n2",
+            "Min": 1000,
+            "Value": 40000,
+            "Max": 150000,
+            "Type": "float",
+            "Name": "Height",
+            "X": 0.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n3",
+            "Min": 2,
+            "Value": 20,
+            "Max": 100,
+            "Type": "int",
+            "Name": "LouverCount",
+            "X": 0.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n4",
+            "Min": 0,
+            "Value": 30,
+            "Max": 90,
+            "Type": "float",
+            "Name": "LouverAngle",
+            "X": 0.0,
+            "Y": 450.0
+          },
+          {
+            "Key": "n5",
+            "Min": 50,
+            "Value": 300,
+            "Max": 2000,
+            "Type": "float",
+            "Name": "LouverDepth",
+            "X": 0.0,
+            "Y": 600.0
+          }
+        ],
+        "wires": [
+          {
+            "SrcKey": "n1",
+            "Src": "",
+            "DstKey": "n6",
+            "Dst": "A"
+          },
+          {
+            "SrcKey": "n3",
+            "Src": "",
+            "DstKey": "n6",
+            "Dst": "B"
+          },
+          {
+            "SrcKey": "n6",
+            "Src": "Result",
+            "DstKey": "n7",
+            "Dst": "Step"
+          },
+          {
+            "SrcKey": "n3",
+            "Src": "",
+            "DstKey": "n7",
+            "Dst": "Count"
+          },
+          {
+            "SrcKey": "n7",
+            "Src": "Series",
+            "DstKey": "n8",
+            "Dst": "X coordinate"
+          },
+          {
+            "SrcKey": "n7",
+            "Src": "Series",
+            "DstKey": "n9",
+            "Dst": "X coordinate"
+          },
+          {
+            "SrcKey": "n2",
+            "Src": "",
+            "DstKey": "n9",
+            "Dst": "Z coordinate"
+          },
+          {
+            "SrcKey": "n8",
+            "Src": "Point",
+            "DstKey": "n10",
+            "Dst": "Start Point"
+          },
+          {
+            "SrcKey": "n9",
+            "Src": "Point",
+            "DstKey": "n10",
+            "Dst": "End Point"
+          },
+          {
+            "SrcKey": "n5",
+            "Src": "",
+            "DstKey": "n11",
+            "Dst": "Factor"
+          },
+          {
+            "SrcKey": "n11",
+            "Src": "Unit vector",
+            "DstKey": "n12",
+            "Dst": "Direction"
+          },
+          {
+            "SrcKey": "n10",
+            "Src": "Line",
+            "DstKey": "n12",
+            "Dst": "Base"
+          },
+          {
+            "SrcKey": "n4",
+            "Src": "",
+            "DstKey": "n13",
+            "Dst": "Degrees"
+          },
+          {
+            "SrcKey": "n13",
+            "Src": "Radians",
+            "DstKey": "n15",
+            "Dst": "Angle"
+          },
+          {
+            "SrcKey": "n8",
+            "Src": "Point",
+            "DstKey": "n14",
+            "Dst": "Origin"
+          },
+          {
+            "SrcKey": "n14",
+            "Src": "Plane",
+            "DstKey": "n15",
+            "Dst": "Plane"
+          },
+          {
+            "SrcKey": "n12",
+            "Src": "Extrusion",
+            "DstKey": "n15",
+            "Dst": "Geometry"
+          }
+        ],
+        "solve": true
+      }
+    },
+    "attractor-remap": {
+      "default_parameters": {
+        "grid_count": 10,
+        "grid_size": 20000,
+        "attr_x": 5000,
+        "attr_y": 5000,
+        "remap_min": 100,
+        "remap_max": 3000
+      },
+      "counts": {
+        "sliders": 6,
+        "components": 8,
+        "wires": 16
+      },
+      "payload": {
+        "components": [
+          {
+            "Key": "n7",
+            "Selector": "d93100b6-d50b-40b2-831a-814659dc38e3",
+            "X": 250.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n8",
+            "Selector": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+            "X": 500.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n9",
+            "Selector": "5106bafc-d5d4-4983-83e7-7be3ed07f502",
+            "X": 750.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n10",
+            "Selector": "3581f42a-9592-4549-bd6b-1c0fc39d067b",
+            "X": 250.0,
+            "Y": 525.0
+          },
+          {
+            "Key": "n11",
+            "Selector": "93b8e93d-f932-402c-b435-84be04d87666",
+            "X": 1000.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n12",
+            "Selector": "f44b92b0-3b5b-493a-86f4-fd7408c3daf3",
+            "X": 1250.0,
+            "Y": 225.0
+          },
+          {
+            "Key": "n13",
+            "Selector": "d1a28e95-cf96-4936-bf34-8bf142d731bf",
+            "X": 1250.0,
+            "Y": 525.0
+          },
+          {
+            "Key": "n14",
+            "Selector": "2fcc2743-8339-4cdf-a046-a1f17439191d",
+            "X": 1500.0,
+            "Y": 375.0
+          }
+        ],
+        "sliders": [
+          {
+            "Key": "n1",
+            "Min": 4,
+            "Value": 10,
+            "Max": 30,
+            "Type": "int",
+            "Name": "GridCount",
+            "X": 0.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n2",
+            "Min": 2000,
+            "Value": 20000,
+            "Max": 100000,
+            "Type": "float",
+            "Name": "GridSize",
+            "X": 0.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n3",
+            "Min": -50000,
+            "Value": 5000,
+            "Max": 50000,
+            "Type": "float",
+            "Name": "AttrX",
+            "X": 0.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n4",
+            "Min": -50000,
+            "Value": 5000,
+            "Max": 50000,
+            "Type": "float",
+            "Name": "AttrY",
+            "X": 0.0,
+            "Y": 450.0
+          },
+          {
+            "Key": "n5",
+            "Min": 0,
+            "Value": 100,
+            "Max": 10000,
+            "Type": "float",
+            "Name": "RemapMin",
+            "X": 0.0,
+            "Y": 600.0
+          },
+          {
+            "Key": "n6",
+            "Min": 100,
+            "Value": 3000,
+            "Max": 20000,
+            "Type": "float",
+            "Name": "RemapMax",
+            "X": 0.0,
+            "Y": 750.0
+          }
+        ],
+        "wires": [
+          {
+            "SrcKey": "n2",
+            "Src": "",
+            "DstKey": "n7",
+            "Dst": "X Size"
+          },
+          {
+            "SrcKey": "n2",
+            "Src": "",
+            "DstKey": "n7",
+            "Dst": "Y Size"
+          },
+          {
+            "SrcKey": "n7",
+            "Src": "Rectangle",
+            "DstKey": "n8",
+            "Dst": "Edges"
+          },
+          {
+            "SrcKey": "n8",
+            "Src": "Surfaces",
+            "DstKey": "n9",
+            "Dst": "Surface"
+          },
+          {
+            "SrcKey": "n1",
+            "Src": "",
+            "DstKey": "n9",
+            "Dst": "U Count"
+          },
+          {
+            "SrcKey": "n1",
+            "Src": "",
+            "DstKey": "n9",
+            "Dst": "V Count"
+          },
+          {
+            "SrcKey": "n3",
+            "Src": "",
+            "DstKey": "n10",
+            "Dst": "X coordinate"
+          },
+          {
+            "SrcKey": "n4",
+            "Src": "",
+            "DstKey": "n10",
+            "Dst": "Y coordinate"
+          },
+          {
+            "SrcKey": "n9",
+            "Src": "Points",
+            "DstKey": "n11",
+            "Dst": "Point A"
+          },
+          {
+            "SrcKey": "n10",
+            "Src": "Point",
+            "DstKey": "n11",
+            "Dst": "Point B"
+          },
+          {
+            "SrcKey": "n11",
+            "Src": "Distance",
+            "DstKey": "n12",
+            "Dst": "Numbers"
+          },
+          {
+            "SrcKey": "n11",
+            "Src": "Distance",
+            "DstKey": "n14",
+            "Dst": "Value"
+          },
+          {
+            "SrcKey": "n12",
+            "Src": "Domain",
+            "DstKey": "n14",
+            "Dst": "Source"
+          },
+          {
+            "SrcKey": "n5",
+            "Src": "",
+            "DstKey": "n13",
+            "Dst": "Domain start"
+          },
+          {
+            "SrcKey": "n6",
+            "Src": "",
+            "DstKey": "n13",
+            "Dst": "Domain end"
+          },
+          {
+            "SrcKey": "n13",
+            "Src": "Domain",
+            "DstKey": "n14",
+            "Dst": "Target"
+          }
+        ],
+        "solve": true
+      }
+    },
+    "mass-setback": {
+      "default_parameters": {
+        "base_width": 30,
+        "base_depth": 20,
+        "floor_height": 4,
+        "floors_per_tier": 4,
+        "tiers": 3,
+        "setback_per_tier": 4
+      },
+      "counts": {
+        "sliders": 6,
+        "components": 12,
+        "wires": 20
+      },
+      "payload": {
+        "components": [
+          {
+            "Key": "n7",
+            "Selector": "e64c5fb1-845c-4ab1-8911-5f338516ba67",
+            "X": 250.0,
+            "Y": 600.0
+          },
+          {
+            "Key": "n8",
+            "Selector": "ce46b74e-00c9-43c4-805a-193b69ea4a11",
+            "X": 250.0,
+            "Y": 375.0
+          },
+          {
+            "Key": "n9",
+            "Selector": "ce46b74e-00c9-43c4-805a-193b69ea4a11",
+            "X": 500.0,
+            "Y": 600.0
+          },
+          {
+            "Key": "n10",
+            "Selector": "ce46b74e-00c9-43c4-805a-193b69ea4a11",
+            "X": 500.0,
+            "Y": 750.0
+          },
+          {
+            "Key": "n11",
+            "Selector": "9c007a04-d0d9-48e4-9da3-9ba142bc4d46",
+            "X": 750.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n12",
+            "Selector": "9c007a04-d0d9-48e4-9da3-9ba142bc4d46",
+            "X": 750.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n13",
+            "Selector": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+            "X": 750.0,
+            "Y": 600.0
+          },
+          {
+            "Key": "n14",
+            "Selector": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+            "X": 750.0,
+            "Y": 375.0
+          },
+          {
+            "Key": "n15",
+            "Selector": "d93100b6-d50b-40b2-831a-814659dc38e3",
+            "X": 1000.0,
+            "Y": 75.0
+          },
+          {
+            "Key": "n16",
+            "Selector": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+            "X": 1250.0,
+            "Y": 75.0
+          },
+          {
+            "Key": "n17",
+            "Selector": "e9eb1dcf-92f6-4d4d-84ae-96222d60f56b",
+            "X": 1500.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n18",
+            "Selector": "962034e9-cc27-4394-afc4-5c16e3447cf9",
+            "X": 1750.0,
+            "Y": 300.0
+          }
+        ],
+        "sliders": [
+          {
+            "Key": "n1",
+            "Min": 10,
+            "Value": 30,
+            "Max": 80,
+            "Type": "float",
+            "Name": "BaseWidth",
+            "X": 0.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n2",
+            "Min": 10,
+            "Value": 20,
+            "Max": 60,
+            "Type": "float",
+            "Name": "BaseDepth",
+            "X": 0.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n3",
+            "Min": 2,
+            "Value": 4,
+            "Max": 6,
+            "Type": "float",
+            "Name": "FloorHeight",
+            "X": 0.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n4",
+            "Min": 2,
+            "Value": 4,
+            "Max": 10,
+            "Type": "int",
+            "Name": "FloorsPerTier",
+            "X": 0.0,
+            "Y": 450.0
+          },
+          {
+            "Key": "n5",
+            "Min": 2,
+            "Value": 3,
+            "Max": 8,
+            "Type": "int",
+            "Name": "Tiers",
+            "X": 0.0,
+            "Y": 600.0
+          },
+          {
+            "Key": "n6",
+            "Min": 1,
+            "Value": 4,
+            "Max": 12,
+            "Type": "int",
+            "Name": "SetbackPerTier",
+            "X": 0.0,
+            "Y": 750.0
+          }
+        ],
+        "wires": [
+          {
+            "SrcKey": "n5",
+            "Src": "",
+            "DstKey": "n7",
+            "Dst": "Count"
+          },
+          {
+            "SrcKey": "n4",
+            "Src": "",
+            "DstKey": "n8",
+            "Dst": "A"
+          },
+          {
+            "SrcKey": "n3",
+            "Src": "",
+            "DstKey": "n8",
+            "Dst": "B"
+          },
+          {
+            "SrcKey": "n7",
+            "Src": "Series",
+            "DstKey": "n9",
+            "Dst": "A"
+          },
+          {
+            "SrcKey": "n8",
+            "Src": "Result",
+            "DstKey": "n9",
+            "Dst": "B"
+          },
+          {
+            "SrcKey": "n7",
+            "Src": "Series",
+            "DstKey": "n10",
+            "Dst": "A"
+          },
+          {
+            "SrcKey": "n6",
+            "Src": "",
+            "DstKey": "n10",
+            "Dst": "B"
+          },
+          {
+            "SrcKey": "n1",
+            "Src": "",
+            "DstKey": "n11",
+            "Dst": "A"
+          },
+          {
+            "SrcKey": "n10",
+            "Src": "Result",
+            "DstKey": "n11",
+            "Dst": "B"
+          },
+          {
+            "SrcKey": "n2",
+            "Src": "",
+            "DstKey": "n12",
+            "Dst": "A"
+          },
+          {
+            "SrcKey": "n10",
+            "Src": "Result",
+            "DstKey": "n12",
+            "Dst": "B"
+          },
+          {
+            "SrcKey": "n9",
+            "Src": "Result",
+            "DstKey": "n13",
+            "Dst": "Factor"
+          },
+          {
+            "SrcKey": "n8",
+            "Src": "Result",
+            "DstKey": "n14",
+            "Dst": "Factor"
+          },
+          {
+            "SrcKey": "n11",
+            "Src": "Result",
+            "DstKey": "n15",
+            "Dst": "X Size"
+          },
+          {
+            "SrcKey": "n12",
+            "Src": "Result",
+            "DstKey": "n15",
+            "Dst": "Y Size"
+          },
+          {
+            "SrcKey": "n15",
+            "Src": "Rectangle",
+            "DstKey": "n16",
+            "Dst": "Edges"
+          },
+          {
+            "SrcKey": "n16",
+            "Src": "Surfaces",
+            "DstKey": "n17",
+            "Dst": "Geometry"
+          },
+          {
+            "SrcKey": "n13",
+            "Src": "Unit vector",
+            "DstKey": "n17",
+            "Dst": "Motion"
+          },
+          {
+            "SrcKey": "n17",
+            "Src": "Geometry",
+            "DstKey": "n18",
+            "Dst": "Base"
+          },
+          {
+            "SrcKey": "n14",
+            "Src": "Unit vector",
+            "DstKey": "n18",
+            "Dst": "Direction"
+          }
+        ],
+        "solve": true
+      }
+    },
+    "terrain-from-contour": {
+      "default_parameters": {
+        "degree": 3,
+        "point_count": 24,
+        "patch_spans": 30,
+        "flexibility": 1
+      },
+      "counts": {
+        "sliders": 4,
+        "components": 3,
+        "wires": 6
+      },
+      "payload": {
+        "components": [
+          {
+            "Key": "n1",
+            "Selector": "d5967b9f-e8ee-436b-a8ad-29fdcecf32d5",
+            "X": 0.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n4",
+            "Selector": "9333c5b3-11f9-423c-bbb5-7e5156430219",
+            "X": 250.0,
+            "Y": 75.0
+          },
+          {
+            "Key": "n7",
+            "Selector": "57b2184c-8931-4e70-9220-612ec5b3809a",
+            "X": 500.0,
+            "Y": 150.0
+          }
+        ],
+        "sliders": [
+          {
+            "Key": "n2",
+            "Min": 1,
+            "Value": 3,
+            "Max": 5,
+            "Type": "int",
+            "Name": "Degree",
+            "X": 0.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n3",
+            "Min": 4,
+            "Value": 24,
+            "Max": 120,
+            "Type": "int",
+            "Name": "PointCount",
+            "X": 0.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n5",
+            "Min": 2,
+            "Value": 30,
+            "Max": 100,
+            "Type": "int",
+            "Name": "PatchSpans",
+            "X": 250.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n6",
+            "Min": 0,
+            "Value": 1,
+            "Max": 10,
+            "Type": "float",
+            "Name": "Flexibility",
+            "X": 250.0,
+            "Y": 450.0
+          }
+        ],
+        "wires": [
+          {
+            "SrcKey": "n1",
+            "Src": "",
+            "DstKey": "n4",
+            "Dst": "Curve"
+          },
+          {
+            "SrcKey": "n2",
+            "Src": "",
+            "DstKey": "n4",
+            "Dst": "Degree"
+          },
+          {
+            "SrcKey": "n3",
+            "Src": "",
+            "DstKey": "n4",
+            "Dst": "Count"
+          },
+          {
+            "SrcKey": "n4",
+            "Src": "Curve",
+            "DstKey": "n7",
+            "Dst": "Curves"
+          },
+          {
+            "SrcKey": "n5",
+            "Src": "",
+            "DstKey": "n7",
+            "Dst": "Spans"
+          },
+          {
+            "SrcKey": "n6",
+            "Src": "",
+            "DstKey": "n7",
+            "Dst": "Flexibility"
+          }
+        ],
+        "solve": true
+      }
+    },
+    "terrain-grade": {
+      "default_parameters": {
+        "target_elevation": 5
+      },
+      "counts": {
+        "sliders": 1,
+        "components": 4,
+        "wires": 4
+      },
+      "payload": {
+        "components": [
+          {
+            "Key": "n1",
+            "Selector": "d5967b9f-e8ee-436b-a8ad-29fdcecf32d5",
+            "X": 0.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n3",
+            "Selector": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+            "X": 250.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n4",
+            "Selector": "e9eb1dcf-92f6-4d4d-84ae-96222d60f56b",
+            "X": 500.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n5",
+            "Selector": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+            "X": 750.0,
+            "Y": 0.0
+          }
+        ],
+        "sliders": [
+          {
+            "Key": "n2",
+            "Min": -20,
+            "Value": 5,
+            "Max": 50,
+            "Type": "float",
+            "Name": "TargetElevation",
+            "X": 0.0,
+            "Y": 150.0
+          }
+        ],
+        "wires": [
+          {
+            "SrcKey": "n2",
+            "Src": "",
+            "DstKey": "n3",
+            "Dst": "Factor"
+          },
+          {
+            "SrcKey": "n1",
+            "Src": "",
+            "DstKey": "n4",
+            "Dst": "Geometry"
+          },
+          {
+            "SrcKey": "n3",
+            "Src": "Unit vector",
+            "DstKey": "n4",
+            "Dst": "Motion"
+          },
+          {
+            "SrcKey": "n4",
+            "Src": "Geometry",
+            "DstKey": "n5",
+            "Dst": "Edges"
+          }
+        ],
+        "solve": true
+      }
+    },
+    "facade-parametric-tilt": {
+      "default_parameters": {
+        "u_count": 8,
+        "v_count": 12,
+        "tilt_angle": 20
+      },
+      "counts": {
+        "sliders": 3,
+        "components": 8,
+        "wires": 15
+      },
+      "payload": {
+        "components": [
+          {
+            "Key": "n1",
+            "Selector": "deaf8653-5528-4286-807c-3de8b8dad781",
+            "X": 0.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n5",
+            "Selector": "75ac008b-1bc2-4edd-b967-667d628b9d24",
+            "X": 250.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n6",
+            "Selector": "6a9ccaab-1b03-484e-bbda-be9c81584a66",
+            "X": 500.0,
+            "Y": 75.0
+          },
+          {
+            "Key": "n7",
+            "Selector": "86b28a7e-94d9-4791-8306-e13e10d5f8d5",
+            "X": 750.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n8",
+            "Selector": "332378f4-acb2-43fe-8593-ed22bfeb2721",
+            "X": 500.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n9",
+            "Selector": "3cd2949b-4ea8-4ffb-a70c-5c380f9f46ea",
+            "X": 750.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n10",
+            "Selector": "a4cd2751-414d-42ec-8916-476ebf62d7fe",
+            "X": 250.0,
+            "Y": 450.0
+          },
+          {
+            "Key": "n11",
+            "Selector": "3dfb9a77-6e05-4016-9f20-94f78607d672",
+            "X": 1000.0,
+            "Y": 150.0
+          }
+        ],
+        "sliders": [
+          {
+            "Key": "n2",
+            "Min": 1,
+            "Value": 8,
+            "Max": 50,
+            "Type": "int",
+            "Name": "U_Count",
+            "X": 0.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n3",
+            "Min": 1,
+            "Value": 12,
+            "Max": 100,
+            "Type": "int",
+            "Name": "V_Count",
+            "X": 0.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n4",
+            "Min": -60,
+            "Value": 20,
+            "Max": 60,
+            "Type": "float",
+            "Name": "TiltAngle",
+            "X": 0.0,
+            "Y": 450.0
+          }
+        ],
+        "wires": [
+          {
+            "SrcKey": "n1",
+            "Src": "",
+            "DstKey": "n5",
+            "Dst": "Domain"
+          },
+          {
+            "SrcKey": "n2",
+            "Src": "",
+            "DstKey": "n5",
+            "Dst": "U Count"
+          },
+          {
+            "SrcKey": "n3",
+            "Src": "",
+            "DstKey": "n5",
+            "Dst": "V Count"
+          },
+          {
+            "SrcKey": "n1",
+            "Src": "",
+            "DstKey": "n6",
+            "Dst": "Surface"
+          },
+          {
+            "SrcKey": "n5",
+            "Src": "Segments",
+            "DstKey": "n6",
+            "Dst": "Domain"
+          },
+          {
+            "SrcKey": "n6",
+            "Src": "Surface",
+            "DstKey": "n7",
+            "Dst": "Geometry"
+          },
+          {
+            "SrcKey": "n1",
+            "Src": "",
+            "DstKey": "n8",
+            "Dst": "Surface"
+          },
+          {
+            "SrcKey": "n2",
+            "Src": "",
+            "DstKey": "n8",
+            "Dst": "U Count"
+          },
+          {
+            "SrcKey": "n3",
+            "Src": "",
+            "DstKey": "n8",
+            "Dst": "V Count"
+          },
+          {
+            "SrcKey": "n8",
+            "Src": "Frames",
+            "DstKey": "n9",
+            "Dst": "Plane"
+          },
+          {
+            "SrcKey": "n4",
+            "Src": "",
+            "DstKey": "n10",
+            "Dst": "Degrees"
+          },
+          {
+            "SrcKey": "n6",
+            "Src": "Surface",
+            "DstKey": "n11",
+            "Dst": "Geometry"
+          },
+          {
+            "SrcKey": "n10",
+            "Src": "Radians",
+            "DstKey": "n11",
+            "Dst": "Angle"
+          },
+          {
+            "SrcKey": "n7",
+            "Src": "Centroid",
+            "DstKey": "n11",
+            "Dst": "Center"
+          },
+          {
+            "SrcKey": "n9",
+            "Src": "X-Axis",
+            "DstKey": "n11",
+            "Dst": "Axis"
+          }
+        ],
+        "solve": true
+      }
+    },
+    "mass-boolean": {
+      "default_parameters": {
+        "main_width": 40,
+        "main_depth": 30,
+        "height": 20,
+        "cut_width": 14,
+        "cut_depth": 10,
+        "cut_offset_x": 0,
+        "cut_offset_y": 0
+      },
+      "counts": {
+        "sliders": 7,
+        "components": 12,
+        "wires": 19
+      },
+      "payload": {
+        "components": [
+          {
+            "Key": "n8",
+            "Selector": "d93100b6-d50b-40b2-831a-814659dc38e3",
+            "X": 250.0,
+            "Y": 75.0
+          },
+          {
+            "Key": "n9",
+            "Selector": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+            "X": 250.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n10",
+            "Selector": "962034e9-cc27-4394-afc4-5c16e3447cf9",
+            "X": 500.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n11",
+            "Selector": "d93100b6-d50b-40b2-831a-814659dc38e3",
+            "X": 250.0,
+            "Y": 525.0
+          },
+          {
+            "Key": "n12",
+            "Selector": "79f9fbb3-8f1d-4d9a-88a9-f7961b1012cd",
+            "X": 250.0,
+            "Y": 750.0
+          },
+          {
+            "Key": "n13",
+            "Selector": "d3d195ea-2d59-4ffa-90b1-8b7ff3369f69",
+            "X": 250.0,
+            "Y": 900.0
+          },
+          {
+            "Key": "n14",
+            "Selector": "a0d62394-a118-422d-abb3-6af115c75b25",
+            "X": 500.0,
+            "Y": 825.0
+          },
+          {
+            "Key": "n15",
+            "Selector": "e9eb1dcf-92f6-4d4d-84ae-96222d60f56b",
+            "X": 750.0,
+            "Y": 525.0
+          },
+          {
+            "Key": "n16",
+            "Selector": "962034e9-cc27-4394-afc4-5c16e3447cf9",
+            "X": 1000.0,
+            "Y": 525.0
+          },
+          {
+            "Key": "n17",
+            "Selector": "b648d933-ddea-4e75-834c-8f6f3793e311",
+            "X": 750.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n18",
+            "Selector": "b648d933-ddea-4e75-834c-8f6f3793e311",
+            "X": 1250.0,
+            "Y": 525.0
+          },
+          {
+            "Key": "n19",
+            "Selector": "fab11c30-2d9c-4d15-ab3c-2289f1ae5c21",
+            "X": 1500.0,
+            "Y": 300.0
+          }
+        ],
+        "sliders": [
+          {
+            "Key": "n1",
+            "Min": 10,
+            "Value": 40,
+            "Max": 100,
+            "Type": "float",
+            "Name": "MainWidth",
+            "X": 0.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n2",
+            "Min": 10,
+            "Value": 30,
+            "Max": 80,
+            "Type": "float",
+            "Name": "MainDepth",
+            "X": 0.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n3",
+            "Min": 5,
+            "Value": 20,
+            "Max": 80,
+            "Type": "float",
+            "Name": "Height",
+            "X": 0.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n4",
+            "Min": 2,
+            "Value": 14,
+            "Max": 60,
+            "Type": "float",
+            "Name": "CutWidth",
+            "X": 0.0,
+            "Y": 450.0
+          },
+          {
+            "Key": "n5",
+            "Min": 2,
+            "Value": 10,
+            "Max": 50,
+            "Type": "float",
+            "Name": "CutDepth",
+            "X": 0.0,
+            "Y": 600.0
+          },
+          {
+            "Key": "n6",
+            "Min": -30,
+            "Value": 0,
+            "Max": 30,
+            "Type": "float",
+            "Name": "CutOffsetX",
+            "X": 0.0,
+            "Y": 750.0
+          },
+          {
+            "Key": "n7",
+            "Min": -25,
+            "Value": 0,
+            "Max": 25,
+            "Type": "float",
+            "Name": "CutOffsetY",
+            "X": 0.0,
+            "Y": 900.0
+          }
+        ],
+        "wires": [
+          {
+            "SrcKey": "n1",
+            "Src": "",
+            "DstKey": "n8",
+            "Dst": "X Size"
+          },
+          {
+            "SrcKey": "n2",
+            "Src": "",
+            "DstKey": "n8",
+            "Dst": "Y Size"
+          },
+          {
+            "SrcKey": "n3",
+            "Src": "",
+            "DstKey": "n9",
+            "Dst": "Factor"
+          },
+          {
+            "SrcKey": "n8",
+            "Src": "Rectangle",
+            "DstKey": "n10",
+            "Dst": "Base"
+          },
+          {
+            "SrcKey": "n9",
+            "Src": "Unit vector",
+            "DstKey": "n10",
+            "Dst": "Direction"
+          },
+          {
+            "SrcKey": "n4",
+            "Src": "",
+            "DstKey": "n11",
+            "Dst": "X Size"
+          },
+          {
+            "SrcKey": "n5",
+            "Src": "",
+            "DstKey": "n11",
+            "Dst": "Y Size"
+          },
+          {
+            "SrcKey": "n6",
+            "Src": "",
+            "DstKey": "n12",
+            "Dst": "Factor"
+          },
+          {
+            "SrcKey": "n7",
+            "Src": "",
+            "DstKey": "n13",
+            "Dst": "Factor"
+          },
+          {
+            "SrcKey": "n12",
+            "Src": "Unit vector",
+            "DstKey": "n14",
+            "Dst": "A"
+          },
+          {
+            "SrcKey": "n13",
+            "Src": "Unit vector",
+            "DstKey": "n14",
+            "Dst": "B"
+          },
+          {
+            "SrcKey": "n11",
+            "Src": "Rectangle",
+            "DstKey": "n15",
+            "Dst": "Geometry"
+          },
+          {
+            "SrcKey": "n14",
+            "Src": "Result",
+            "DstKey": "n15",
+            "Dst": "Motion"
+          },
+          {
+            "SrcKey": "n15",
+            "Src": "Geometry",
+            "DstKey": "n16",
+            "Dst": "Base"
+          },
+          {
+            "SrcKey": "n9",
+            "Src": "Unit vector",
+            "DstKey": "n16",
+            "Dst": "Direction"
+          },
+          {
+            "SrcKey": "n10",
+            "Src": "Extrusion",
+            "DstKey": "n17",
+            "Dst": "Brep"
+          },
+          {
+            "SrcKey": "n16",
+            "Src": "Extrusion",
+            "DstKey": "n18",
+            "Dst": "Brep"
+          },
+          {
+            "SrcKey": "n17",
+            "Src": "Brep",
+            "DstKey": "n19",
+            "Dst": "Breps A"
+          },
+          {
+            "SrcKey": "n18",
+            "Src": "Brep",
+            "DstKey": "n19",
+            "Dst": "Breps B"
+          }
+        ],
+        "solve": true
+      }
+    },
+    "terrain-cut-fill": {
+      "default_parameters": {
+        "datum_depth": -50
+      },
+      "counts": {
+        "sliders": 1,
+        "components": 11,
+        "wires": 13
+      },
+      "payload": {
+        "components": [
+          {
+            "Key": "n1",
+            "Selector": "deaf8653-5528-4286-807c-3de8b8dad781",
+            "X": 0.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n2",
+            "Selector": "deaf8653-5528-4286-807c-3de8b8dad781",
+            "X": 0.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n4",
+            "Selector": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+            "X": 250.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "n5",
+            "Selector": "962034e9-cc27-4394-afc4-5c16e3447cf9",
+            "X": 500.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n6",
+            "Selector": "962034e9-cc27-4394-afc4-5c16e3447cf9",
+            "X": 500.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n7",
+            "Selector": "b648d933-ddea-4e75-834c-8f6f3793e311",
+            "X": 750.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n8",
+            "Selector": "b648d933-ddea-4e75-834c-8f6f3793e311",
+            "X": 750.0,
+            "Y": 150.0
+          },
+          {
+            "Key": "n9",
+            "Selector": "fab11c30-2d9c-4d15-ab3c-2289f1ae5c21",
+            "X": 1000.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n10",
+            "Selector": "fab11c30-2d9c-4d15-ab3c-2289f1ae5c21",
+            "X": 1000.0,
+            "Y": 225.0
+          },
+          {
+            "Key": "n11",
+            "Selector": "2e685fd9-7b8f-461b-b330-44857b099937",
+            "X": 1250.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "n12",
+            "Selector": "2e685fd9-7b8f-461b-b330-44857b099937",
+            "X": 1250.0,
+            "Y": 225.0
+          }
+        ],
+        "sliders": [
+          {
+            "Key": "n3",
+            "Min": -200,
+            "Value": -50,
+            "Max": -1,
+            "Type": "float",
+            "Name": "DatumDepth",
+            "X": 0.0,
+            "Y": 300.0
+          }
+        ],
+        "wires": [
+          {
+            "SrcKey": "n3",
+            "Src": "",
+            "DstKey": "n4",
+            "Dst": "Factor"
+          },
+          {
+            "SrcKey": "n1",
+            "Src": "",
+            "DstKey": "n5",
+            "Dst": "Base"
+          },
+          {
+            "SrcKey": "n4",
+            "Src": "Unit vector",
+            "DstKey": "n5",
+            "Dst": "Direction"
+          },
+          {
+            "SrcKey": "n2",
+            "Src": "",
+            "DstKey": "n6",
+            "Dst": "Base"
+          },
+          {
+            "SrcKey": "n4",
+            "Src": "Unit vector",
+            "DstKey": "n6",
+            "Dst": "Direction"
+          },
+          {
+            "SrcKey": "n5",
+            "Src": "Extrusion",
+            "DstKey": "n7",
+            "Dst": "Brep"
+          },
+          {
+            "SrcKey": "n6",
+            "Src": "Extrusion",
+            "DstKey": "n8",
+            "Dst": "Brep"
+          },
+          {
+            "SrcKey": "n7",
+            "Src": "Brep",
+            "DstKey": "n9",
+            "Dst": "Breps A"
+          },
+          {
+            "SrcKey": "n8",
+            "Src": "Brep",
+            "DstKey": "n9",
+            "Dst": "Breps B"
+          },
+          {
+            "SrcKey": "n8",
+            "Src": "Brep",
+            "DstKey": "n10",
+            "Dst": "Breps A"
+          },
+          {
+            "SrcKey": "n7",
+            "Src": "Brep",
+            "DstKey": "n10",
+            "Dst": "Breps B"
+          },
+          {
+            "SrcKey": "n9",
+            "Src": "Result",
+            "DstKey": "n11",
+            "Dst": "Geometry"
+          },
+          {
+            "SrcKey": "n10",
+            "Src": "Result",
+            "DstKey": "n12",
+            "Dst": "Geometry"
+          }
+        ],
+        "solve": true
+      }
+    }
+  }
+}

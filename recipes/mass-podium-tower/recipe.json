@@ -1,0 +1,161 @@
+{
+  "$schema": "../../schemas/recipe-v2.schema.json",
+  "schema_version": 2,
+  "id": "mass-podium-tower",
+  "name": "裙房塔楼体量",
+  "description": "裙房+塔楼体量：矩形裙房大底盘 + 上方矩形塔楼，层高共用，裙房/塔楼层数与平面尺寸各自可调",
+  "tags": [
+    "podium",
+    "tower",
+    "mass",
+    "building",
+    "extrude",
+    "rectangle",
+    "裙房",
+    "塔楼",
+    "体量",
+    "挤出",
+    "矩形",
+    "建筑"
+  ],
+  "interface": {
+    "parameters": {
+      "podium_width": {
+        "type": "number",
+        "unit": "mm",
+        "default": 60000,
+        "node": "n1",
+        "field": "value",
+        "description": "裙房宽度"
+      },
+      "podium_depth": {
+        "type": "number",
+        "unit": "mm",
+        "default": 40000,
+        "node": "n2",
+        "field": "value",
+        "description": "裙房进深"
+      },
+      "podium_floors": {
+        "type": "integer",
+        "unit": null,
+        "default": 6,
+        "node": "n3",
+        "field": "value",
+        "description": "裙房层数"
+      },
+      "tower_width": {
+        "type": "number",
+        "unit": "mm",
+        "default": 30000,
+        "node": "n4",
+        "field": "value",
+        "description": "塔楼宽度"
+      },
+      "tower_depth": {
+        "type": "number",
+        "unit": "mm",
+        "default": 20000,
+        "node": "n5",
+        "field": "value",
+        "description": "塔楼进深"
+      },
+      "tower_floors": {
+        "type": "integer",
+        "unit": null,
+        "default": 30,
+        "node": "n6",
+        "field": "value",
+        "description": "塔楼层数"
+      },
+      "floor_height": {
+        "type": "number",
+        "unit": "mm",
+        "default": 4000,
+        "node": "n7",
+        "field": "value",
+        "description": "层高（裙房塔楼共用）"
+      }
+    },
+    "inputs": {},
+    "outputs": {
+      "podium_brep": {
+        "node": "n16",
+        "port": "Extrusion",
+        "type": "GH_Brep",
+        "access": "item",
+        "cardinality": 1,
+        "description": "裙房挤出体量。"
+      },
+      "tower_brep": {
+        "node": "n18",
+        "port": "Extrusion",
+        "type": "GH_Brep",
+        "access": "item",
+        "cardinality": 1,
+        "description": "塔楼挤出体量。"
+      },
+      "podium_width": {
+        "node": "n1",
+        "port": "Value",
+        "type": "GH_Number",
+        "access": "item",
+        "cardinality": 1,
+        "description": "裙房宽度参数。"
+      },
+      "podium_height": {
+        "node": "n12",
+        "port": "Result",
+        "type": "GH_Number",
+        "access": "item",
+        "cardinality": 1,
+        "description": "裙房层数乘层高。"
+      },
+      "tower_width": {
+        "node": "n4",
+        "port": "Value",
+        "type": "GH_Number",
+        "access": "item",
+        "cardinality": 1,
+        "description": "塔楼宽度参数。"
+      },
+      "tower_height": {
+        "node": "n13",
+        "port": "Result",
+        "type": "GH_Number",
+        "access": "item",
+        "cardinality": 1,
+        "description": "塔楼层数乘层高。"
+      }
+    }
+  },
+  "composable_with": [
+    "facade-louver"
+  ],
+  "composition_rules": [
+    {
+      "id": "podium_dimensions_to_louvers",
+      "target_recipe": "facade-louver",
+      "description": "共享裙房宽度和计算高度，使百叶覆盖裙房立面范围。",
+      "bindings": [
+        {
+          "from_output": "podium_width",
+          "to": {
+            "parameter": "width"
+          },
+          "adapters": []
+        },
+        {
+          "from_output": "podium_height",
+          "to": {
+            "parameter": "height"
+          },
+          "adapters": []
+        }
+      ]
+    }
+  ],
+  "verified": true,
+  "verified_date": "2026-04-16",
+  "test_case": ""
+}

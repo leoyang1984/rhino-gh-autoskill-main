@@ -1,0 +1,325 @@
+[
+  {
+    "id": "mass-rotate",
+    "name": "旋转塔楼",
+    "description": "椭圆或圆形楼板沿垂直轴渐变旋转堆叠，生成螺旋塔楼体量",
+    "tags": [
+      "tower",
+      "rotate",
+      "spiral",
+      "floor",
+      "extrude",
+      "ellipse"
+    ]
+  },
+  {
+    "id": "mass-extrude",
+    "name": "矩形挤出体量",
+    "description": "矩形楼板垂直拉伸，生成多层建筑体块：矩形截面（宽×深），按层高复制堆叠，每层独立拉伸成体量",
+    "tags": [
+      "extrude",
+      "rectangle",
+      "mass",
+      "floor",
+      "building",
+      "stack",
+      "矩形",
+      "挤出",
+      "体量",
+      "楼板",
+      "堆叠",
+      "建筑"
+    ]
+  },
+  {
+    "id": "mass-taper",
+    "name": "锥形渐变体量",
+    "description": "多截面渐变锥形体量：底部大圆与顶部小圆 Loft 生成锥形建筑体量，底半径/顶半径/总高度可调",
+    "tags": [
+      "taper",
+      "loft",
+      "cone",
+      "circle",
+      "mass",
+      "freeform",
+      "锥形",
+      "渐变",
+      "体量",
+      "Loft",
+      "圆形",
+      "建筑"
+    ]
+  },
+  {
+    "id": "floor-stack",
+    "name": "标准层堆叠",
+    "description": "标准层水平堆叠阵列：矩形楼板轮廓生成平板楼层，按层高等距垂直堆叠，输出多层楼板面",
+    "tags": [
+      "floor",
+      "stack",
+      "slab",
+      "rectangle",
+      "array",
+      "building",
+      "楼板",
+      "堆叠",
+      "标准层",
+      "阵列",
+      "矩形"
+    ]
+  },
+  {
+    "id": "facade-grid",
+    "name": "表皮UV分格",
+    "description": "曲面 UV 分格生成表皮网格：矩形面板 Isotrim 切分为 U×V 子面板，每格为独立曲面，有实体边线，可替换为任意建筑曲面",
+    "tags": [
+      "facade",
+      "grid",
+      "UV",
+      "isotrim",
+      "surface",
+      "panel",
+      "表皮",
+      "分格",
+      "网格",
+      "幕墙",
+      "面板"
+    ]
+  },
+  {
+    "id": "facade-panel-flat",
+    "name": "平板幕墙内缩",
+    "description": "网格单元内缩生成平板幕墙：UV 分格后每块子面板向重心缩放，形成有缝隙的平板幕墙，ScaleFactor 控制内缩量",
+    "tags": [
+      "facade",
+      "panel",
+      "flat",
+      "scale",
+      "curtain-wall",
+      "inset",
+      "UV",
+      "幕墙",
+      "平板",
+      "内缩",
+      "缩放",
+      "表皮"
+    ]
+  },
+  {
+    "id": "array-linear",
+    "name": "线性等距阵列",
+    "description": "沿 X 轴等距线性阵列几何体：矩形平板为基准对象，按间距和数量沿 X 轴等距复制",
+    "tags": [
+      "array",
+      "linear",
+      "move",
+      "series",
+      "repeat",
+      "阵列",
+      "线性",
+      "等距",
+      "复制",
+      "X轴"
+    ]
+  },
+  {
+    "id": "array-radial",
+    "name": "环形阵列",
+    "description": "绕 Z 轴环形阵列几何体：矩形平板偏移至半径处，按数量等角旋转复制，生成环形阵列",
+    "tags": [
+      "array",
+      "radial",
+      "rotate",
+      "circle",
+      "repeat",
+      "阵列",
+      "环形",
+      "旋转",
+      "复制",
+      "Z轴"
+    ]
+  },
+  {
+    "id": "mass-podium-tower",
+    "name": "裙房塔楼体量",
+    "description": "裙房+塔楼体量：矩形裙房大底盘 + 上方矩形塔楼，层高共用，裙房/塔楼层数与平面尺寸各自可调",
+    "tags": [
+      "podium",
+      "tower",
+      "mass",
+      "building",
+      "extrude",
+      "rectangle",
+      "裙房",
+      "塔楼",
+      "体量",
+      "挤出",
+      "矩形",
+      "建筑"
+    ]
+  },
+  {
+    "id": "facade-louver",
+    "name": "竖向百叶幕墙",
+    "description": "竖向百叶幕墙：等间距竖向百叶翅片，可控数量、翻转角度、翅片深度，沿 X 轴展开，绕 Z 轴翻转",
+    "tags": [
+      "louver",
+      "facade",
+      "vertical",
+      "fin",
+      "rotate",
+      "curtain-wall",
+      "百叶",
+      "幕墙",
+      "竖向",
+      "翅片",
+      "翻转",
+      "表皮"
+    ]
+  },
+  {
+    "id": "attractor-remap",
+    "name": "吸引子距离映射",
+    "description": "吸引子距离映射：点阵中每点到吸引子的距离 Remap 到目标数值区间，可驱动任意参数",
+    "tags": [
+      "attractor",
+      "remap",
+      "distance",
+      "field",
+      "gradient",
+      "吸引子",
+      "映射",
+      "渐变",
+      "距离",
+      "数值场"
+    ]
+  },
+  {
+    "id": "mass-setback",
+    "name": "退台体量",
+    "description": "退台体量：矩形平面逐层收进，生成阶梯状建筑体量",
+    "tags": [
+      "setback",
+      "step",
+      "tier",
+      "mass",
+      "building",
+      "extrude",
+      "退台",
+      "阶梯",
+      "体量",
+      "收进",
+      "建筑"
+    ]
+  },
+  {
+    "id": "terrain-from-contour",
+    "name": "等高线生成地形",
+    "description": "等高线生成地形：引用多条等高线曲线，重建后送入 Patch 生成地形曲面",
+    "tags": [
+      "terrain",
+      "contour",
+      "patch",
+      "topography",
+      "landscape",
+      "地形",
+      "等高线",
+      "地貌",
+      "景观",
+      "曲面"
+    ]
+  },
+  {
+    "id": "terrain-grade",
+    "name": "场地平整",
+    "description": "场地平整：输入闭合整坡边界曲线，按目标标高整体抬升后生成整平场地面",
+    "tags": [
+      "terrain",
+      "grade",
+      "pad",
+      "site",
+      "boundary",
+      "landscape",
+      "地形",
+      "整坡",
+      "场地平整",
+      "平台",
+      "景观"
+    ]
+  },
+  {
+    "id": "facade-parametric-tilt",
+    "name": "参数化倾斜幕墙",
+    "description": "参数化倾斜幕墙：输入外部曲面，UV 分格生成面板，并按 TiltAngle 围绕局部 X 轴倾斜每块面板",
+    "tags": [
+      "facade",
+      "panel",
+      "tilt",
+      "rotate",
+      "parametric",
+      "surface",
+      "UV",
+      "幕墙",
+      "倾斜",
+      "面板",
+      "参数化",
+      "表皮"
+    ]
+  },
+  {
+    "id": "mass-boolean",
+    "name": "布尔运算体量",
+    "description": "布尔运算体量：主矩形体量减去可偏移的切割矩形体量，生成中庭或开洞体块",
+    "tags": [
+      "mass",
+      "boolean",
+      "solid",
+      "difference",
+      "atrium",
+      "void",
+      "building",
+      "体量",
+      "布尔",
+      "开洞",
+      "中庭",
+      "挖空"
+    ]
+  },
+  {
+    "id": "terrain-cut-fill",
+    "name": "土方挖填分析",
+    "description": "土方挖填分析：输入现状地形面与设计整平面，向下挤出成实体后用 Solid Difference 分别计算挖方与填方体量",
+    "tags": [
+      "terrain",
+      "cut",
+      "fill",
+      "earthwork",
+      "volume",
+      "surface",
+      "solid-difference",
+      "土方",
+      "挖方",
+      "填方",
+      "地形",
+      "体积"
+    ]
+  },
+  {
+    "id": "kangaroo-cloth",
+    "name": "布料重力模拟",
+    "description": "Kangaroo 2 布料模拟：矩形网格四角吊点固定，重力作用下布料下垂，边弹簧约束保持布料形态。物理迭代求解，需按 Reset/On 时序运行（见 knowledge/kangaroo-physics-patterns.md）。",
+    "tags": [
+      "kangaroo",
+      "cloth",
+      "gravity",
+      "physics",
+      "simulation",
+      "fabric",
+      "hang",
+      "布料",
+      "重力",
+      "物理",
+      "悬挂"
+    ]
+  }
+]

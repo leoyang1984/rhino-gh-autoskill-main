@@ -1,0 +1,85 @@
+{
+  "$schema": "../../schemas/recipe-v2.schema.json",
+  "schema_version": 2,
+  "id": "terrain-from-contour",
+  "name": "等高线生成地形",
+  "description": "等高线生成地形：引用多条等高线曲线，重建后送入 Patch 生成地形曲面",
+  "tags": [
+    "terrain",
+    "contour",
+    "patch",
+    "topography",
+    "landscape",
+    "地形",
+    "等高线",
+    "地貌",
+    "景观",
+    "曲面"
+  ],
+  "interface": {
+    "parameters": {
+      "degree": {
+        "type": "number",
+        "unit": null,
+        "default": 3,
+        "node": "n2",
+        "field": "value",
+        "description": "重建曲线阶数"
+      },
+      "point_count": {
+        "type": "number",
+        "unit": null,
+        "default": 24,
+        "node": "n3",
+        "field": "value",
+        "description": "每条等高线重建控制点数"
+      },
+      "patch_spans": {
+        "type": "number",
+        "unit": null,
+        "default": 30,
+        "node": "n5",
+        "field": "value",
+        "description": "Patch 曲面分段数"
+      },
+      "flexibility": {
+        "type": "number",
+        "unit": null,
+        "default": 1,
+        "node": "n6",
+        "field": "value",
+        "description": "Patch 柔性"
+      }
+    },
+    "inputs": {
+      "contours": {
+        "type": "GH_Curve",
+        "access": "list",
+        "cardinality": null,
+        "description": "用于拟合地形的多条等高线。",
+        "bindings": [
+          {
+            "node": "n4",
+            "port": "Curve",
+            "mode": "replace"
+          }
+        ]
+      }
+    },
+    "outputs": {
+      "terrain_surface": {
+        "node": "n7",
+        "port": "Surface",
+        "type": "GH_Surface",
+        "access": "item",
+        "cardinality": 1,
+        "description": "由等高线拟合的地形曲面。"
+      }
+    }
+  },
+  "composable_with": [],
+  "composition_rules": [],
+  "verified": true,
+  "verified_date": "2026-04-17",
+  "test_case": ""
+}

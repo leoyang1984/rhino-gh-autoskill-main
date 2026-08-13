@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:gh-ai-wiring:schema:component-snapshot-v2",
+  "title": "Grasshopper Component Snapshot v2",
+  "type": "object",
+  "required": ["snapshot_version", "captured_at", "scope", "environment", "components"],
+  "properties": {
+    "snapshot_version": {"const": 2},
+    "captured_at": {"type": "string"},
+    "scope": {"const": "full_component_server"},
+    "environment": {
+      "type": "object",
+      "required": ["rhino_version", "grasshopper_version", "assemblies"]
+    },
+    "components": {"type": "array"}
+  },
+  "additionalProperties": true
+}

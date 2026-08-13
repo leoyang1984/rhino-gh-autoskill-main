@@ -1,0 +1,106 @@
+{
+  "$schema": "../../schemas/recipe-v2.schema.json",
+  "schema_version": 2,
+  "id": "attractor-remap",
+  "name": "吸引子距离映射",
+  "description": "吸引子距离映射：点阵中每点到吸引子的距离 Remap 到目标数值区间，可驱动任意参数",
+  "tags": [
+    "attractor",
+    "remap",
+    "distance",
+    "field",
+    "gradient",
+    "吸引子",
+    "映射",
+    "渐变",
+    "距离",
+    "数值场"
+  ],
+  "interface": {
+    "parameters": {
+      "grid_count": {
+        "type": "integer",
+        "unit": null,
+        "default": 10,
+        "node": "n1",
+        "field": "value",
+        "description": "点阵每轴数量"
+      },
+      "grid_size": {
+        "type": "number",
+        "unit": "mm",
+        "default": 20000,
+        "node": "n2",
+        "field": "value",
+        "description": "点阵总尺寸"
+      },
+      "attr_x": {
+        "type": "number",
+        "unit": "mm",
+        "default": 5000,
+        "node": "n3",
+        "field": "value",
+        "description": "吸引子 X 坐标"
+      },
+      "attr_y": {
+        "type": "number",
+        "unit": "mm",
+        "default": 5000,
+        "node": "n4",
+        "field": "value",
+        "description": "吸引子 Y 坐标"
+      },
+      "remap_min": {
+        "type": "number",
+        "unit": null,
+        "default": 100,
+        "node": "n5",
+        "field": "value",
+        "description": "输出区间最小值（近吸引子）"
+      },
+      "remap_max": {
+        "type": "number",
+        "unit": null,
+        "default": 3000,
+        "node": "n6",
+        "field": "value",
+        "description": "输出区间最大值（远吸引子）"
+      }
+    },
+    "inputs": {},
+    "outputs": {
+      "mapped_values": {
+        "node": "n14",
+        "port": "Mapped",
+        "type": "GH_Number",
+        "access": "list",
+        "cardinality": null,
+        "description": "映射到目标域的吸引子数值列表。"
+      }
+    }
+  },
+  "composable_with": [
+    "facade-panel-flat",
+    "facade-grid",
+    "array-radial"
+  ],
+  "composition_rules": [
+    {
+      "id": "mapped_values_to_panel_scale",
+      "target_recipe": "facade-panel-flat",
+      "description": "以吸引子映射值替换固定面板缩放 Slider。",
+      "bindings": [
+        {
+          "from_output": "mapped_values",
+          "to": {
+            "parameter": "scale_factor"
+          },
+          "adapters": []
+        }
+      ]
+    }
+  ],
+  "verified": true,
+  "verified_date": "2026-04-13",
+  "test_case": "output/test.csv — 121值(11×11)，范围[100,3000]，对称梯度验证通过"
+}

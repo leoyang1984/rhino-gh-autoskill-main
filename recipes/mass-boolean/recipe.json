@@ -1,0 +1,97 @@
+{
+  "$schema": "../../schemas/recipe-v2.schema.json",
+  "schema_version": 2,
+  "id": "mass-boolean",
+  "name": "布尔运算体量",
+  "description": "布尔运算体量：主矩形体量减去可偏移的切割矩形体量，生成中庭或开洞体块",
+  "tags": [
+    "mass",
+    "boolean",
+    "solid",
+    "difference",
+    "atrium",
+    "void",
+    "building",
+    "体量",
+    "布尔",
+    "开洞",
+    "中庭",
+    "挖空"
+  ],
+  "interface": {
+    "parameters": {
+      "main_width": {
+        "type": "number",
+        "unit": null,
+        "default": 40,
+        "node": "n1",
+        "field": "value",
+        "description": "主体宽度"
+      },
+      "main_depth": {
+        "type": "number",
+        "unit": null,
+        "default": 30,
+        "node": "n2",
+        "field": "value",
+        "description": "主体深度"
+      },
+      "height": {
+        "type": "number",
+        "unit": null,
+        "default": 20,
+        "node": "n3",
+        "field": "value",
+        "description": "体量高度"
+      },
+      "cut_width": {
+        "type": "number",
+        "unit": null,
+        "default": 14,
+        "node": "n4",
+        "field": "value",
+        "description": "切割体宽度"
+      },
+      "cut_depth": {
+        "type": "number",
+        "unit": null,
+        "default": 10,
+        "node": "n5",
+        "field": "value",
+        "description": "切割体深度"
+      },
+      "cut_offset_x": {
+        "type": "number",
+        "unit": null,
+        "default": 0,
+        "node": "n6",
+        "field": "value",
+        "description": "切割体 X 向偏移"
+      },
+      "cut_offset_y": {
+        "type": "number",
+        "unit": null,
+        "default": 0,
+        "node": "n7",
+        "field": "value",
+        "description": "切割体 Y 向偏移"
+      }
+    },
+    "inputs": {},
+    "outputs": {
+      "mass": {
+        "node": "n19",
+        "port": "Result",
+        "type": "GH_Brep",
+        "access": "item",
+        "cardinality": 1,
+        "description": "完成实体差集后的建筑体量。"
+      }
+    }
+  },
+  "composable_with": [],
+  "composition_rules": [],
+  "verified": true,
+  "verified_date": "2026-04-21",
+  "test_case": ""
+}

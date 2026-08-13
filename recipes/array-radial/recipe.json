@@ -1,0 +1,66 @@
+{
+  "$schema": "../../schemas/recipe-v2.schema.json",
+  "schema_version": 2,
+  "id": "array-radial",
+  "name": "环形阵列",
+  "description": "绕 Z 轴环形阵列几何体：矩形平板偏移至半径处，按数量等角旋转复制，生成环形阵列",
+  "tags": [
+    "array",
+    "radial",
+    "rotate",
+    "circle",
+    "repeat",
+    "阵列",
+    "环形",
+    "旋转",
+    "复制",
+    "Z轴"
+  ],
+  "interface": {
+    "parameters": {
+      "count": {
+        "type": "integer",
+        "unit": null,
+        "default": 6,
+        "node": "n1",
+        "field": "value",
+        "description": "阵列数量"
+      },
+      "radius": {
+        "type": "number",
+        "unit": "mm",
+        "default": 10000,
+        "node": "n2",
+        "field": "value",
+        "description": "阵列半径"
+      },
+      "obj_size": {
+        "type": "number",
+        "unit": "mm",
+        "default": 3000,
+        "node": "n3",
+        "field": "value",
+        "description": "基准对象尺寸（正方形边长）"
+      }
+    },
+    "inputs": {},
+    "outputs": {
+      "instances": {
+        "node": "n13",
+        "port": "Geometry",
+        "type": "IGH_GeometricGoo",
+        "access": "list",
+        "cardinality": null,
+        "description": "环形阵列后的几何列表。"
+      }
+    }
+  },
+  "composable_with": [
+    "array-linear",
+    "mass-extrude"
+  ],
+  "composition_rules": [],
+  "verified": true,
+  "verified_date": "2026-04-13",
+  "test_case": ""
+}

@@ -1,0 +1,109 @@
+{
+  "description": "绕 Z 轴环形阵列几何体：矩形平板偏移至半径处，按数量等角旋转复制，生成环形阵列",
+  "nodes": [
+    {
+      "id": "n1",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "Count",
+      "position": { "x": 0, "y": 0 },
+      "preset": { "value": 6, "min": 3, "max": 24 }
+    },
+    {
+      "id": "n2",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "Radius",
+      "position": { "x": 0, "y": 150 },
+      "preset": { "value": 10000, "min": 1000, "max": 50000 }
+    },
+    {
+      "id": "n3",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "ObjSize",
+      "position": { "x": 0, "y": 300 },
+      "preset": { "value": 3000, "min": 500, "max": 10000 }
+    },
+    {
+      "id": "n4",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "FullCircle",
+      "position": { "x": 0, "y": 450 },
+      "preset": { "value": 360, "min": 360, "max": 360 }
+    },
+    {
+      "id": "n5",
+      "guid": "d93100b6-d50b-40b2-831a-814659dc38e3",
+      "name": "Rectangle",
+      "position": { "x": 250, "y": 300 }
+    },
+    {
+      "id": "n6",
+      "guid": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+      "name": "Boundary Surfaces",
+      "position": { "x": 500, "y": 300 }
+    },
+    {
+      "id": "n7",
+      "guid": "9c85271f-89fa-4e9f-9f4a-d75802120ccc",
+      "name": "Division",
+      "nickname": "AngleStep",
+      "position": { "x": 250, "y": 0 }
+    },
+    {
+      "id": "n8",
+      "guid": "e64c5fb1-845c-4ab1-8911-5f338516ba67",
+      "name": "Series",
+      "position": { "x": 500, "y": 0 }
+    },
+    {
+      "id": "n9",
+      "guid": "a4cd2751-414d-42ec-8916-476ebf62d7fe",
+      "name": "Radians",
+      "position": { "x": 750, "y": 0 }
+    },
+    {
+      "id": "n10",
+      "guid": "79f9fbb3-8f1d-4d9a-88a9-f7961b1012cd",
+      "name": "Unit X",
+      "nickname": "RadiusOffset",
+      "position": { "x": 750, "y": 225 }
+    },
+    {
+      "id": "n11",
+      "guid": "e9eb1dcf-92f6-4d4d-84ae-96222d60f56b",
+      "name": "Move",
+      "position": { "x": 1000, "y": 225 }
+    },
+    {
+      "id": "n12",
+      "guid": "17b7152b-d30d-4d50-b9ef-c9fe25576fc2",
+      "name": "XY Plane",
+      "position": { "x": 1000, "y": 375 }
+    },
+    {
+      "id": "n13",
+      "guid": "b7798b74-037e-4f0c-8ac7-dc1043d093e0",
+      "name": "Rotate",
+      "position": { "x": 1250, "y": 150 }
+    }
+  ],
+  "connections": [
+    { "from": { "node": "n4",  "port": "Value"       }, "to": { "node": "n7",  "port": "A"          } },
+    { "from": { "node": "n1",  "port": "Value"       }, "to": { "node": "n7",  "port": "B"          } },
+    { "from": { "node": "n7",  "port": "Result"      }, "to": { "node": "n8",  "port": "Step"       } },
+    { "from": { "node": "n1",  "port": "Value"       }, "to": { "node": "n8",  "port": "Count"      } },
+    { "from": { "node": "n8",  "port": "Series"      }, "to": { "node": "n9",  "port": "Degrees"    } },
+    { "from": { "node": "n3",  "port": "Value"       }, "to": { "node": "n5",  "port": "X Size"     } },
+    { "from": { "node": "n3",  "port": "Value"       }, "to": { "node": "n5",  "port": "Y Size"     } },
+    { "from": { "node": "n5",  "port": "Rectangle"   }, "to": { "node": "n6",  "port": "Edges"      } },
+    { "from": { "node": "n2",  "port": "Value"       }, "to": { "node": "n10", "port": "Factor"     } },
+    { "from": { "node": "n6",  "port": "Surfaces"    }, "to": { "node": "n11", "port": "Geometry"   } },
+    { "from": { "node": "n10", "port": "Unit vector" }, "to": { "node": "n11", "port": "Motion"     } },
+    { "from": { "node": "n11", "port": "Geometry"    }, "to": { "node": "n13", "port": "Geometry"   } },
+    { "from": { "node": "n9",  "port": "Radians"     }, "to": { "node": "n13", "port": "Angle"      } },
+    { "from": { "node": "n12", "port": "Plane"       }, "to": { "node": "n13", "port": "Plane"      } }
+  ]
+}

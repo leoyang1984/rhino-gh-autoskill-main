@@ -1,0 +1,49 @@
+{
+  "description": "用一个滑杆同时控制半径和高度，画一个圆，挤出成等比圆柱",
+  "nodes": [
+    {
+      "id": "n1",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "Size",
+      "position": { "x": 0, "y": 75 },
+      "preset": { "value": 20, "min": 1, "max": 100 }
+    },
+    {
+      "id": "n2",
+      "guid": "807b86e3-be8d-4970-92b5-f8cdcb45b06b",
+      "name": "Circle",
+      "position": { "x": 250, "y": 0 }
+    },
+    {
+      "id": "n3",
+      "guid": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+      "name": "Unit Z",
+      "position": { "x": 250, "y": 150 }
+    },
+    {
+      "id": "n4",
+      "guid": "962034e9-cc27-4394-afc4-5c16e3447cf9",
+      "name": "Extrude",
+      "position": { "x": 500, "y": 75 }
+    }
+  ],
+  "connections": [
+    {
+      "from": { "node": "n1", "port": "Value" },
+      "to":   { "node": "n2", "port": "Radius" }
+    },
+    {
+      "from": { "node": "n1", "port": "Value" },
+      "to":   { "node": "n3", "port": "Factor" }
+    },
+    {
+      "from": { "node": "n2", "port": "Circle" },
+      "to":   { "node": "n4", "port": "Base" }
+    },
+    {
+      "from": { "node": "n3", "port": "Unit vector" },
+      "to":   { "node": "n4", "port": "Direction" }
+    }
+  ]
+}

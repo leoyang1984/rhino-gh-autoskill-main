@@ -1,0 +1,10 @@
+interface:
+  display_name: "Grasshopper Recipe Modeling"
+  short_description: "Build verified Grasshopper graphs from reusable recipes"
+  default_prompt: "Use $grasshopper-recipe-modeling to build a parameterized Grasshopper definition from the project Recipe library through Rhino MCP."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "rhino"
+      description: "Rhino 8 MCP server with Grasshopper 1 graph tools"

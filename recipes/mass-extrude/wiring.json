@@ -1,0 +1,87 @@
+{
+  "description": "矩形楼板垂直拉伸，生成多层建筑体块：矩形截面（宽×深），按层高复制堆叠，每层独立拉伸成体量",
+  "nodes": [
+    {
+      "id": "n1",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "Width",
+      "position": { "x": 0, "y": 0 },
+      "preset": { "value": 20000, "min": 5000, "max": 60000 }
+    },
+    {
+      "id": "n2",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "Depth",
+      "position": { "x": 0, "y": 150 },
+      "preset": { "value": 15000, "min": 5000, "max": 40000 }
+    },
+    {
+      "id": "n3",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "FloorHeight",
+      "position": { "x": 0, "y": 300 },
+      "preset": { "value": 4000, "min": 2000, "max": 6000 }
+    },
+    {
+      "id": "n4",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "Floors",
+      "position": { "x": 0, "y": 450 },
+      "preset": { "value": 10, "min": 1, "max": 50 }
+    },
+    {
+      "id": "n5",
+      "guid": "d93100b6-d50b-40b2-831a-814659dc38e3",
+      "name": "Rectangle",
+      "position": { "x": 250, "y": 0 }
+    },
+    {
+      "id": "n6",
+      "guid": "e64c5fb1-845c-4ab1-8911-5f338516ba67",
+      "name": "Series",
+      "position": { "x": 250, "y": 300 }
+    },
+    {
+      "id": "n7",
+      "guid": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+      "name": "Unit Z",
+      "nickname": "UnitZ_move",
+      "position": { "x": 500, "y": 300 }
+    },
+    {
+      "id": "n8",
+      "guid": "e9eb1dcf-92f6-4d4d-84ae-96222d60f56b",
+      "name": "Move",
+      "position": { "x": 750, "y": 150 }
+    },
+    {
+      "id": "n9",
+      "guid": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+      "name": "Unit Z",
+      "nickname": "UnitZ_extrude",
+      "position": { "x": 750, "y": 375 }
+    },
+    {
+      "id": "n10",
+      "guid": "962034e9-cc27-4394-afc4-5c16e3447cf9",
+      "name": "Extrude",
+      "position": { "x": 1000, "y": 225 }
+    }
+  ],
+  "connections": [
+    { "from": { "node": "n1", "port": "Value"       }, "to": { "node": "n5",  "port": "X Size"    } },
+    { "from": { "node": "n2", "port": "Value"       }, "to": { "node": "n5",  "port": "Y Size"    } },
+    { "from": { "node": "n3", "port": "Value"       }, "to": { "node": "n6",  "port": "Step"      } },
+    { "from": { "node": "n4", "port": "Value"       }, "to": { "node": "n6",  "port": "Count"     } },
+    { "from": { "node": "n6", "port": "Series"      }, "to": { "node": "n7",  "port": "Factor"    } },
+    { "from": { "node": "n5", "port": "Rectangle"   }, "to": { "node": "n8",  "port": "Geometry"  } },
+    { "from": { "node": "n7", "port": "Unit vector" }, "to": { "node": "n8",  "port": "Motion"    } },
+    { "from": { "node": "n3", "port": "Value"       }, "to": { "node": "n9",  "port": "Factor"    } },
+    { "from": { "node": "n8", "port": "Geometry"    }, "to": { "node": "n10", "port": "Base"      } },
+    { "from": { "node": "n9", "port": "Unit vector" }, "to": { "node": "n10", "port": "Direction" } }
+  ]
+}

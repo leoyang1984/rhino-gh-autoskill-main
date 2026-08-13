@@ -1,0 +1,104 @@
+{
+  "$schema": "../../schemas/recipe-v2.schema.json",
+  "schema_version": 2,
+  "id": "facade-panel-flat",
+  "name": "平板幕墙内缩",
+  "description": "网格单元内缩生成平板幕墙：UV 分格后每块子面板向重心缩放，形成有缝隙的平板幕墙，ScaleFactor 控制内缩量",
+  "tags": [
+    "facade",
+    "panel",
+    "flat",
+    "scale",
+    "curtain-wall",
+    "inset",
+    "UV",
+    "幕墙",
+    "平板",
+    "内缩",
+    "缩放",
+    "表皮"
+  ],
+  "interface": {
+    "parameters": {
+      "width": {
+        "type": "number",
+        "unit": "mm",
+        "default": 20000,
+        "node": "n1",
+        "field": "value",
+        "description": "面板总宽"
+      },
+      "height": {
+        "type": "number",
+        "unit": "mm",
+        "default": 40000,
+        "node": "n2",
+        "field": "value",
+        "description": "面板总高"
+      },
+      "u_count": {
+        "type": "integer",
+        "unit": null,
+        "default": 10,
+        "node": "n3",
+        "field": "value",
+        "description": "水平分格数"
+      },
+      "v_count": {
+        "type": "integer",
+        "unit": null,
+        "default": 20,
+        "node": "n4",
+        "field": "value",
+        "description": "垂直分格数"
+      },
+      "scale_factor": {
+        "type": "number",
+        "unit": null,
+        "default": 0.85,
+        "node": "n5",
+        "field": "value",
+        "description": "面板内缩比例（0.5~0.99）"
+      }
+    },
+    "inputs": {
+      "surface": {
+        "type": "GH_Surface",
+        "access": "item",
+        "cardinality": 1,
+        "description": "待分格并内缩的建筑表皮曲面。",
+        "bindings": [
+          {
+            "node": "n8",
+            "port": "Domain",
+            "mode": "replace"
+          },
+          {
+            "node": "n9",
+            "port": "Surface",
+            "mode": "replace"
+          }
+        ]
+      }
+    },
+    "outputs": {
+      "panels": {
+        "node": "n11",
+        "port": "Geometry",
+        "type": "IGH_GeometricGoo",
+        "access": "tree",
+        "cardinality": null,
+        "description": "内缩后的平板幕墙面板树。"
+      }
+    }
+  },
+  "composable_with": [
+    "facade-grid",
+    "mass-extrude",
+    "attractor-remap"
+  ],
+  "composition_rules": [],
+  "verified": true,
+  "verified_date": "2026-04-13",
+  "test_case": ""
+}

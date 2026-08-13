@@ -1,0 +1,325 @@
+{
+  "_note": "高频组件快查表。gh-wire 优先读此文件，未命中再查 component_library.json。",
+  "_updated": "2026-04-13",
+  "components": [
+    {
+      "name": "Number Slider",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "category": "Params/Input",
+      "inputs": [],
+      "outputs": [{ "name": "Value", "type": "GH_Number" }]
+    },
+    {
+      "name": "Series",
+      "guid": "e64c5fb1-845c-4ab1-8911-5f338516ba67",
+      "category": "Sets/Sequence",
+      "inputs": [
+        { "name": "Start", "type": "GH_Number" },
+        { "name": "Step",  "type": "GH_Number" },
+        { "name": "Count", "type": "GH_Integer" }
+      ],
+      "outputs": [{ "name": "Series", "type": "GH_Number" }]
+    },
+    {
+      "name": "Unit X",
+      "guid": "79f9fbb3-8f1d-4d9a-88a9-f7961b1012cd",
+      "category": "Vector/Vector",
+      "inputs": [{ "name": "Factor", "type": "GH_Number" }],
+      "outputs": [{ "name": "Unit vector", "type": "GH_Vector" }]
+    },
+    {
+      "name": "Unit Y",
+      "guid": "d3d195ea-2d59-4ffa-90b1-8b7ff3369f69",
+      "category": "Vector/Vector",
+      "inputs": [{ "name": "Factor", "type": "GH_Number" }],
+      "outputs": [{ "name": "Unit vector", "type": "GH_Vector" }]
+    },
+    {
+      "name": "Unit Z",
+      "guid": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+      "category": "Vector/Vector",
+      "inputs": [{ "name": "Factor", "type": "GH_Number" }],
+      "outputs": [{ "name": "Unit vector", "type": "GH_Vector" }]
+    },
+    {
+      "name": "Construct Point",
+      "guid": "3581f42a-9592-4549-bd6b-1c0fc39d067b",
+      "category": "Vector/Point",
+      "inputs": [
+        { "name": "X coordinate", "type": "GH_Number" },
+        { "name": "Y coordinate", "type": "GH_Number" },
+        { "name": "Z coordinate", "type": "GH_Number" }
+      ],
+      "outputs": [{ "name": "Point", "type": "GH_Point" }]
+    },
+    {
+      "name": "XY Plane",
+      "guid": "17b7152b-d30d-4d50-b9ef-c9fe25576fc2",
+      "category": "Vector/Plane",
+      "inputs": [{ "name": "Origin", "type": "GH_Point" }],
+      "outputs": [{ "name": "Plane", "type": "GH_Plane" }]
+    },
+    {
+      "name": "Distance",
+      "guid": "93b8e93d-f932-402c-b435-84be04d87666",
+      "category": "Vector/Point",
+      "inputs": [
+        { "name": "Point A", "type": "GH_Point" },
+        { "name": "Point B", "type": "GH_Point" }
+      ],
+      "outputs": [{ "name": "Distance", "type": "GH_Number" }]
+    },
+    {
+      "name": "Move",
+      "guid": "e9eb1dcf-92f6-4d4d-84ae-96222d60f56b",
+      "category": "Transform/Euclidean",
+      "inputs": [
+        { "name": "Geometry", "type": "IGH_GeometricGoo" },
+        { "name": "Motion",   "type": "GH_Vector" }
+      ],
+      "outputs": [
+        { "name": "Geometry",  "type": "IGH_GeometricGoo" },
+        { "name": "Transform", "type": "GH_Transform" }
+      ]
+    },
+    {
+      "name": "Rotate",
+      "guid": "b7798b74-037e-4f0c-8ac7-dc1043d093e0",
+      "category": "Transform/Euclidean",
+      "inputs": [
+        { "name": "Geometry", "type": "IGH_GeometricGoo" },
+        { "name": "Angle",    "type": "GH_Number" },
+        { "name": "Plane",    "type": "GH_Plane" }
+      ],
+      "outputs": [
+        { "name": "Geometry",  "type": "IGH_GeometricGoo" },
+        { "name": "Transform", "type": "GH_Transform" }
+      ]
+    },
+    {
+      "name": "Rectangle",
+      "guid": "d93100b6-d50b-40b2-831a-814659dc38e3",
+      "category": "Curve/Primitive",
+      "inputs": [
+        { "name": "Plane",  "type": "GH_Plane" },
+        { "name": "X Size", "type": "GH_Interval" },
+        { "name": "Y Size", "type": "GH_Interval" },
+        { "name": "Radius", "type": "GH_Number" }
+      ],
+      "outputs": [
+        { "name": "Rectangle", "type": "IGH_Goo" },
+        { "name": "Length",    "type": "GH_Number" }
+      ]
+    },
+    {
+      "name": "Circle CNR",
+      "guid": "d114323a-e6ee-4164-946b-e4ca0ce15efa",
+      "category": "Curve/Primitive",
+      "inputs": [
+        { "name": "Center", "type": "GH_Point" },
+        { "name": "Normal", "type": "GH_Vector" },
+        { "name": "Radius", "type": "GH_Number" }
+      ],
+      "outputs": [{ "name": "Circle", "type": "GH_Circle" }]
+    },
+    {
+      "name": "Ellipse",
+      "guid": "46b5564d-d3eb-4bf1-ae16-15ed132cfd88",
+      "category": "Curve/Primitive",
+      "inputs": [
+        { "name": "Plane",    "type": "GH_Plane" },
+        { "name": "Radius 1", "type": "GH_Number" },
+        { "name": "Radius 2", "type": "GH_Number" }
+      ],
+      "outputs": [{ "name": "Ellipse", "type": "GH_Curve" }]
+    },
+    {
+      "name": "Extrude",
+      "guid": "962034e9-cc27-4394-afc4-5c16e3447cf9",
+      "category": "Surface/Freeform",
+      "inputs": [
+        { "name": "Base",      "type": "IGH_GeometricGoo" },
+        { "name": "Direction", "type": "GH_Vector" }
+      ],
+      "outputs": [{ "name": "Extrusion", "type": "IGH_GeometricGoo" }]
+    },
+    {
+      "name": "Loft",
+      "guid": "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850",
+      "category": "Surface/Freeform",
+      "inputs": [
+        { "name": "Curves",  "type": "GH_Curve", "access": "list" },
+        { "name": "Options", "type": "LoftOptions" }
+      ],
+      "outputs": [{ "name": "Loft", "type": "GH_Brep" }]
+    },
+    {
+      "name": "Boundary Surfaces",
+      "guid": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+      "category": "Surface/Freeform",
+      "inputs": [{ "name": "Edges", "type": "GH_Curve", "access": "list" }],
+      "outputs": [{ "name": "Surfaces", "type": "GH_Surface" }]
+    },
+    {
+      "name": "Divide Surface",
+      "guid": "5106bafc-d5d4-4983-83e7-7be3ed07f502",
+      "category": "Surface/Util",
+      "inputs": [
+        { "name": "Surface", "type": "GH_Surface" },
+        { "name": "U Count", "type": "GH_Integer" },
+        { "name": "V Count", "type": "GH_Integer" }
+      ],
+      "outputs": [
+        { "name": "Points",     "type": "GH_Point" },
+        { "name": "Normals",    "type": "GH_Vector" },
+        { "name": "Parameters", "type": "GH_Point" }
+      ]
+    },
+    {
+      "name": "Multiplication",
+      "guid": "ce46b74e-00c9-43c4-805a-193b69ea4a11",
+      "category": "Maths/Operators",
+      "inputs": [
+        { "name": "A", "type": "IGH_Goo" },
+        { "name": "B", "type": "IGH_Goo" }
+      ],
+      "outputs": [{ "name": "Result", "type": "IGH_Goo" }]
+    },
+    {
+      "name": "Addition",
+      "guid": "a0d62394-a118-422d-abb3-6af115c75b25",
+      "category": "Maths/Operators",
+      "inputs": [
+        { "name": "A", "type": "IGH_Goo" },
+        { "name": "B", "type": "IGH_Goo" }
+      ],
+      "outputs": [{ "name": "Result", "type": "IGH_Goo" }]
+    },
+    {
+      "name": "Division",
+      "guid": "9c85271f-89fa-4e9f-9f4a-d75802120ccc",
+      "category": "Maths/Operators",
+      "inputs": [
+        { "name": "A", "type": "IGH_Goo" },
+        { "name": "B", "type": "IGH_Goo" }
+      ],
+      "outputs": [{ "name": "Result", "type": "IGH_Goo" }]
+    },
+    {
+      "name": "Remap Numbers",
+      "guid": "2fcc2743-8339-4cdf-a046-a1f17439191d",
+      "category": "Maths/Domain",
+      "inputs": [
+        { "name": "Value",  "type": "GH_Number" },
+        { "name": "Source", "type": "GH_Interval" },
+        { "name": "Target", "type": "GH_Interval" }
+      ],
+      "outputs": [
+        { "name": "Mapped",  "type": "GH_Number" },
+        { "name": "Clipped", "type": "GH_Number" }
+      ]
+    },
+    {
+      "name": "Construct Domain",
+      "guid": "d1a28e95-cf96-4936-bf34-8bf142d731bf",
+      "category": "Maths/Domain",
+      "inputs": [
+        { "name": "Domain start", "type": "GH_Number" },
+        { "name": "Domain end",   "type": "GH_Number" }
+      ],
+      "outputs": [{ "name": "Domain", "type": "GH_Interval" }]
+    },
+    {
+      "name": "Radians",
+      "guid": "a4cd2751-414d-42ec-8916-476ebf62d7fe",
+      "category": "Maths/Trig",
+      "inputs": [{ "name": "Degrees", "type": "GH_Number" }],
+      "outputs": [{ "name": "Radians", "type": "GH_Number" }]
+    },
+    {
+      "name": "Divide Domain²",
+      "guid": "75ac008b-1bc2-4edd-b967-667d628b9d24",
+      "category": "Maths/Domain",
+      "inputs": [
+        { "name": "Domain",  "type": "GH_Interval2D" },
+        { "name": "U Count", "type": "GH_Integer" },
+        { "name": "V Count", "type": "GH_Integer" }
+      ],
+      "outputs": [{ "name": "Segments", "type": "GH_Interval2D" }]
+    },
+    {
+      "name": "Isotrim",
+      "guid": "6a9ccaab-1b03-484e-bbda-be9c81584a66",
+      "category": "Surface/Util",
+      "inputs": [
+        { "name": "Surface", "type": "GH_Surface" },
+        { "name": "Domain",  "type": "GH_Interval2D" }
+      ],
+      "outputs": [{ "name": "Surface", "type": "GH_Surface" }]
+    },
+    {
+      "name": "Area",
+      "guid": "86b28a7e-94d9-4791-8306-e13e10d5f8d5",
+      "category": "Surface/Analysis",
+      "inputs": [{ "name": "Geometry", "type": "IGH_GeometricGoo" }],
+      "outputs": [
+        { "name": "Area",     "type": "GH_Number" },
+        { "name": "Centroid", "type": "GH_Point" }
+      ]
+    },
+    {
+      "name": "Scale",
+      "guid": "4d2a06bd-4b0f-4c65-9ee0-4220e4c01703",
+      "category": "Transform/Affine",
+      "inputs": [
+        { "name": "Geometry", "type": "IGH_GeometricGoo" },
+        { "name": "Center",   "type": "GH_Point" },
+        { "name": "Factor",   "type": "GH_Number" }
+      ],
+      "outputs": [{ "name": "Geometry", "type": "IGH_GeometricGoo" }]
+    },
+    {
+      "name": "Bounds",
+      "guid": "f44b92b0-3b5b-493a-86f4-fd7408c3daf3",
+      "category": "Maths/Domain",
+      "inputs": [
+        { "name": "Numbers", "type": "GH_Number", "access": "list" }
+      ],
+      "outputs": [{ "name": "Domain", "type": "GH_Interval" }]
+    },
+    {
+      "name": "Deconstruct Brep",
+      "guid": "8d372bdc-9800-45e9-8a26-6e33c5253e21",
+      "category": "Surface/Analysis",
+      "inputs": [
+        { "name": "Brep", "type": "GH_Brep" }
+      ],
+      "outputs": [
+        { "name": "Faces",    "type": "GH_Surface" },
+        { "name": "Edges",    "type": "GH_Curve" },
+        { "name": "Vertices", "type": "GH_Point" }
+      ]
+    },
+    {
+      "name": "Line",
+      "guid": "4c4e56eb-2f04-43f9-95a3-cc46a14f495a",
+      "category": "Curve/Primitive",
+      "inputs": [
+        { "name": "Start Point", "type": "GH_Point" },
+        { "name": "End Point",   "type": "GH_Point" }
+      ],
+      "outputs": [{ "name": "Line", "type": "GH_Line" }]
+    },
+    {
+      "name": "List Item",
+      "guid": "59daf374-bc21-4a5e-8282-5504fb7ae9ae",
+      "category": "Sets/List",
+      "inputs": [
+        { "name": "List",  "type": "IGH_Goo", "access": "list" },
+        { "name": "Index", "type": "GH_Integer" },
+        { "name": "Wrap",  "type": "GH_Boolean" }
+      ],
+      "outputs": [{ "name": "Item", "type": "IGH_Goo" }]
+    }
+  ]
+}

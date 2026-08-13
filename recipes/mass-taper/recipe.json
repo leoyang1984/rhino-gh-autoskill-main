@@ -1,0 +1,89 @@
+{
+  "$schema": "../../schemas/recipe-v2.schema.json",
+  "schema_version": 2,
+  "id": "mass-taper",
+  "name": "锥形渐变体量",
+  "description": "多截面渐变锥形体量：底部大圆与顶部小圆 Loft 生成锥形建筑体量，底半径/顶半径/总高度可调",
+  "tags": [
+    "taper",
+    "loft",
+    "cone",
+    "circle",
+    "mass",
+    "freeform",
+    "锥形",
+    "渐变",
+    "体量",
+    "Loft",
+    "圆形",
+    "建筑"
+  ],
+  "interface": {
+    "parameters": {
+      "bottom_radius": {
+        "type": "number",
+        "unit": "mm",
+        "default": 15000,
+        "node": "n1",
+        "field": "value",
+        "description": "底部圆半径"
+      },
+      "top_radius": {
+        "type": "number",
+        "unit": "mm",
+        "default": 5000,
+        "node": "n2",
+        "field": "value",
+        "description": "顶部圆半径"
+      },
+      "height": {
+        "type": "number",
+        "unit": "mm",
+        "default": 60000,
+        "node": "n3",
+        "field": "value",
+        "description": "总高度"
+      }
+    },
+    "inputs": {},
+    "outputs": {
+      "tapered_mass": {
+        "node": "n8",
+        "port": "Loft",
+        "type": "GH_Brep",
+        "access": "item",
+        "cardinality": 1,
+        "description": "上下圆截面 Loft 形成的单面 Brep。"
+      }
+    }
+  },
+  "composable_with": [
+    "facade-grid"
+  ],
+  "composition_rules": [
+    {
+      "id": "taper_to_facade_grid",
+      "target_recipe": "facade-grid",
+      "description": "将单面 Loft Brep 显式拆为 Surface，再驱动 UV 分格。",
+      "bindings": [
+        {
+          "from_output": "tapered_mass",
+          "to": {
+            "input": "surface"
+          },
+          "adapters": [
+            {
+              "selector": "8d372bdc-9800-45e9-8a26-6e33c5253e21",
+              "input_port": "Brep",
+              "output_port": "Faces",
+              "parameters": {}
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "verified": true,
+  "verified_date": "2026-04-13",
+  "test_case": ""
+}

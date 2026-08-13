@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schemas/recipe-v2.schema.json",
+  "schema_version": 2,
+  "id": "array-linear",
+  "name": "线性等距阵列",
+  "description": "沿 X 轴等距线性阵列几何体：矩形平板为基准对象，按间距和数量沿 X 轴等距复制",
+  "tags": [
+    "array",
+    "linear",
+    "move",
+    "series",
+    "repeat",
+    "阵列",
+    "线性",
+    "等距",
+    "复制",
+    "X轴"
+  ],
+  "interface": {
+    "parameters": {
+      "count": {
+        "type": "integer",
+        "unit": null,
+        "default": 5,
+        "node": "n1",
+        "field": "value",
+        "description": "阵列数量"
+      },
+      "spacing": {
+        "type": "number",
+        "unit": "mm",
+        "default": 6000,
+        "node": "n2",
+        "field": "value",
+        "description": "对象间距"
+      },
+      "obj_width": {
+        "type": "number",
+        "unit": "mm",
+        "default": 4000,
+        "node": "n3",
+        "field": "value",
+        "description": "基准对象宽度"
+      },
+      "obj_depth": {
+        "type": "number",
+        "unit": "mm",
+        "default": 4000,
+        "node": "n4",
+        "field": "value",
+        "description": "基准对象进深"
+      }
+    },
+    "inputs": {},
+    "outputs": {
+      "instances": {
+        "node": "n9",
+        "port": "Geometry",
+        "type": "IGH_GeometricGoo",
+        "access": "list",
+        "cardinality": null,
+        "description": "线性阵列后的几何列表。"
+      }
+    }
+  },
+  "composable_with": [
+    "array-radial",
+    "mass-extrude"
+  ],
+  "composition_rules": [],
+  "verified": true,
+  "verified_date": "2026-04-13",
+  "test_case": ""
+}

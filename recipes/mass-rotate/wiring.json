@@ -1,0 +1,135 @@
+{
+  "description": "螺旋上升塔楼：椭圆楼板（21000×7000mm），20层，每层高5000mm，每层旋转5°",
+  "nodes": [
+    {
+      "id": "n1",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "Floors",
+      "position": { "x": 0, "y": 0 },
+      "preset": { "value": 20, "min": 1, "max": 50 }
+    },
+    {
+      "id": "n2",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "FloorHeight",
+      "position": { "x": 0, "y": 150 },
+      "preset": { "value": 5000, "min": 1000, "max": 10000 }
+    },
+    {
+      "id": "n3",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "RotStep_deg",
+      "position": { "x": 0, "y": 300 },
+      "preset": { "value": 5, "min": 0, "max": 30 }
+    },
+    {
+      "id": "n4",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "RadiusLong",
+      "position": { "x": 0, "y": 450 },
+      "preset": { "value": 10500, "min": 1000, "max": 30000 }
+    },
+    {
+      "id": "n5",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "RadiusShort",
+      "position": { "x": 0, "y": 600 },
+      "preset": { "value": 3500, "min": 500, "max": 15000 }
+    },
+    {
+      "id": "n6",
+      "guid": "e64c5fb1-845c-4ab1-8911-5f338516ba67",
+      "name": "Series",
+      "position": { "x": 300, "y": 0 }
+    },
+    {
+      "id": "n10",
+      "guid": "17b7152b-d30d-4d50-b9ef-c9fe25576fc2",
+      "name": "XY Plane",
+      "position": { "x": 300, "y": 525 }
+    },
+    {
+      "id": "n7",
+      "guid": "ce46b74e-00c9-43c4-805a-193b69ea4a11",
+      "name": "Multiplication",
+      "nickname": "Mult_height",
+      "position": { "x": 600, "y": 0 }
+    },
+    {
+      "id": "n8",
+      "guid": "ce46b74e-00c9-43c4-805a-193b69ea4a11",
+      "name": "Multiplication",
+      "nickname": "Mult_angle",
+      "position": { "x": 600, "y": 150 }
+    },
+    {
+      "id": "n11",
+      "guid": "46b5564d-d3eb-4bf1-ae16-15ed132cfd88",
+      "name": "Ellipse",
+      "position": { "x": 600, "y": 450 }
+    },
+    {
+      "id": "n13",
+      "guid": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+      "name": "Unit Z",
+      "nickname": "UnitZ_move",
+      "position": { "x": 900, "y": 0 }
+    },
+    {
+      "id": "n9",
+      "guid": "a4cd2751-414d-42ec-8916-476ebf62d7fe",
+      "name": "Radians",
+      "position": { "x": 900, "y": 150 }
+    },
+    {
+      "id": "n12",
+      "guid": "b7798b74-037e-4f0c-8ac7-dc1043d093e0",
+      "name": "Rotate",
+      "position": { "x": 900, "y": 375 }
+    },
+    {
+      "id": "n15",
+      "guid": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+      "name": "Unit Z",
+      "nickname": "UnitZ_extrude",
+      "position": { "x": 1150, "y": 150 }
+    },
+    {
+      "id": "n14",
+      "guid": "e9eb1dcf-92f6-4d4d-84ae-96222d60f56b",
+      "name": "Move",
+      "position": { "x": 1150, "y": 375 }
+    },
+    {
+      "id": "n16",
+      "guid": "962034e9-cc27-4394-afc4-5c16e3447cf9",
+      "name": "Extrude",
+      "position": { "x": 1400, "y": 300 }
+    }
+  ],
+  "connections": [
+    { "from": { "node": "n1",  "port": "Value"    }, "to": { "node": "n6",  "port": "Count"    } },
+    { "from": { "node": "n6",  "port": "Series"   }, "to": { "node": "n7",  "port": "A"        } },
+    { "from": { "node": "n2",  "port": "Value"    }, "to": { "node": "n7",  "port": "B"        } },
+    { "from": { "node": "n6",  "port": "Series"   }, "to": { "node": "n8",  "port": "A"        } },
+    { "from": { "node": "n3",  "port": "Value"    }, "to": { "node": "n8",  "port": "B"        } },
+    { "from": { "node": "n8",  "port": "Result"   }, "to": { "node": "n9",  "port": "Degrees"  } },
+    { "from": { "node": "n10", "port": "Plane"    }, "to": { "node": "n11", "port": "Plane"    } },
+    { "from": { "node": "n4",  "port": "Value"    }, "to": { "node": "n11", "port": "Radius 1" } },
+    { "from": { "node": "n5",  "port": "Value"    }, "to": { "node": "n11", "port": "Radius 2" } },
+    { "from": { "node": "n11", "port": "Ellipse"  }, "to": { "node": "n12", "port": "Geometry" } },
+    { "from": { "node": "n9",  "port": "Radians"  }, "to": { "node": "n12", "port": "Angle"    } },
+    { "from": { "node": "n10", "port": "Plane"    }, "to": { "node": "n12", "port": "Plane"    } },
+    { "from": { "node": "n7",  "port": "Result"   }, "to": { "node": "n13", "port": "Factor"   } },
+    { "from": { "node": "n12", "port": "Geometry" }, "to": { "node": "n14", "port": "Geometry" } },
+    { "from": { "node": "n13", "port": "Unit vector" }, "to": { "node": "n14", "port": "Motion" } },
+    { "from": { "node": "n2",  "port": "Value"    }, "to": { "node": "n15", "port": "Factor"   } },
+    { "from": { "node": "n14", "port": "Geometry" }, "to": { "node": "n16", "port": "Base"     } },
+    { "from": { "node": "n15", "port": "Unit vector" }, "to": { "node": "n16", "port": "Direction" } }
+  ]
+}

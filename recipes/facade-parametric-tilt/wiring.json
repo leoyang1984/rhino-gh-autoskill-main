@@ -1,0 +1,102 @@
+{
+  "description": "参数化倾斜幕墙：输入外部曲面，UV 分格生成面板，并按 TiltAngle 围绕局部 X 轴倾斜每块面板",
+  "nodes": [
+    {
+      "id": "n1",
+      "guid": "deaf8653-5528-4286-807c-3de8b8dad781",
+      "name": "Surface",
+      "nickname": "BaseSurface",
+      "position": { "x": 0, "y": 0 }
+    },
+    {
+      "id": "n2",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "U_Count",
+      "position": { "x": 0, "y": 150 },
+      "preset": { "value": 8, "min": 1, "max": 50 }
+    },
+    {
+      "id": "n3",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "V_Count",
+      "position": { "x": 0, "y": 300 },
+      "preset": { "value": 12, "min": 1, "max": 100 }
+    },
+    {
+      "id": "n4",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "TiltAngle",
+      "position": { "x": 0, "y": 450 },
+      "preset": { "value": 20, "min": -60, "max": 60 }
+    },
+    {
+      "id": "n5",
+      "guid": "75ac008b-1bc2-4edd-b967-667d628b9d24",
+      "name": "Divide Domain²",
+      "nickname": "PanelDomains",
+      "position": { "x": 250, "y": 150 }
+    },
+    {
+      "id": "n6",
+      "guid": "6a9ccaab-1b03-484e-bbda-be9c81584a66",
+      "name": "Isotrim",
+      "nickname": "Panels",
+      "position": { "x": 500, "y": 75 }
+    },
+    {
+      "id": "n7",
+      "guid": "86b28a7e-94d9-4791-8306-e13e10d5f8d5",
+      "name": "Area",
+      "nickname": "PanelCenters",
+      "position": { "x": 750, "y": 0 }
+    },
+    {
+      "id": "n8",
+      "guid": "332378f4-acb2-43fe-8593-ed22bfeb2721",
+      "name": "Surface Frames",
+      "nickname": "PanelFrames",
+      "position": { "x": 500, "y": 300 }
+    },
+    {
+      "id": "n9",
+      "guid": "3cd2949b-4ea8-4ffb-a70c-5c380f9f46ea",
+      "name": "Deconstruct Plane",
+      "nickname": "FrameAxes",
+      "position": { "x": 750, "y": 300 }
+    },
+    {
+      "id": "n10",
+      "guid": "a4cd2751-414d-42ec-8916-476ebf62d7fe",
+      "name": "Radians",
+      "nickname": "TiltRadians",
+      "position": { "x": 250, "y": 450 }
+    },
+    {
+      "id": "n11",
+      "guid": "3dfb9a77-6e05-4016-9f20-94f78607d672",
+      "name": "Rotate 3D",
+      "nickname": "TiltedPanels",
+      "position": { "x": 1000, "y": 150 }
+    }
+  ],
+  "connections": [
+    { "from": { "node": "n1",  "port": "Surface"  }, "to": { "node": "n5",  "port": "Domain"   } },
+    { "from": { "node": "n2",  "port": "Value"    }, "to": { "node": "n5",  "port": "U Count"  } },
+    { "from": { "node": "n3",  "port": "Value"    }, "to": { "node": "n5",  "port": "V Count"  } },
+    { "from": { "node": "n1",  "port": "Surface"  }, "to": { "node": "n6",  "port": "Surface"  } },
+    { "from": { "node": "n5",  "port": "Segments" }, "to": { "node": "n6",  "port": "Domain"   } },
+    { "from": { "node": "n6",  "port": "Surface"  }, "to": { "node": "n7",  "port": "Geometry" } },
+    { "from": { "node": "n1",  "port": "Surface"  }, "to": { "node": "n8",  "port": "Surface"  } },
+    { "from": { "node": "n2",  "port": "Value"    }, "to": { "node": "n8",  "port": "U Count"  } },
+    { "from": { "node": "n3",  "port": "Value"    }, "to": { "node": "n8",  "port": "V Count"  } },
+    { "from": { "node": "n8",  "port": "Frames"   }, "to": { "node": "n9",  "port": "Plane"    } },
+    { "from": { "node": "n4",  "port": "Value"    }, "to": { "node": "n10", "port": "Degrees"  } },
+    { "from": { "node": "n6",  "port": "Surface"  }, "to": { "node": "n11", "port": "Geometry" } },
+    { "from": { "node": "n10", "port": "Radians"  }, "to": { "node": "n11", "port": "Angle"    } },
+    { "from": { "node": "n7",  "port": "Centroid" }, "to": { "node": "n11", "port": "Center"   } },
+    { "from": { "node": "n9",  "port": "X-Axis"   }, "to": { "node": "n11", "port": "Axis"     } }
+  ]
+}

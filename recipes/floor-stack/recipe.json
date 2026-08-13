@@ -1,0 +1,75 @@
+{
+  "$schema": "../../schemas/recipe-v2.schema.json",
+  "schema_version": 2,
+  "id": "floor-stack",
+  "name": "标准层堆叠",
+  "description": "标准层水平堆叠阵列：矩形楼板轮廓生成平板楼层，按层高等距垂直堆叠，输出多层楼板面",
+  "tags": [
+    "floor",
+    "stack",
+    "slab",
+    "rectangle",
+    "array",
+    "building",
+    "楼板",
+    "堆叠",
+    "标准层",
+    "阵列",
+    "矩形"
+  ],
+  "interface": {
+    "parameters": {
+      "width": {
+        "type": "number",
+        "unit": "mm",
+        "default": 20000,
+        "node": "n1",
+        "field": "value",
+        "description": "楼板宽度"
+      },
+      "depth": {
+        "type": "number",
+        "unit": "mm",
+        "default": 15000,
+        "node": "n2",
+        "field": "value",
+        "description": "楼板进深"
+      },
+      "floor_height": {
+        "type": "number",
+        "unit": "mm",
+        "default": 4000,
+        "node": "n3",
+        "field": "value",
+        "description": "层高"
+      },
+      "floors": {
+        "type": "integer",
+        "unit": null,
+        "default": 10,
+        "node": "n4",
+        "field": "value",
+        "description": "楼层数"
+      }
+    },
+    "inputs": {},
+    "outputs": {
+      "floors": {
+        "node": "n9",
+        "port": "Geometry",
+        "type": "GH_Surface",
+        "access": "list",
+        "cardinality": null,
+        "description": "按标高堆叠的楼板面列表。"
+      }
+    }
+  },
+  "composable_with": [
+    "mass-extrude",
+    "facade-grid"
+  ],
+  "composition_rules": [],
+  "verified": true,
+  "verified_date": "2026-04-13",
+  "test_case": ""
+}

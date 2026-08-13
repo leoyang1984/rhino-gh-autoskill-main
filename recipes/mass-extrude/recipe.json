@@ -1,0 +1,147 @@
+{
+  "$schema": "../../schemas/recipe-v2.schema.json",
+  "schema_version": 2,
+  "id": "mass-extrude",
+  "name": "矩形挤出体量",
+  "description": "矩形楼板垂直拉伸，生成多层建筑体块：矩形截面（宽×深），按层高复制堆叠，每层独立拉伸成体量",
+  "tags": [
+    "extrude",
+    "rectangle",
+    "mass",
+    "floor",
+    "building",
+    "stack",
+    "矩形",
+    "挤出",
+    "体量",
+    "楼板",
+    "堆叠",
+    "建筑"
+  ],
+  "interface": {
+    "parameters": {
+      "width": {
+        "type": "number",
+        "unit": "mm",
+        "default": 20000,
+        "node": "n1",
+        "field": "value",
+        "description": "矩形楼板宽度"
+      },
+      "depth": {
+        "type": "number",
+        "unit": "mm",
+        "default": 15000,
+        "node": "n2",
+        "field": "value",
+        "description": "矩形楼板进深"
+      },
+      "floor_height": {
+        "type": "number",
+        "unit": "mm",
+        "default": 4000,
+        "node": "n3",
+        "field": "value",
+        "description": "层高"
+      },
+      "floors": {
+        "type": "integer",
+        "unit": null,
+        "default": 10,
+        "node": "n4",
+        "field": "value",
+        "description": "楼层数"
+      }
+    },
+    "inputs": {},
+    "outputs": {
+      "floor_breps": {
+        "node": "n10",
+        "port": "Extrusion",
+        "type": "GH_Brep",
+        "access": "list",
+        "cardinality": null,
+        "description": "逐层挤出的开放 Brep 列表。"
+      }
+    }
+  },
+  "composable_with": [
+    "facade-panel-flat",
+    "facade-grid"
+  ],
+  "composition_rules": [
+    {
+      "id": "floor_breps_to_facade_grid",
+      "target_recipe": "facade-grid",
+      "description": "逐层 Brep 拆面并按分支选择同序号立面，驱动 UV 分格。",
+      "bindings": [
+        {
+          "from_output": "floor_breps",
+          "to": {
+            "input": "surface"
+          },
+          "adapters": [
+            {
+              "selector": "8d372bdc-9800-45e9-8a26-6e33c5253e21",
+              "input_port": "Brep",
+              "output_port": "Faces",
+              "parameters": {}
+            },
+            {
+              "selector": "59daf374-bc21-4a5e-8282-5504fb7ae9ae",
+              "input_port": "List",
+              "output_port": "Item",
+              "parameters": {
+                "Index": {
+                  "kind": "slider",
+                  "name": "FaceIndex",
+                  "value": 2,
+                  "min": 0,
+                  "max": 5
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "floor_breps_to_flat_panels",
+      "target_recipe": "facade-panel-flat",
+      "description": "逐层 Brep 拆面并按分支选择同序号立面，驱动平板幕墙。",
+      "bindings": [
+        {
+          "from_output": "floor_breps",
+          "to": {
+            "input": "surface"
+          },
+          "adapters": [
+            {
+              "selector": "8d372bdc-9800-45e9-8a26-6e33c5253e21",
+              "input_port": "Brep",
+              "output_port": "Faces",
+              "parameters": {}
+            },
+            {
+              "selector": "59daf374-bc21-4a5e-8282-5504fb7ae9ae",
+              "input_port": "List",
+              "output_port": "Item",
+              "parameters": {
+                "Index": {
+                  "kind": "slider",
+                  "name": "FaceIndex",
+                  "value": 2,
+                  "min": 0,
+                  "max": 5
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "verified": true,
+  "verified_date": "2026-04-13",
+  "test_case": ""
+}

@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:gh-ai-wiring:schema:recipe-v2",
+  "title": "Grasshopper Recipe v2",
+  "description": "A Recipe with stable public parameters, data inputs, data outputs, and composition rules.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "name",
+    "description",
+    "tags",
+    "interface",
+    "composable_with",
+    "composition_rules",
+    "verified"
+  ],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": 2},
+    "id": {"$ref": "#/$defs/publicName"},
+    "name": {"type": "string", "minLength": 1},
+    "description": {"type": "string"},
+    "tags": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "interface": {
+      "type": "object",
+      "required": ["parameters", "inputs", "outputs"],
+      "properties": {
+        "parameters": {
+          "type": "object",
+          "propertyNames": {"$ref": "#/$defs/publicName"},
+          "additionalProperties": {"$ref": "#/$defs/parameter"}
+        },
+        "inputs": {
+          "type": "object",
+          "propertyNames": {"$ref": "#/$defs/publicName"},
+          "additionalProperties": {"$ref": "#/$defs/input"}
+        },
+        "outputs": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {"$ref": "#/$defs/publicName"},
+          "additionalProperties": {"$ref": "#/$defs/output"}
+        }
+      },
+      "additionalProperties": false
+    },
+    "composable_with": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/publicName"},
+      "uniqueItems": true
+    },
+    "composition_rules": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/compositionRule"}
+    },
+    "verified": {"type": "boolean"},
+    "verified_date": {"type": ["string", "null"]},
+    "test_case": {"type": ["string", "null"]},
+    "deprecated": {"type": "boolean"}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "publicName": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_\\-]*$"
+    },
+    "access": {
+      "enum": ["item", "list", "tree"]
+    },
+    "parameter": {
+      "type": "object",
+      "required": ["type", "default", "node", "field"],
+      "properties": {
+        "type": {"enum": ["number", "integer", "boolean", "string"]},
+        "unit": {"type": ["string", "null"]},
+        "default": {},
+        "node": {"type": "string", "minLength": 1},
+        "field": {"const": "value"},
+        "description": {"type": "string"},
+        "minimum": {"type": "number"},
+        "maximum": {"type": "number"}
+      },
+      "additionalProperties": false
+    },
+    "inputBinding": {
+      "type": "object",
+      "required": ["node", "port", "mode"],
+      "properties": {
+        "node": {"type": "string", "minLength": 1},
+        "port": {"type": "string", "minLength": 1},
+        "mode": {"enum": ["replace", "append"]}
+      },
+      "additionalProperties": false
+    },
+    "input": {
+      "type": "object",
+      "required": ["type", "access", "bindings"],
+      "properties": {
+        "type": {"type": "string", "minLength": 1},
+        "access": {"$ref": "#/$defs/access"},
+        "cardinality": {"type": ["integer", "null"], "minimum": 1},
+        "description": {"type": "string"},
+        "bindings": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/inputBinding"}
+        }
+      },
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "required": ["node", "port", "type", "access"],
+      "properties": {
+        "node": {"type": "string", "minLength": 1},
+        "port": {"type": "string", "minLength": 1},
+        "type": {"type": "string", "minLength": 1},
+        "access": {"$ref": "#/$defs/access"},
+        "cardinality": {"type": ["integer", "null"], "minimum": 1},
+        "description": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "componentAdapter": {
+      "type": "object",
+      "required": ["selector", "input_port", "output_port"],
+      "properties": {
+        "selector": {"type": "string", "minLength": 1},
+        "input_port": {"type": "string", "minLength": 1},
+        "output_port": {"type": "string", "minLength": 1},
+        "parameters": {"type": "object"}
+      },
+      "additionalProperties": false
+    },
+    "compositionBinding": {
+      "type": "object",
+      "required": ["from_output", "to", "adapters"],
+      "properties": {
+        "from_output": {"$ref": "#/$defs/publicName"},
+        "to": {
+          "oneOf": [
+            {
+              "type": "object",
+              "required": ["input"],
+              "properties": {"input": {"$ref": "#/$defs/publicName"}},
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "required": ["parameter"],
+              "properties": {"parameter": {"$ref": "#/$defs/publicName"}},
+              "additionalProperties": false
+            }
+          ]
+        },
+        "adapters": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/componentAdapter"}
+        }
+      },
+      "additionalProperties": false
+    },
+    "compositionRule": {
+      "type": "object",
+      "required": ["id", "target_recipe", "bindings"],
+      "properties": {
+        "id": {"$ref": "#/$defs/publicName"},
+        "target_recipe": {"$ref": "#/$defs/publicName"},
+        "description": {"type": "string"},
+        "bindings": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/compositionBinding"}
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

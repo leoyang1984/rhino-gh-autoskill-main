@@ -1,0 +1,95 @@
+{
+  "$schema": "../../schemas/recipe-v2.schema.json",
+  "schema_version": 2,
+  "id": "facade-grid",
+  "name": "表皮UV分格",
+  "description": "曲面 UV 分格生成表皮网格：矩形面板 Isotrim 切分为 U×V 子面板，每格为独立曲面，有实体边线，可替换为任意建筑曲面",
+  "tags": [
+    "facade",
+    "grid",
+    "UV",
+    "isotrim",
+    "surface",
+    "panel",
+    "表皮",
+    "分格",
+    "网格",
+    "幕墙",
+    "面板"
+  ],
+  "interface": {
+    "parameters": {
+      "width": {
+        "type": "number",
+        "unit": "mm",
+        "default": 20000,
+        "node": "n1",
+        "field": "value",
+        "description": "面板宽度"
+      },
+      "height": {
+        "type": "number",
+        "unit": "mm",
+        "default": 40000,
+        "node": "n2",
+        "field": "value",
+        "description": "面板高度"
+      },
+      "u_count": {
+        "type": "integer",
+        "unit": null,
+        "default": 10,
+        "node": "n3",
+        "field": "value",
+        "description": "水平分格数"
+      },
+      "v_count": {
+        "type": "integer",
+        "unit": null,
+        "default": 20,
+        "node": "n4",
+        "field": "value",
+        "description": "垂直分格数"
+      }
+    },
+    "inputs": {
+      "surface": {
+        "type": "GH_Surface",
+        "access": "item",
+        "cardinality": 1,
+        "description": "待分格的建筑表皮曲面。",
+        "bindings": [
+          {
+            "node": "n7",
+            "port": "Domain",
+            "mode": "replace"
+          },
+          {
+            "node": "n8",
+            "port": "Surface",
+            "mode": "replace"
+          }
+        ]
+      }
+    },
+    "outputs": {
+      "panels": {
+        "node": "n8",
+        "port": "Surface",
+        "type": "GH_Surface",
+        "access": "tree",
+        "cardinality": null,
+        "description": "UV 分格后的面板曲面树。"
+      }
+    }
+  },
+  "composable_with": [
+    "mass-extrude",
+    "floor-stack",
+    "facade-panel-flat"
+  ],
+  "composition_rules": [],
+  "verified": true,
+  "verified_date": "2026-04-13",
+  "test_case": ""
+}

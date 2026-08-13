@@ -1,0 +1,77 @@
+{
+  "description": "沿 X 轴等距线性阵列几何体：矩形平板为基准对象，按间距和数量沿 X 轴等距复制",
+  "nodes": [
+    {
+      "id": "n1",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "Count",
+      "position": { "x": 0, "y": 0 },
+      "preset": { "value": 5, "min": 1, "max": 20 }
+    },
+    {
+      "id": "n2",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "Spacing",
+      "position": { "x": 0, "y": 150 },
+      "preset": { "value": 6000, "min": 1000, "max": 30000 }
+    },
+    {
+      "id": "n3",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "ObjWidth",
+      "position": { "x": 0, "y": 300 },
+      "preset": { "value": 4000, "min": 500, "max": 20000 }
+    },
+    {
+      "id": "n4",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "ObjDepth",
+      "position": { "x": 0, "y": 450 },
+      "preset": { "value": 4000, "min": 500, "max": 20000 }
+    },
+    {
+      "id": "n5",
+      "guid": "d93100b6-d50b-40b2-831a-814659dc38e3",
+      "name": "Rectangle",
+      "position": { "x": 250, "y": 300 }
+    },
+    {
+      "id": "n6",
+      "guid": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+      "name": "Boundary Surfaces",
+      "position": { "x": 500, "y": 300 }
+    },
+    {
+      "id": "n7",
+      "guid": "e64c5fb1-845c-4ab1-8911-5f338516ba67",
+      "name": "Series",
+      "position": { "x": 250, "y": 0 }
+    },
+    {
+      "id": "n8",
+      "guid": "79f9fbb3-8f1d-4d9a-88a9-f7961b1012cd",
+      "name": "Unit X",
+      "position": { "x": 500, "y": 0 }
+    },
+    {
+      "id": "n9",
+      "guid": "e9eb1dcf-92f6-4d4d-84ae-96222d60f56b",
+      "name": "Move",
+      "position": { "x": 750, "y": 150 }
+    }
+  ],
+  "connections": [
+    { "from": { "node": "n1", "port": "Value"       }, "to": { "node": "n7", "port": "Count"    } },
+    { "from": { "node": "n2", "port": "Value"       }, "to": { "node": "n7", "port": "Step"     } },
+    { "from": { "node": "n7", "port": "Series"      }, "to": { "node": "n8", "port": "Factor"   } },
+    { "from": { "node": "n3", "port": "Value"       }, "to": { "node": "n5", "port": "X Size"   } },
+    { "from": { "node": "n4", "port": "Value"       }, "to": { "node": "n5", "port": "Y Size"   } },
+    { "from": { "node": "n5", "port": "Rectangle"   }, "to": { "node": "n6", "port": "Edges"    } },
+    { "from": { "node": "n6", "port": "Surfaces"    }, "to": { "node": "n9", "port": "Geometry" } },
+    { "from": { "node": "n8", "port": "Unit vector" }, "to": { "node": "n9", "port": "Motion"   } }
+  ]
+}

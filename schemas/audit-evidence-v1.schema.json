@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:gh-ai-wiring:schema:audit-evidence-v1",
+  "title": "Normalized Grasshopper MCP Audit Evidence v1",
+  "type": "object",
+  "required": ["evidence_version", "subject", "captured_at", "apply", "solve", "canvas", "assertions", "visual_review"],
+  "properties": {
+    "evidence_version": {"const": 1},
+    "subject": {
+      "type": "object",
+      "required": ["kind", "id"],
+      "properties": {
+        "kind": {"enum": ["recipe", "composition", "wiring"]},
+        "id": {"type": "string", "minLength": 1}
+      }
+    },
+    "captured_at": {"type": "string"},
+    "apply": {"type": "object"},
+    "solve": {"type": "object"},
+    "canvas": {"type": "object"},
+    "assertions": {"type": "array"},
+    "visual_review": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {"status": {"enum": ["pending", "approved", "rejected"]}}
+    },
+    "raw": {"type": "object"}
+  },
+  "additionalProperties": true
+}

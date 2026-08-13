@@ -1,0 +1,166 @@
+{
+  "description": "布尔运算体量：主矩形体量减去可偏移的切割矩形体量，生成中庭或开洞体块",
+  "nodes": [
+    {
+      "id": "n1",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "MainWidth",
+      "position": { "x": 0, "y": 0 },
+      "preset": { "value": 40, "min": 10, "max": 100 }
+    },
+    {
+      "id": "n2",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "MainDepth",
+      "position": { "x": 0, "y": 150 },
+      "preset": { "value": 30, "min": 10, "max": 80 }
+    },
+    {
+      "id": "n3",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "Height",
+      "position": { "x": 0, "y": 300 },
+      "preset": { "value": 20, "min": 5, "max": 80 }
+    },
+    {
+      "id": "n4",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "CutWidth",
+      "position": { "x": 0, "y": 450 },
+      "preset": { "value": 14, "min": 2, "max": 60 }
+    },
+    {
+      "id": "n5",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "CutDepth",
+      "position": { "x": 0, "y": 600 },
+      "preset": { "value": 10, "min": 2, "max": 50 }
+    },
+    {
+      "id": "n6",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "CutOffsetX",
+      "position": { "x": 0, "y": 750 },
+      "preset": { "value": 0, "min": -30, "max": 30 }
+    },
+    {
+      "id": "n7",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "CutOffsetY",
+      "position": { "x": 0, "y": 900 },
+      "preset": { "value": 0, "min": -25, "max": 25 }
+    },
+    {
+      "id": "n8",
+      "guid": "d93100b6-d50b-40b2-831a-814659dc38e3",
+      "name": "Rectangle",
+      "nickname": "MainRect",
+      "position": { "x": 250, "y": 75 }
+    },
+    {
+      "id": "n9",
+      "guid": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+      "name": "Unit Z",
+      "nickname": "ExtrudeVec",
+      "position": { "x": 250, "y": 300 }
+    },
+    {
+      "id": "n10",
+      "guid": "962034e9-cc27-4394-afc4-5c16e3447cf9",
+      "name": "Extrude",
+      "nickname": "MainBrep",
+      "position": { "x": 500, "y": 150 }
+    },
+    {
+      "id": "n11",
+      "guid": "d93100b6-d50b-40b2-831a-814659dc38e3",
+      "name": "Rectangle",
+      "nickname": "CutRect",
+      "position": { "x": 250, "y": 525 }
+    },
+    {
+      "id": "n12",
+      "guid": "79f9fbb3-8f1d-4d9a-88a9-f7961b1012cd",
+      "name": "Unit X",
+      "nickname": "CutXVec",
+      "position": { "x": 250, "y": 750 }
+    },
+    {
+      "id": "n13",
+      "guid": "d3d195ea-2d59-4ffa-90b1-8b7ff3369f69",
+      "name": "Unit Y",
+      "nickname": "CutYVec",
+      "position": { "x": 250, "y": 900 }
+    },
+    {
+      "id": "n14",
+      "guid": "a0d62394-a118-422d-abb3-6af115c75b25",
+      "name": "Addition",
+      "nickname": "CutMoveVec",
+      "position": { "x": 500, "y": 825 }
+    },
+    {
+      "id": "n15",
+      "guid": "e9eb1dcf-92f6-4d4d-84ae-96222d60f56b",
+      "name": "Move",
+      "nickname": "CutRectMoved",
+      "position": { "x": 750, "y": 525 }
+    },
+    {
+      "id": "n16",
+      "guid": "962034e9-cc27-4394-afc4-5c16e3447cf9",
+      "name": "Extrude",
+      "nickname": "CutBrep",
+      "position": { "x": 1000, "y": 525 }
+    },
+    {
+      "id": "n17",
+      "guid": "b648d933-ddea-4e75-834c-8f6f3793e311",
+      "name": "Cap Holes",
+      "nickname": "MainSolid",
+      "position": { "x": 750, "y": 150 }
+    },
+    {
+      "id": "n18",
+      "guid": "b648d933-ddea-4e75-834c-8f6f3793e311",
+      "name": "Cap Holes",
+      "nickname": "CutSolid",
+      "position": { "x": 1250, "y": 525 }
+    },
+    {
+      "id": "n19",
+      "guid": "fab11c30-2d9c-4d15-ab3c-2289f1ae5c21",
+      "name": "Solid Difference",
+      "nickname": "BooleanMass",
+      "position": { "x": 1500, "y": 300 }
+    }
+  ],
+  "connections": [
+    { "from": { "node": "n1", "port": "Value" }, "to": { "node": "n8", "port": "X Size" } },
+    { "from": { "node": "n2", "port": "Value" }, "to": { "node": "n8", "port": "Y Size" } },
+    { "from": { "node": "n3", "port": "Value" }, "to": { "node": "n9", "port": "Factor" } },
+    { "from": { "node": "n8", "port": "Rectangle" }, "to": { "node": "n10", "port": "Base" } },
+    { "from": { "node": "n9", "port": "Unit vector" }, "to": { "node": "n10", "port": "Direction" } },
+    { "from": { "node": "n4", "port": "Value" }, "to": { "node": "n11", "port": "X Size" } },
+    { "from": { "node": "n5", "port": "Value" }, "to": { "node": "n11", "port": "Y Size" } },
+    { "from": { "node": "n6", "port": "Value" }, "to": { "node": "n12", "port": "Factor" } },
+    { "from": { "node": "n7", "port": "Value" }, "to": { "node": "n13", "port": "Factor" } },
+    { "from": { "node": "n12", "port": "Unit vector" }, "to": { "node": "n14", "port": "A" } },
+    { "from": { "node": "n13", "port": "Unit vector" }, "to": { "node": "n14", "port": "B" } },
+    { "from": { "node": "n11", "port": "Rectangle" }, "to": { "node": "n15", "port": "Geometry" } },
+    { "from": { "node": "n14", "port": "Result" }, "to": { "node": "n15", "port": "Motion" } },
+    { "from": { "node": "n15", "port": "Geometry" }, "to": { "node": "n16", "port": "Base" } },
+    { "from": { "node": "n9", "port": "Unit vector" }, "to": { "node": "n16", "port": "Direction" } },
+    { "from": { "node": "n10", "port": "Extrusion" }, "to": { "node": "n17", "port": "Brep" } },
+    { "from": { "node": "n16", "port": "Extrusion" }, "to": { "node": "n18", "port": "Brep" } },
+    { "from": { "node": "n17", "port": "Brep" }, "to": { "node": "n19", "port": "Breps A" } },
+    { "from": { "node": "n18", "port": "Brep" }, "to": { "node": "n19", "port": "Breps B" } }
+  ]
+}

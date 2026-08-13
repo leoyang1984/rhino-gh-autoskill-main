@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "description": "Direct Grasshopper port compatibility rules. This file is the sole source for generated compatibility tables.",
+  "statuses": {
+    "EXACT": "Source and target expose the same declared type.",
+    "KNOWN_CAST": "A reviewed Grasshopper conversion or widening conversion is expected to preserve the intended value.",
+    "WARN": "Grasshopper may accept the connection, but the cast is runtime-dependent or can change semantics.",
+    "UNKNOWN": "The available component snapshot or rule set cannot make a reliable decision.",
+    "INCOMPATIBLE": "The direct wire is known to require an explicit adapter component."
+  },
+  "same_type_status": "EXACT",
+  "broad_targets": [
+    {
+      "to": "IGH_Goo",
+      "from": ["*"],
+      "status": "KNOWN_CAST",
+      "reason": "IGH_Goo accepts any Grasshopper data value."
+    },
+    {
+      "to": "IGH_GeometricGoo",
+      "from": [
+        "GH_Brep",
+        "GH_Surface",
+        "GH_Curve",
+        "GH_Circle",
+        "GH_Ellipse",
+        "GH_Point",
+        "GH_Mesh",
+        "GH_Line"
+      ],
+      "status": "KNOWN_CAST",
+      "reason": "Concrete Grasshopper geometry widens to IGH_GeometricGoo."
+    }
+  ],
+  "rules": [
+    {
+      "from": "GH_Circle",
+      "to": "GH_Curve",
+      "status": "KNOWN_CAST",
+      "reason": "A circle can be consumed as a curve."
+    },
+    {
+      "from": "GH_Ellipse",
+      "to": "GH_Curve",
+      "status": "KNOWN_CAST",
+      "reason": "An ellipse can be consumed as a curve."
+    },
+    {
+      "from": "GH_Surface",
+      "to": "GH_Interval2D",
+      "status": "KNOWN_CAST",
+      "reason": "Grasshopper extracts the UV domain for Domain² inputs."
+    },
+    {
+      "from": "GH_Number",
+      "to": "GH_Integer",
+      "status": "WARN",
+      "reason": "The implicit numeric cast can round or truncate a non-integer value."
+    },
+    {
+      "from": "GH_Number",
+      "to": "GH_Interval",
+      "status": "WARN",
+      "reason": "Grasshopper may construct a 0..N domain; confirm that this domain semantics is intended."
+    },
+    {
+      "from": "IGH_Goo",
+      "to": "GH_Number",
+      "status": "WARN",
+      "reason": "The generic source type hides the runtime value; CastFrom decides compatibility."
+    },
+    {
+      "from": "IGH_Goo",
+      "to": "GH_Curve",
+      "status": "WARN",
+      "reason": "The generic source type hides the runtime geometry; CastFrom decides compatibility."
+    },
+    {
+      "from": "IGH_Goo",
+      "to": "GH_Vector",
+      "status": "WARN",
+      "reason": "The generic source type hides the runtime value; CastFrom decides compatibility."
+    },
+    {
+      "from": "IGH_Goo",
+      "to": "IGH_GeometricGoo",
+      "status": "WARN",
+      "reason": "Only runtime geometric values can satisfy this narrowing conversion."
+    },
+    {
+      "from": "IGH_GeometricGoo",
+      "to": "GH_Curve",
+      "status": "WARN",
+      "reason": "Only runtime curve values can satisfy this narrowing conversion."
+    },
+    {
+      "from": "GH_Number",
+      "to": "GH_Vector",
+      "status": "INCOMPATIBLE",
+      "reason": "A scalar does not directly define a vector.",
+      "adapter": "Unit X / Unit Y / Unit Z"
+    },
+    {
+      "from": "GH_Number",
+      "to": "GH_Point",
+      "status": "INCOMPATIBLE",
+      "reason": "A scalar does not directly define a point.",
+      "adapter": "Construct Point"
+    },
+    {
+      "from": "GH_Point",
+      "to": "GH_Plane",
+      "status": "INCOMPATIBLE",
+      "reason": "A point does not define plane orientation.",
+      "adapter": "XY Plane / XZ Plane"
+    },
+    {
+      "from": "GH_Brep",
+      "to": "GH_Surface",
+      "status": "INCOMPATIBLE",
+      "reason": "A Brep may contain several faces and requires an explicit selection.",
+      "adapter": "Deconstruct Brep + List Item"
+    },
+    {
+      "from": "GH_Curve",
+      "to": "GH_Surface",
+      "status": "INCOMPATIBLE",
+      "reason": "A curve does not directly define a surface.",
+      "adapter": "Loft / Boundary Surfaces / Patch"
+    }
+  ],
+  "generic_source_fallbacks": [
+    {
+      "from": "IGH_Goo",
+      "status": "WARN",
+      "reason": "The generic source type requires runtime CastFrom evidence."
+    },
+    {
+      "from": "IGH_GeometricGoo",
+      "status": "WARN",
+      "reason": "The generic geometry source requires runtime subtype evidence."
+    }
+  ],
+  "default_status": "UNKNOWN"
+}

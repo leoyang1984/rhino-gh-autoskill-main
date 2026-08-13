@@ -1,0 +1,141 @@
+{
+  "$schema": "../../schemas/recipe-v2.schema.json",
+  "schema_version": 2,
+  "id": "mass-rotate",
+  "name": "旋转塔楼",
+  "description": "椭圆或圆形楼板沿垂直轴渐变旋转堆叠，生成螺旋塔楼体量",
+  "tags": [
+    "tower",
+    "rotate",
+    "spiral",
+    "floor",
+    "extrude",
+    "ellipse"
+  ],
+  "interface": {
+    "parameters": {
+      "floors": {
+        "type": "integer",
+        "unit": null,
+        "default": 20,
+        "node": "n1",
+        "field": "value",
+        "description": "楼层数"
+      },
+      "floor_height": {
+        "type": "number",
+        "unit": "mm",
+        "default": 5000,
+        "node": "n2",
+        "field": "value",
+        "description": "每层层高"
+      },
+      "rot_step_deg": {
+        "type": "number",
+        "unit": "deg",
+        "default": 5,
+        "node": "n3",
+        "field": "value",
+        "description": "每层旋转角度"
+      },
+      "radius_long": {
+        "type": "number",
+        "unit": "mm",
+        "default": 10500,
+        "node": "n4",
+        "field": "value",
+        "description": "椭圆长轴半径"
+      },
+      "radius_short": {
+        "type": "number",
+        "unit": "mm",
+        "default": 3500,
+        "node": "n5",
+        "field": "value",
+        "description": "椭圆短轴半径"
+      }
+    },
+    "inputs": {},
+    "outputs": {
+      "profile_curves": {
+        "node": "n14",
+        "port": "Geometry",
+        "type": "GH_Curve",
+        "access": "list",
+        "cardinality": null,
+        "description": "逐层旋转并抬升的截面曲线列表。"
+      },
+      "floor_breps": {
+        "node": "n16",
+        "port": "Extrusion",
+        "type": "GH_Brep",
+        "access": "list",
+        "cardinality": null,
+        "description": "逐层挤出的开放 Brep 列表。"
+      }
+    }
+  },
+  "composable_with": [
+    "facade-panel-flat",
+    "facade-grid"
+  ],
+  "composition_rules": [
+    {
+      "id": "profiles_to_facade_grid",
+      "target_recipe": "facade-grid",
+      "description": "旋转截面 Loft 后拆出外皮面，驱动 UV 分格。",
+      "bindings": [
+        {
+          "from_output": "profile_curves",
+          "to": {
+            "input": "surface"
+          },
+          "adapters": [
+            {
+              "selector": "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850",
+              "input_port": "Curves",
+              "output_port": "Loft",
+              "parameters": {}
+            },
+            {
+              "selector": "8d372bdc-9800-45e9-8a26-6e33c5253e21",
+              "input_port": "Brep",
+              "output_port": "Faces",
+              "parameters": {}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "profiles_to_flat_panels",
+      "target_recipe": "facade-panel-flat",
+      "description": "旋转截面 Loft 后拆出外皮面，驱动平板幕墙。",
+      "bindings": [
+        {
+          "from_output": "profile_curves",
+          "to": {
+            "input": "surface"
+          },
+          "adapters": [
+            {
+              "selector": "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850",
+              "input_port": "Curves",
+              "output_port": "Loft",
+              "parameters": {}
+            },
+            {
+              "selector": "8d372bdc-9800-45e9-8a26-6e33c5253e21",
+              "input_port": "Brep",
+              "output_port": "Faces",
+              "parameters": {}
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "verified": true,
+  "verified_date": "2026-04-12",
+  "test_case": "tests/test_05_spiral_tower.md"
+}

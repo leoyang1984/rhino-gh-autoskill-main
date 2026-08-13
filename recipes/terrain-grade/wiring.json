@@ -1,0 +1,47 @@
+{
+  "description": "场地平整：输入闭合整坡边界曲线，按目标标高整体抬升后生成整平场地面",
+  "nodes": [
+    {
+      "id": "n1",
+      "guid": "d5967b9f-e8ee-436b-a8ad-29fdcecf32d5",
+      "name": "Curve",
+      "nickname": "GradeBoundary",
+      "position": { "x": 0, "y": 0 }
+    },
+    {
+      "id": "n2",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "TargetElevation",
+      "position": { "x": 0, "y": 150 },
+      "preset": { "value": 5, "min": -20, "max": 50 }
+    },
+    {
+      "id": "n3",
+      "guid": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+      "name": "Unit Z",
+      "nickname": "GradeVec",
+      "position": { "x": 250, "y": 150 }
+    },
+    {
+      "id": "n4",
+      "guid": "e9eb1dcf-92f6-4d4d-84ae-96222d60f56b",
+      "name": "Move",
+      "nickname": "RaisedBoundary",
+      "position": { "x": 500, "y": 0 }
+    },
+    {
+      "id": "n5",
+      "guid": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+      "name": "Boundary Surfaces",
+      "nickname": "GradePad",
+      "position": { "x": 750, "y": 0 }
+    }
+  ],
+  "connections": [
+    { "from": { "node": "n2", "port": "Value" }, "to": { "node": "n3", "port": "Factor" } },
+    { "from": { "node": "n1", "port": "Curve" }, "to": { "node": "n4", "port": "Geometry" } },
+    { "from": { "node": "n3", "port": "Unit vector" }, "to": { "node": "n4", "port": "Motion" } },
+    { "from": { "node": "n4", "port": "Geometry" }, "to": { "node": "n5", "port": "Edges" } }
+  ]
+}

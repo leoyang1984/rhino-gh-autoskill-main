@@ -1,0 +1,134 @@
+{
+  "description": "竖向百叶幕墙：等间距竖向百叶翅片，可控数量、翻转角度、翅片深度，沿 X 轴展开，绕 Z 轴翻转",
+  "nodes": [
+    {
+      "id": "n1",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "Width",
+      "position": { "x": 0, "y": 0 },
+      "preset": { "value": 20000, "min": 1000, "max": 60000 }
+    },
+    {
+      "id": "n2",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "Height",
+      "position": { "x": 0, "y": 150 },
+      "preset": { "value": 40000, "min": 1000, "max": 150000 }
+    },
+    {
+      "id": "n3",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "LouverCount",
+      "position": { "x": 0, "y": 300 },
+      "preset": { "value": 20, "min": 2, "max": 100 }
+    },
+    {
+      "id": "n4",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "LouverAngle",
+      "position": { "x": 0, "y": 450 },
+      "preset": { "value": 30, "min": 0, "max": 90 }
+    },
+    {
+      "id": "n5",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "LouverDepth",
+      "position": { "x": 0, "y": 600 },
+      "preset": { "value": 300, "min": 50, "max": 2000 }
+    },
+    {
+      "id": "n6",
+      "guid": "9c85271f-89fa-4e9f-9f4a-d75802120ccc",
+      "name": "Division",
+      "nickname": "Spacing",
+      "position": { "x": 250, "y": 150 }
+    },
+    {
+      "id": "n7",
+      "guid": "e64c5fb1-845c-4ab1-8911-5f338516ba67",
+      "name": "Series",
+      "nickname": "XPositions",
+      "position": { "x": 500, "y": 150 }
+    },
+    {
+      "id": "n8",
+      "guid": "3581f42a-9592-4549-bd6b-1c0fc39d067b",
+      "name": "Construct Point",
+      "nickname": "BasePts",
+      "position": { "x": 750, "y": 0 }
+    },
+    {
+      "id": "n9",
+      "guid": "3581f42a-9592-4549-bd6b-1c0fc39d067b",
+      "name": "Construct Point",
+      "nickname": "TopPts",
+      "position": { "x": 750, "y": 300 }
+    },
+    {
+      "id": "n10",
+      "guid": "4c4e56eb-2f04-43f9-95a3-cc46a14f495a",
+      "name": "Line",
+      "nickname": "FinLines",
+      "position": { "x": 1000, "y": 150 }
+    },
+    {
+      "id": "n11",
+      "guid": "d3d195ea-2d59-4ffa-90b1-8b7ff3369f69",
+      "name": "Unit Y",
+      "nickname": "DepthDir",
+      "position": { "x": 250, "y": 600 }
+    },
+    {
+      "id": "n12",
+      "guid": "962034e9-cc27-4394-afc4-5c16e3447cf9",
+      "name": "Extrude",
+      "nickname": "FinSurfaces",
+      "position": { "x": 1250, "y": 150 }
+    },
+    {
+      "id": "n13",
+      "guid": "a4cd2751-414d-42ec-8916-476ebf62d7fe",
+      "name": "Radians",
+      "nickname": "AngleRad",
+      "position": { "x": 250, "y": 450 }
+    },
+    {
+      "id": "n14",
+      "guid": "17b7152b-d30d-4d50-b9ef-c9fe25576fc2",
+      "name": "XY Plane",
+      "nickname": "RotPlanes",
+      "position": { "x": 1000, "y": 0 }
+    },
+    {
+      "id": "n15",
+      "guid": "b7798b74-037e-4f0c-8ac7-dc1043d093e0",
+      "name": "Rotate",
+      "nickname": "LouverFins",
+      "position": { "x": 1500, "y": 150 }
+    }
+  ],
+  "connections": [
+    { "from": { "node": "n1",  "port": "Value"       }, "to": { "node": "n6",  "port": "A"           } },
+    { "from": { "node": "n3",  "port": "Value"       }, "to": { "node": "n6",  "port": "B"           } },
+    { "from": { "node": "n6",  "port": "Result"      }, "to": { "node": "n7",  "port": "Step"        } },
+    { "from": { "node": "n3",  "port": "Value"       }, "to": { "node": "n7",  "port": "Count"       } },
+    { "from": { "node": "n7",  "port": "Series"      }, "to": { "node": "n8",  "port": "X coordinate"} },
+    { "from": { "node": "n7",  "port": "Series"      }, "to": { "node": "n9",  "port": "X coordinate"} },
+    { "from": { "node": "n2",  "port": "Value"       }, "to": { "node": "n9",  "port": "Z coordinate"} },
+    { "from": { "node": "n8",  "port": "Point"       }, "to": { "node": "n10", "port": "Start Point" } },
+    { "from": { "node": "n9",  "port": "Point"       }, "to": { "node": "n10", "port": "End Point"   } },
+    { "from": { "node": "n5",  "port": "Value"       }, "to": { "node": "n11", "port": "Factor"      } },
+    { "from": { "node": "n11", "port": "Unit vector" }, "to": { "node": "n12", "port": "Direction"   } },
+    { "from": { "node": "n10", "port": "Line"        }, "to": { "node": "n12", "port": "Base"        } },
+    { "from": { "node": "n4",  "port": "Value"       }, "to": { "node": "n13", "port": "Degrees"     } },
+    { "from": { "node": "n13", "port": "Radians"     }, "to": { "node": "n15", "port": "Angle"       } },
+    { "from": { "node": "n8",  "port": "Point"       }, "to": { "node": "n14", "port": "Origin"      } },
+    { "from": { "node": "n14", "port": "Plane"       }, "to": { "node": "n15", "port": "Plane"       } },
+    { "from": { "node": "n12", "port": "Extrusion"   }, "to": { "node": "n15", "port": "Geometry"    } }
+  ]
+}

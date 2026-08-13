@@ -1,0 +1,763 @@
+{
+  "description": "Kangaroo 2 布料模拟：矩形网格四角吊点，重力下垂，边弹簧约束保持布料形态",
+  "nodes": [
+    {
+      "id": "sW",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "Width",
+      "position": {
+        "x": 0,
+        "y": 200
+      },
+      "preset": {
+        "value": 50,
+        "min": 5,
+        "max": 100
+      }
+    },
+    {
+      "id": "sD",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "Depth",
+      "position": {
+        "x": 0,
+        "y": 300
+      },
+      "preset": {
+        "value": 50,
+        "min": 5,
+        "max": 100
+      }
+    },
+    {
+      "id": "sU",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "MeshU",
+      "position": {
+        "x": 0,
+        "y": 400
+      },
+      "preset": {
+        "value": 20,
+        "min": 4,
+        "max": 60
+      }
+    },
+    {
+      "id": "sV",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "MeshV",
+      "position": {
+        "x": 0,
+        "y": 500
+      },
+      "preset": {
+        "value": 20,
+        "min": 4,
+        "max": 60
+      }
+    },
+    {
+      "id": "sG",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "Gravity",
+      "position": {
+        "x": 700,
+        "y": 400
+      },
+      "preset": {
+        "value": -0.1,
+        "min": -5,
+        "max": 0
+      }
+    },
+    {
+      "id": "s1",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "One",
+      "position": {
+        "x": 300,
+        "y": 450
+      },
+      "preset": {
+        "value": 1,
+        "min": 1,
+        "max": 1
+      }
+    },
+    {
+      "id": "sL",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "SpringLength",
+      "position": {
+        "x": 800,
+        "y": 750
+      },
+      "preset": {
+        "value": 2.5,
+        "min": 0.5,
+        "max": 5
+      }
+    },
+    {
+      "id": "sS",
+      "guid": "57da07bd-ecab-415d-9d86-af36d7073abc",
+      "name": "Number Slider",
+      "nickname": "SpringStrength",
+      "position": {
+        "x": 800,
+        "y": 850
+      },
+      "preset": {
+        "value": 5,
+        "min": 0.1,
+        "max": 5
+      }
+    },
+    {
+      "id": "toggle",
+      "guid": "2e78987b-9dfb-42a2-8b76-3923ac8bd91a",
+      "name": "Boolean Toggle",
+      "nickname": "On",
+      "position": {
+        "x": 950,
+        "y": 300
+      },
+      "preset": {
+        "value": true
+      }
+    },
+    {
+      "id": "reset",
+      "guid": "2e78987b-9dfb-42a2-8b76-3923ac8bd91a",
+      "name": "Boolean Toggle",
+      "nickname": "Reset",
+      "position": {
+        "x": 950,
+        "y": 400
+      },
+      "preset": {
+        "value": false
+      }
+    },
+    {
+      "id": "rect",
+      "guid": "d93100b6-d50b-40b2-831a-814659dc38e3",
+      "name": "Rectangle",
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "boundary",
+      "guid": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+      "name": "Boundary Surfaces",
+      "position": {
+        "x": 150,
+        "y": 0
+      }
+    },
+    {
+      "id": "meshsurf",
+      "guid": "58cf422f-19f7-42f7-9619-fc198c51c657",
+      "name": "Mesh Surface",
+      "position": {
+        "x": 300,
+        "y": 0
+      }
+    },
+    {
+      "id": "decon",
+      "guid": "ba2d8f57-0738-42b4-b5a5-fe4d853517eb",
+      "name": "Deconstruct Mesh",
+      "position": {
+        "x": 500,
+        "y": 0
+      }
+    },
+    {
+      "id": "load",
+      "guid": "2019c995-53af-4eb2-976d-95b1fdc823fa",
+      "name": "Load",
+      "position": {
+        "x": 700,
+        "y": 100
+      }
+    },
+    {
+      "id": "unitz",
+      "guid": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+      "name": "Unit Z",
+      "position": {
+        "x": 700,
+        "y": 300
+      }
+    },
+    {
+      "id": "anchor",
+      "guid": "3c30b1a1-4473-4ad4-a700-ea9770726c03",
+      "name": "Anchor",
+      "position": {
+        "x": 700,
+        "y": 0
+      }
+    },
+    {
+      "id": "solver",
+      "guid": "313490f5-8e38-4dde-9e9a-05e4d739b35d",
+      "name": "Solver",
+      "position": {
+        "x": 950,
+        "y": 100
+      }
+    },
+    {
+      "id": "li0",
+      "guid": "59daf374-bc21-4a5e-8282-5504fb7ae9ae",
+      "name": "List Item",
+      "position": {
+        "x": 600,
+        "y": 200
+      }
+    },
+    {
+      "id": "li1",
+      "guid": "59daf374-bc21-4a5e-8282-5504fb7ae9ae",
+      "name": "List Item",
+      "position": {
+        "x": 600,
+        "y": 300
+      }
+    },
+    {
+      "id": "li2",
+      "guid": "59daf374-bc21-4a5e-8282-5504fb7ae9ae",
+      "name": "List Item",
+      "position": {
+        "x": 600,
+        "y": 400
+      }
+    },
+    {
+      "id": "li3",
+      "guid": "59daf374-bc21-4a5e-8282-5504fb7ae9ae",
+      "name": "List Item",
+      "position": {
+        "x": 600,
+        "y": 500
+      }
+    },
+    {
+      "id": "add1",
+      "guid": "a0d62394-a118-422d-abb3-6af115c75b25",
+      "name": "Addition",
+      "position": {
+        "x": 300,
+        "y": 250
+      }
+    },
+    {
+      "id": "add2",
+      "guid": "a0d62394-a118-422d-abb3-6af115c75b25",
+      "name": "Addition",
+      "position": {
+        "x": 300,
+        "y": 350
+      }
+    },
+    {
+      "id": "mul1",
+      "guid": "ce46b74e-00c9-43c4-805a-193b69ea4a11",
+      "name": "Multiplication",
+      "position": {
+        "x": 450,
+        "y": 250
+      }
+    },
+    {
+      "id": "mul2",
+      "guid": "ce46b74e-00c9-43c4-805a-193b69ea4a11",
+      "name": "Multiplication",
+      "position": {
+        "x": 450,
+        "y": 350
+      }
+    },
+    {
+      "id": "sub1",
+      "guid": "9c007a04-d0d9-48e4-9da3-9ba142bc4d46",
+      "name": "Subtraction",
+      "position": {
+        "x": 450,
+        "y": 450
+      }
+    },
+    {
+      "id": "meshedges",
+      "guid": "2b9bf01d-5fe5-464c-b0b3-b469eb5f2efb",
+      "name": "Mesh Edges",
+      "position": {
+        "x": 600,
+        "y": 650
+      }
+    },
+    {
+      "id": "spring",
+      "guid": "091bae84-8fa9-4b35-8aad-b25b859055f6",
+      "name": "Length(Line)",
+      "position": {
+        "x": 800,
+        "y": 650
+      }
+    },
+    {
+      "id": "construct",
+      "guid": "e2c0f9db-a862-4bd9-810c-ef2610e7a56f",
+      "name": "Construct Mesh",
+      "position": {
+        "x": 1200,
+        "y": 0
+      }
+    }
+  ],
+  "connections": [
+    {
+      "from": {
+        "node": "sW",
+        "port": "Value"
+      },
+      "to": {
+        "node": "rect",
+        "port": "X Size"
+      }
+    },
+    {
+      "from": {
+        "node": "sD",
+        "port": "Value"
+      },
+      "to": {
+        "node": "rect",
+        "port": "Y Size"
+      }
+    },
+    {
+      "from": {
+        "node": "rect",
+        "port": "Rectangle"
+      },
+      "to": {
+        "node": "boundary",
+        "port": "Edges"
+      }
+    },
+    {
+      "from": {
+        "node": "boundary",
+        "port": "Surfaces"
+      },
+      "to": {
+        "node": "meshsurf",
+        "port": "Surface"
+      }
+    },
+    {
+      "from": {
+        "node": "sU",
+        "port": "Value"
+      },
+      "to": {
+        "node": "meshsurf",
+        "port": "U Count"
+      }
+    },
+    {
+      "from": {
+        "node": "sV",
+        "port": "Value"
+      },
+      "to": {
+        "node": "meshsurf",
+        "port": "V Count"
+      }
+    },
+    {
+      "from": {
+        "node": "meshsurf",
+        "port": "Mesh"
+      },
+      "to": {
+        "node": "decon",
+        "port": "Mesh"
+      }
+    },
+    {
+      "from": {
+        "node": "decon",
+        "port": "Vertices"
+      },
+      "to": {
+        "node": "load",
+        "port": "Point"
+      }
+    },
+    {
+      "from": {
+        "node": "sG",
+        "port": "Value"
+      },
+      "to": {
+        "node": "unitz",
+        "port": "Factor"
+      }
+    },
+    {
+      "from": {
+        "node": "unitz",
+        "port": "Unit vector"
+      },
+      "to": {
+        "node": "load",
+        "port": "Force vector"
+      }
+    },
+    {
+      "from": {
+        "node": "sU",
+        "port": "Value"
+      },
+      "to": {
+        "node": "add1",
+        "port": "A"
+      }
+    },
+    {
+      "from": {
+        "node": "s1",
+        "port": "Value"
+      },
+      "to": {
+        "node": "add1",
+        "port": "B"
+      }
+    },
+    {
+      "from": {
+        "node": "sV",
+        "port": "Value"
+      },
+      "to": {
+        "node": "add2",
+        "port": "A"
+      }
+    },
+    {
+      "from": {
+        "node": "s1",
+        "port": "Value"
+      },
+      "to": {
+        "node": "add2",
+        "port": "B"
+      }
+    },
+    {
+      "from": {
+        "node": "add1",
+        "port": "Result"
+      },
+      "to": {
+        "node": "mul1",
+        "port": "A"
+      }
+    },
+    {
+      "from": {
+        "node": "sV",
+        "port": "Value"
+      },
+      "to": {
+        "node": "mul1",
+        "port": "B"
+      }
+    },
+    {
+      "from": {
+        "node": "add1",
+        "port": "Result"
+      },
+      "to": {
+        "node": "mul2",
+        "port": "A"
+      }
+    },
+    {
+      "from": {
+        "node": "add2",
+        "port": "Result"
+      },
+      "to": {
+        "node": "mul2",
+        "port": "B"
+      }
+    },
+    {
+      "from": {
+        "node": "mul2",
+        "port": "Result"
+      },
+      "to": {
+        "node": "sub1",
+        "port": "A"
+      }
+    },
+    {
+      "from": {
+        "node": "s1",
+        "port": "Value"
+      },
+      "to": {
+        "node": "sub1",
+        "port": "B"
+      }
+    },
+    {
+      "from": {
+        "node": "decon",
+        "port": "Vertices"
+      },
+      "to": {
+        "node": "li0",
+        "port": "List"
+      }
+    },
+    {
+      "from": {
+        "node": "decon",
+        "port": "Vertices"
+      },
+      "to": {
+        "node": "li1",
+        "port": "List"
+      }
+    },
+    {
+      "from": {
+        "node": "decon",
+        "port": "Vertices"
+      },
+      "to": {
+        "node": "li2",
+        "port": "List"
+      }
+    },
+    {
+      "from": {
+        "node": "decon",
+        "port": "Vertices"
+      },
+      "to": {
+        "node": "li3",
+        "port": "List"
+      }
+    },
+    {
+      "from": {
+        "node": "sU",
+        "port": "Value"
+      },
+      "to": {
+        "node": "li1",
+        "port": "Index"
+      }
+    },
+    {
+      "from": {
+        "node": "mul1",
+        "port": "Result"
+      },
+      "to": {
+        "node": "li2",
+        "port": "Index"
+      }
+    },
+    {
+      "from": {
+        "node": "sub1",
+        "port": "Result"
+      },
+      "to": {
+        "node": "li3",
+        "port": "Index"
+      }
+    },
+    {
+      "from": {
+        "node": "li0",
+        "port": "Item"
+      },
+      "to": {
+        "node": "anchor",
+        "port": "Point"
+      }
+    },
+    {
+      "from": {
+        "node": "li1",
+        "port": "Item"
+      },
+      "to": {
+        "node": "anchor",
+        "port": "Point"
+      }
+    },
+    {
+      "from": {
+        "node": "li2",
+        "port": "Item"
+      },
+      "to": {
+        "node": "anchor",
+        "port": "Point"
+      }
+    },
+    {
+      "from": {
+        "node": "li3",
+        "port": "Item"
+      },
+      "to": {
+        "node": "anchor",
+        "port": "Point"
+      }
+    },
+    {
+      "from": {
+        "node": "anchor",
+        "port": "A"
+      },
+      "to": {
+        "node": "solver",
+        "port": "GoalObjects"
+      }
+    },
+    {
+      "from": {
+        "node": "load",
+        "port": "Unary"
+      },
+      "to": {
+        "node": "solver",
+        "port": "GoalObjects"
+      }
+    },
+    {
+      "from": {
+        "node": "toggle",
+        "port": "Boolean Toggle"
+      },
+      "to": {
+        "node": "solver",
+        "port": "On"
+      }
+    },
+    {
+      "from": {
+        "node": "reset",
+        "port": "Boolean Toggle"
+      },
+      "to": {
+        "node": "solver",
+        "port": "Reset"
+      }
+    },
+    {
+      "from": {
+        "node": "meshsurf",
+        "port": "Mesh"
+      },
+      "to": {
+        "node": "meshedges",
+        "port": "Mesh"
+      }
+    },
+    {
+      "from": {
+        "node": "meshedges",
+        "port": "Interior Edges"
+      },
+      "to": {
+        "node": "spring",
+        "port": "Line"
+      }
+    },
+    {
+      "from": {
+        "node": "meshedges",
+        "port": "Naked Edges"
+      },
+      "to": {
+        "node": "spring",
+        "port": "Line"
+      }
+    },
+    {
+      "from": {
+        "node": "sL",
+        "port": "Value"
+      },
+      "to": {
+        "node": "spring",
+        "port": "Length"
+      }
+    },
+    {
+      "from": {
+        "node": "sS",
+        "port": "Value"
+      },
+      "to": {
+        "node": "spring",
+        "port": "Strength"
+      }
+    },
+    {
+      "from": {
+        "node": "spring",
+        "port": "Spring"
+      },
+      "to": {
+        "node": "solver",
+        "port": "GoalObjects"
+      }
+    },
+    {
+      "from": {
+        "node": "solver",
+        "port": "V"
+      },
+      "to": {
+        "node": "construct",
+        "port": "Vertices"
+      }
+    },
+    {
+      "from": {
+        "node": "decon",
+        "port": "Faces"
+      },
+      "to": {
+        "node": "construct",
+        "port": "Faces"
+      }
+    }
+  ]
+}

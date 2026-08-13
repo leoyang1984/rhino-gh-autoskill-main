@@ -1,0 +1,103 @@
+{
+  "$schema": "../../schemas/recipe-v2.schema.json",
+  "schema_version": 2,
+  "id": "terrain-cut-fill",
+  "name": "土方挖填分析",
+  "description": "土方挖填分析：输入现状地形面与设计整平面，向下挤出成实体后用 Solid Difference 分别计算挖方与填方体量",
+  "tags": [
+    "terrain",
+    "cut",
+    "fill",
+    "earthwork",
+    "volume",
+    "surface",
+    "solid-difference",
+    "土方",
+    "挖方",
+    "填方",
+    "地形",
+    "体积"
+  ],
+  "interface": {
+    "parameters": {
+      "datum_depth": {
+        "type": "number",
+        "unit": null,
+        "default": -50,
+        "node": "n3",
+        "field": "value",
+        "description": "共同向下挤出的基准深度，需低于两个输入面的最低点"
+      }
+    },
+    "inputs": {
+      "existing_terrain": {
+        "type": "GH_Surface",
+        "access": "item",
+        "cardinality": 1,
+        "description": "现状地形曲面。",
+        "bindings": [
+          {
+            "node": "n5",
+            "port": "Base",
+            "mode": "replace"
+          }
+        ]
+      },
+      "design_surface": {
+        "type": "GH_Surface",
+        "access": "item",
+        "cardinality": 1,
+        "description": "设计整平或设计地形曲面。",
+        "bindings": [
+          {
+            "node": "n6",
+            "port": "Base",
+            "mode": "replace"
+          }
+        ]
+      }
+    },
+    "outputs": {
+      "cut_solid": {
+        "node": "n9",
+        "port": "Result",
+        "type": "GH_Brep",
+        "access": "item",
+        "cardinality": 1,
+        "description": "计算得到的挖方实体。"
+      },
+      "fill_solid": {
+        "node": "n10",
+        "port": "Result",
+        "type": "GH_Brep",
+        "access": "item",
+        "cardinality": 1,
+        "description": "计算得到的填方实体。"
+      },
+      "cut_volume": {
+        "node": "n11",
+        "port": "Volume",
+        "type": "GH_Number",
+        "access": "item",
+        "cardinality": 1,
+        "description": "挖方体积数值。"
+      },
+      "fill_volume": {
+        "node": "n12",
+        "port": "Volume",
+        "type": "GH_Number",
+        "access": "item",
+        "cardinality": 1,
+        "description": "填方体积数值。"
+      }
+    }
+  },
+  "composable_with": [
+    "terrain-from-contour",
+    "terrain-grade"
+  ],
+  "composition_rules": [],
+  "verified": true,
+  "verified_date": "2026-04-21",
+  "test_case": ""
+}

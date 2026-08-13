@@ -1,0 +1,95 @@
+{
+  "$schema": "../../schemas/recipe-v2.schema.json",
+  "schema_version": 2,
+  "id": "facade-parametric-tilt",
+  "name": "参数化倾斜幕墙",
+  "description": "参数化倾斜幕墙：输入外部曲面，UV 分格生成面板，并按 TiltAngle 围绕局部 X 轴倾斜每块面板",
+  "tags": [
+    "facade",
+    "panel",
+    "tilt",
+    "rotate",
+    "parametric",
+    "surface",
+    "UV",
+    "幕墙",
+    "倾斜",
+    "面板",
+    "参数化",
+    "表皮"
+  ],
+  "interface": {
+    "parameters": {
+      "u_count": {
+        "type": "number",
+        "unit": null,
+        "default": 8,
+        "node": "n2",
+        "field": "value",
+        "description": "水平分格数"
+      },
+      "v_count": {
+        "type": "number",
+        "unit": null,
+        "default": 12,
+        "node": "n3",
+        "field": "value",
+        "description": "垂直分格数"
+      },
+      "tilt_angle": {
+        "type": "number",
+        "unit": "deg",
+        "default": 20,
+        "node": "n4",
+        "field": "value",
+        "description": "面板倾斜角度"
+      }
+    },
+    "inputs": {
+      "surface": {
+        "type": "GH_Surface",
+        "access": "item",
+        "cardinality": 1,
+        "description": "待分格并逐块倾斜的建筑表皮曲面。",
+        "bindings": [
+          {
+            "node": "n5",
+            "port": "Domain",
+            "mode": "replace"
+          },
+          {
+            "node": "n6",
+            "port": "Surface",
+            "mode": "replace"
+          },
+          {
+            "node": "n8",
+            "port": "Surface",
+            "mode": "replace"
+          }
+        ]
+      }
+    },
+    "outputs": {
+      "tilted_panels": {
+        "node": "n11",
+        "port": "Geometry",
+        "type": "IGH_GeometricGoo",
+        "access": "tree",
+        "cardinality": null,
+        "description": "按局部轴倾斜后的面板树。"
+      }
+    }
+  },
+  "composable_with": [
+    "mass-extrude",
+    "mass-rotate",
+    "mass-taper",
+    "mass-setback",
+    "facade-grid"
+  ],
+  "composition_rules": [],
+  "verified": true,
+  "verified_date": "2026-04-21",
+  "test_case": ""
+}
