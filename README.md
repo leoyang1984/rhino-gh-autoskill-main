@@ -32,13 +32,32 @@ Rhino MCP 直接放置组件求解     或      scripts/build_gh_file.py 在 GH 
 
 ---
 
+## 运行架构：MCP 是主执行层
+
+项目默认以 **Rhino MCP 为执行层**：Recipe 库是"知识层"（只负责描述拓扑与参数），
+真正的建图、求解、数据审计由 Rhino MCP 的 `g1_*` 工具完成。编译器
+（`compile_recipe.py`）默认输出的就是 `g1_apply_graph` 载荷（`--emit mcp`），
+SKILL 定义的完整 AI 工作流（搜索组件库 → 建图 → 求解 → 取画布数据 → audit）都走 MCP。
+
+同时保留一条 **文件流** 作为无 MCP 的兼容路径，两条路径共享同一批 Recipe 数据：
+
+| 路径 | 链路 | 依赖 |
+|---|---|---|
+| **MCP 流（主）** | `compile_recipe.py`（默认 `--emit mcp`）→ Rhino MCP 建图/求解 → `audit` | 需 Rhino MCP |
+| **文件流（兼容）** | `compile_recipe.py --emit wiring` → GH 内运行 `build_gh_file.py` → `output/result.gh` | 仅需 Rhino + GH |
+
+装好 Rhino MCP 时走主路径体验最完整（Agent 全自动建图 + 审计）；
+只想快速出 `.gh` 文件、不装 MCP 也能用文件流跑通。
+
+---
+
 ## 前置要求
 
 | 组件 | 版本 | 用途 | 是否必需 |
 |---|---|---|---|
 | Rhino | 8（含 Grasshopper） | GH 内运行扫描/构建脚本、打开 `.gh` | 生成文件前必需 |
 | Python | 3.9+（仅标准库） | 编译器 CLI、测试 | CLI 功能必需 |
-| Rhino MCP（rhino-mcp / grasshopper-mcp） | 最新 | 让 Agent 直接生成画布并求解 | 可选（MCP 路径） |
+| Rhino MCP（rhino-mcp / grasshopper-mcp） | 最新 | 主执行层：Agent 建图 / 求解 / 审计（`g1_*` 工具） | 主路径必需；文件流不需要 |
 | AI 客户端 | Claude Code / Codex 等 | 读取 Recipe 库、规划拓扑 | 用 AI 工作流时必需 |
 
 > 编译器脚本只依赖标准库（`json` / `pathlib` / `argparse` …），不调用 Rhino API，
