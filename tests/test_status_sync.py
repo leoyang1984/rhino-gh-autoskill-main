@@ -41,7 +41,7 @@ class StatusSyncTests(unittest.TestCase):
         expected = self.sync.generated_index(PROJECT_ROOT, documents)
         actual = self.sync.read_json(PROJECT_ROOT / "recipes" / "index.json")
         self.assertEqual(expected, actual)
-        self.assertEqual(17, len(actual))
+        self.assertEqual(18, len(actual))
 
     def test_marker_replacement_preserves_manual_text(self) -> None:
         original = "manual before\n<!-- S -->old<!-- E -->\nmanual after\n"

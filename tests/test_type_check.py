@@ -67,7 +67,7 @@ class TypeCheckTests(unittest.TestCase):
             connections += len(results)
             for name, count in summary.items():
                 totals[name] += count
-        self.assertEqual(215, connections)
+        self.assertEqual(258, connections)
         self.assertEqual(0, totals["INCOMPATIBLE"])
         self.assertGreater(totals["WARN"], 0)
         self.assertGreater(totals["UNKNOWN"], 0)

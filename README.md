@@ -212,5 +212,4 @@ rhino-gh-autoskill-main/
 
 ## License
 
-仓库当前未包含 LICENSE 文件；公开发布前请先选择并添加许可证
-（如 MIT / Apache-2.0），并在本文件顶部注明。
+[MIT](LICENSE) © 2026 [leoyang1984](https://github.com/leoyang1984)

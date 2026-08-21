@@ -38,7 +38,7 @@ def read_json(path: Path):
 class GraphIRTests(unittest.TestCase):
     def test_all_recipe_wirings_round_trip_without_loss(self) -> None:
         paths = sorted((PROJECT_ROOT / "recipes").glob("*/wiring.json"))
-        self.assertEqual(17, len(paths))
+        self.assertEqual(18, len(paths))
         for path in paths:
             wiring = read_json(path)
             with self.subTest(recipe=path.parent.name):
@@ -108,7 +108,7 @@ class GraphIRTests(unittest.TestCase):
         for name in ("build_gh_file.py", "scan_gh_components.py"):
             source = (PROJECT_ROOT / "scripts" / name).read_text(encoding="utf-8")
             with self.subTest(script=name):
-                self.assertNotIn("/Users/yanglin/", source)
+                self.assertNotIn("/Users/<username>/", source)
                 self.assertIn("GH_AI_WIRING_ROOT", source)
 
 

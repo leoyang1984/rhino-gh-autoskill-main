@@ -32,8 +32,8 @@ class RecipeInterfaceTests(unittest.TestCase):
         cls.catalog = ComponentCatalog.load(PROJECT_ROOT)
         cls.recipe_paths = sorted((PROJECT_ROOT / "recipes").glob("*/recipe.json"))
 
-    def test_all_17_recipes_are_schema_v2_with_public_outputs(self) -> None:
-        self.assertEqual(17, len(self.recipe_paths))
+    def test_all_recipes_are_schema_v2_with_public_outputs(self) -> None:
+        self.assertEqual(18, len(self.recipe_paths))
         for path in self.recipe_paths:
             recipe = read_json(path)
             with self.subTest(recipe=recipe["id"]):

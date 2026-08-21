@@ -99,7 +99,7 @@ git diff --check
 3. **状态文档多头维护已开始漂移**：CLAUDE.md / planning/checkpoint.md / recipes/index.json
    三处计数口径不一；`data/component_library.json`（1204 组件）与 `component_index.json`
    均 gitignored 且不在本 checkout，AI 检索侧只有 31 个高频组件的 `hot_components.json` 兜底。
-4. **legacy 脚本硬编码绝对路径**（`/Users/yanglin/...`），与 MCP 路径（自动探测项目根）
+4. **legacy 脚本硬编码绝对路径**（`/Users/<username>/...`），与 MCP 路径（自动探测项目根）
    行为不一致；双执行路径（build_gh_file.py 文件流 vs compile_recipe.py MCP 流）共享
    同一批 recipe 数据，但校验能力不同步。
 

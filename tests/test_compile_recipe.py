@@ -97,7 +97,7 @@ class RecipeCompilerCharacterizationTests(unittest.TestCase):
         )
         self.assertEqual(len(indexed), len(set(indexed)), "duplicate ids in index")
         self.assertEqual(sorted(indexed), folders)
-        self.assertEqual(17, len(indexed))
+        self.assertEqual(18, len(indexed))
 
     def test_all_recipes_match_frozen_payloads(self) -> None:
         actual = build_baseline()

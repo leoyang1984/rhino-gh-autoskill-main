@@ -3185,6 +3185,501 @@
         ],
         "solve": true
       }
+    },
+    "kangaroo-cloth": {
+      "default_parameters": {
+        "width": 50,
+        "depth": 50,
+        "mesh_u": 20,
+        "mesh_v": 20,
+        "gravity": -0.1,
+        "spring_length": 2.5,
+        "spring_strength": 5.0
+      },
+      "counts": {
+        "sliders": 8,
+        "components": 22,
+        "wires": 43
+      },
+      "payload": {
+        "components": [
+          {
+            "Key": "toggle",
+            "Selector": "2e78987b-9dfb-42a2-8b76-3923ac8bd91a",
+            "X": 950.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "reset",
+            "Selector": "2e78987b-9dfb-42a2-8b76-3923ac8bd91a",
+            "X": 950.0,
+            "Y": 400.0
+          },
+          {
+            "Key": "rect",
+            "Selector": "d93100b6-d50b-40b2-831a-814659dc38e3",
+            "X": 0.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "boundary",
+            "Selector": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+            "X": 150.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "meshsurf",
+            "Selector": "58cf422f-19f7-42f7-9619-fc198c51c657",
+            "X": 300.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "decon",
+            "Selector": "ba2d8f57-0738-42b4-b5a5-fe4d853517eb",
+            "X": 500.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "load",
+            "Selector": "2019c995-53af-4eb2-976d-95b1fdc823fa",
+            "X": 700.0,
+            "Y": 100.0
+          },
+          {
+            "Key": "unitz",
+            "Selector": "9103c240-a6a9-4223-9b42-dbd19bf38e2b",
+            "X": 700.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "anchor",
+            "Selector": "3c30b1a1-4473-4ad4-a700-ea9770726c03",
+            "X": 700.0,
+            "Y": 0.0
+          },
+          {
+            "Key": "solver",
+            "Selector": "313490f5-8e38-4dde-9e9a-05e4d739b35d",
+            "X": 950.0,
+            "Y": 100.0
+          },
+          {
+            "Key": "li0",
+            "Selector": "59daf374-bc21-4a5e-8282-5504fb7ae9ae",
+            "X": 600.0,
+            "Y": 200.0
+          },
+          {
+            "Key": "li1",
+            "Selector": "59daf374-bc21-4a5e-8282-5504fb7ae9ae",
+            "X": 600.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "li2",
+            "Selector": "59daf374-bc21-4a5e-8282-5504fb7ae9ae",
+            "X": 600.0,
+            "Y": 400.0
+          },
+          {
+            "Key": "li3",
+            "Selector": "59daf374-bc21-4a5e-8282-5504fb7ae9ae",
+            "X": 600.0,
+            "Y": 500.0
+          },
+          {
+            "Key": "add1",
+            "Selector": "a0d62394-a118-422d-abb3-6af115c75b25",
+            "X": 300.0,
+            "Y": 250.0
+          },
+          {
+            "Key": "add2",
+            "Selector": "a0d62394-a118-422d-abb3-6af115c75b25",
+            "X": 300.0,
+            "Y": 350.0
+          },
+          {
+            "Key": "mul1",
+            "Selector": "ce46b74e-00c9-43c4-805a-193b69ea4a11",
+            "X": 450.0,
+            "Y": 250.0
+          },
+          {
+            "Key": "mul2",
+            "Selector": "ce46b74e-00c9-43c4-805a-193b69ea4a11",
+            "X": 450.0,
+            "Y": 350.0
+          },
+          {
+            "Key": "sub1",
+            "Selector": "9c007a04-d0d9-48e4-9da3-9ba142bc4d46",
+            "X": 450.0,
+            "Y": 450.0
+          },
+          {
+            "Key": "meshedges",
+            "Selector": "2b9bf01d-5fe5-464c-b0b3-b469eb5f2efb",
+            "X": 600.0,
+            "Y": 650.0
+          },
+          {
+            "Key": "spring",
+            "Selector": "091bae84-8fa9-4b35-8aad-b25b859055f6",
+            "X": 800.0,
+            "Y": 650.0
+          },
+          {
+            "Key": "construct",
+            "Selector": "e2c0f9db-a862-4bd9-810c-ef2610e7a56f",
+            "X": 1200.0,
+            "Y": 0.0
+          }
+        ],
+        "sliders": [
+          {
+            "Key": "sW",
+            "Min": 5,
+            "Value": 50,
+            "Max": 100,
+            "Type": "float",
+            "Name": "Width",
+            "X": 0.0,
+            "Y": 200.0
+          },
+          {
+            "Key": "sD",
+            "Min": 5,
+            "Value": 50,
+            "Max": 100,
+            "Type": "float",
+            "Name": "Depth",
+            "X": 0.0,
+            "Y": 300.0
+          },
+          {
+            "Key": "sU",
+            "Min": 4,
+            "Value": 20,
+            "Max": 60,
+            "Type": "int",
+            "Name": "MeshU",
+            "X": 0.0,
+            "Y": 400.0
+          },
+          {
+            "Key": "sV",
+            "Min": 4,
+            "Value": 20,
+            "Max": 60,
+            "Type": "int",
+            "Name": "MeshV",
+            "X": 0.0,
+            "Y": 500.0
+          },
+          {
+            "Key": "sG",
+            "Min": -5,
+            "Value": -0.1,
+            "Max": 0,
+            "Type": "float",
+            "Name": "Gravity",
+            "X": 700.0,
+            "Y": 400.0
+          },
+          {
+            "Key": "s1",
+            "Min": 1,
+            "Value": 1,
+            "Max": 1,
+            "Type": "float",
+            "Name": "One",
+            "X": 300.0,
+            "Y": 450.0
+          },
+          {
+            "Key": "sL",
+            "Min": 0.5,
+            "Value": 2.5,
+            "Max": 5,
+            "Type": "float",
+            "Name": "SpringLength",
+            "X": 800.0,
+            "Y": 750.0
+          },
+          {
+            "Key": "sS",
+            "Min": 0.1,
+            "Value": 5.0,
+            "Max": 5,
+            "Type": "float",
+            "Name": "SpringStrength",
+            "X": 800.0,
+            "Y": 850.0
+          }
+        ],
+        "wires": [
+          {
+            "SrcKey": "sW",
+            "Src": "",
+            "DstKey": "rect",
+            "Dst": "X Size"
+          },
+          {
+            "SrcKey": "sD",
+            "Src": "",
+            "DstKey": "rect",
+            "Dst": "Y Size"
+          },
+          {
+            "SrcKey": "rect",
+            "Src": "Rectangle",
+            "DstKey": "boundary",
+            "Dst": "Edges"
+          },
+          {
+            "SrcKey": "boundary",
+            "Src": "Surfaces",
+            "DstKey": "meshsurf",
+            "Dst": "Surface"
+          },
+          {
+            "SrcKey": "sU",
+            "Src": "",
+            "DstKey": "meshsurf",
+            "Dst": "U Count"
+          },
+          {
+            "SrcKey": "sV",
+            "Src": "",
+            "DstKey": "meshsurf",
+            "Dst": "V Count"
+          },
+          {
+            "SrcKey": "meshsurf",
+            "Src": "Mesh",
+            "DstKey": "decon",
+            "Dst": "Mesh"
+          },
+          {
+            "SrcKey": "decon",
+            "Src": "Vertices",
+            "DstKey": "load",
+            "Dst": "Point"
+          },
+          {
+            "SrcKey": "sG",
+            "Src": "",
+            "DstKey": "unitz",
+            "Dst": "Factor"
+          },
+          {
+            "SrcKey": "unitz",
+            "Src": "Unit vector",
+            "DstKey": "load",
+            "Dst": "Force vector"
+          },
+          {
+            "SrcKey": "sU",
+            "Src": "",
+            "DstKey": "add1",
+            "Dst": "A"
+          },
+          {
+            "SrcKey": "s1",
+            "Src": "",
+            "DstKey": "add1",
+            "Dst": "B"
+          },
+          {
+            "SrcKey": "sV",
+            "Src": "",
+            "DstKey": "add2",
+            "Dst": "A"
+          },
+          {
+            "SrcKey": "s1",
+            "Src": "",
+            "DstKey": "add2",
+            "Dst": "B"
+          },
+          {
+            "SrcKey": "add1",
+            "Src": "Result",
+            "DstKey": "mul1",
+            "Dst": "A"
+          },
+          {
+            "SrcKey": "sV",
+            "Src": "",
+            "DstKey": "mul1",
+            "Dst": "B"
+          },
+          {
+            "SrcKey": "add1",
+            "Src": "Result",
+            "DstKey": "mul2",
+            "Dst": "A"
+          },
+          {
+            "SrcKey": "add2",
+            "Src": "Result",
+            "DstKey": "mul2",
+            "Dst": "B"
+          },
+          {
+            "SrcKey": "mul2",
+            "Src": "Result",
+            "DstKey": "sub1",
+            "Dst": "A"
+          },
+          {
+            "SrcKey": "s1",
+            "Src": "",
+            "DstKey": "sub1",
+            "Dst": "B"
+          },
+          {
+            "SrcKey": "decon",
+            "Src": "Vertices",
+            "DstKey": "li0",
+            "Dst": "List"
+          },
+          {
+            "SrcKey": "decon",
+            "Src": "Vertices",
+            "DstKey": "li1",
+            "Dst": "List"
+          },
+          {
+            "SrcKey": "decon",
+            "Src": "Vertices",
+            "DstKey": "li2",
+            "Dst": "List"
+          },
+          {
+            "SrcKey": "decon",
+            "Src": "Vertices",
+            "DstKey": "li3",
+            "Dst": "List"
+          },
+          {
+            "SrcKey": "sU",
+            "Src": "",
+            "DstKey": "li1",
+            "Dst": "Index"
+          },
+          {
+            "SrcKey": "mul1",
+            "Src": "Result",
+            "DstKey": "li2",
+            "Dst": "Index"
+          },
+          {
+            "SrcKey": "sub1",
+            "Src": "Result",
+            "DstKey": "li3",
+            "Dst": "Index"
+          },
+          {
+            "SrcKey": "li0",
+            "Src": "Item",
+            "DstKey": "anchor",
+            "Dst": "Point"
+          },
+          {
+            "SrcKey": "li1",
+            "Src": "Item",
+            "DstKey": "anchor",
+            "Dst": "Point"
+          },
+          {
+            "SrcKey": "li2",
+            "Src": "Item",
+            "DstKey": "anchor",
+            "Dst": "Point"
+          },
+          {
+            "SrcKey": "li3",
+            "Src": "Item",
+            "DstKey": "anchor",
+            "Dst": "Point"
+          },
+          {
+            "SrcKey": "anchor",
+            "Src": "A",
+            "DstKey": "solver",
+            "Dst": "GoalObjects"
+          },
+          {
+            "SrcKey": "load",
+            "Src": "Unary",
+            "DstKey": "solver",
+            "Dst": "GoalObjects"
+          },
+          {
+            "SrcKey": "toggle",
+            "Src": "Boolean Toggle",
+            "DstKey": "solver",
+            "Dst": "On"
+          },
+          {
+            "SrcKey": "reset",
+            "Src": "Boolean Toggle",
+            "DstKey": "solver",
+            "Dst": "Reset"
+          },
+          {
+            "SrcKey": "meshsurf",
+            "Src": "Mesh",
+            "DstKey": "meshedges",
+            "Dst": "Mesh"
+          },
+          {
+            "SrcKey": "meshedges",
+            "Src": "Interior Edges",
+            "DstKey": "spring",
+            "Dst": "Line"
+          },
+          {
+            "SrcKey": "meshedges",
+            "Src": "Naked Edges",
+            "DstKey": "spring",
+            "Dst": "Line"
+          },
+          {
+            "SrcKey": "sL",
+            "Src": "",
+            "DstKey": "spring",
+            "Dst": "Length"
+          },
+          {
+            "SrcKey": "sS",
+            "Src": "",
+            "DstKey": "spring",
+            "Dst": "Strength"
+          },
+          {
+            "SrcKey": "spring",
+            "Src": "Spring",
+            "DstKey": "solver",
+            "Dst": "GoalObjects"
+          },
+          {
+            "SrcKey": "solver",
+            "Src": "V",
+            "DstKey": "construct",
+            "Dst": "Vertices"
+          },
+          {
+            "SrcKey": "decon",
+            "Src": "Faces",
+            "DstKey": "construct",
+            "Dst": "Faces"
+          }
+        ],
+        "solve": true
+      }
     }
   }
 }
